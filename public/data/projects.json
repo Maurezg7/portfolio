@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Human Resources System",
+    "description": "Sistema completo de Recursos Humanos con Spring Boot y React. Incluye gestión de empleados, departamentos y nóminas.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/HumanResourcesSystem/main/screenshot.png",
+    "tags": ["Spring Boot", "React", "Java", "TypeScript", "PostgreSQL"],
+    "tools": ["IntelliJ IDEA", "VS Code", "Postman", "Maven"],
+    "githubUrl": "https://github.com/Maurezg7/HumanResourcesSystem",
+    "urlWeb": null
+  },
+  {
+    "id": 2,
+    "title": "Inventory Management App",
+    "description": "Aplicación de gestión de inventario desarrollada con Spring Boot y Angular. Control de stock, proveedores y reportes.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/InventoryApp/main/screenshot.png",
+    "tags": ["Spring Boot", "Angular", "Java", "TypeScript", "MySQL"],
+    "tools": ["IntelliJ IDEA", "VS Code", "Spring Security", "REST API"],
+    "githubUrl": "https://github.com/Maurezg7/InventoryApp",
+    "urlWeb": null
+  },
+  {
+    "id": 3,
+    "title": "Task Manager",
+    "description": "Gestor de tareas con interfaz JavaFX y backend Spring. Funcionalidades CRUD, categorías y prioridades.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/ManagerTask/main/screenshot.png",
+    "tags": ["JavaFX", "Spring", "Java", "CSS", "Hibernate"],
+    "tools": ["IntelliJ IDEA", "Scene Builder", "JDBC", "Maven"],
+    "githubUrl": "https://github.com/Maurezg7/ManagerTask",
+    "urlWeb": null
+  },
+  {
+    "id": 4,
+    "title": "Chrono Cars - Concesionario",
+    "description": "Sistema para concesionario de vehículos desarrollado con Java y JSF. Gestión de inventario, clientes y ventas.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/Chrono_Cars/main/screenshot.png",
+    "tags": ["Java", "JSF", "PrimeFaces", "Spring", "MySQL"],
+    "tools": ["IntelliJ IDEA", "Apache Tomcat", "JPA", "Bootstrap"],
+    "githubUrl": "https://github.com/Maurezg7/Chrono_Cars",
+    "urlWeb": null
+  },
+  {
+    "id": 5,
+    "title": "Gestor de Restaurante",
+    "description": "Sistema de gestión para restaurante desarrollado en Java puro. Control de mesas, pedidos y facturación.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/Gestor_Restaurante/main/screenshot.png",
+    "tags": ["Java", "Swing", "JDBC", "MySQL", "POO"],
+    "tools": ["IntelliJ IDEA", "MySQL Workbench", "Java Swing", "MVC"],
+    "githubUrl": "https://github.com/Maurezg7/Gestor_Restaurante",
+    "urlWeb": null
+  },
+  {
+    "id": 6,
+    "title": "JDBC con Apache NetBeans",
+    "description": "Proyecto educativo sobre conexión a bases de datos usando JDBC. Ejemplos de CRUD y transacciones.",
+    "image": "https://raw.githubusercontent.com/Maurezg7/JDBC_ApacheNetBeans/main/screenshot.png",
+    "tags": ["Java", "JDBC", "MySQL", "NetBeans", "SQL"],
+    "tools": ["Apache NetBeans", "MySQL", "XAMPP", "Java Database"],
+    "githubUrl": "https://github.com/Maurezg7/JDBC_ApacheNetBeans",
+    "urlWeb": null
+  }
+]

@@ -1,0 +1,201 @@
+#presentation {
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(50deg, #cc302e, #d43a2d, #dc542f, #e47e33, #dc542f, #d43a2d, #cc302e);
+  background-size: 400% 400%;
+  animation: gradientFlow 7s ease infinite;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 7vh;
+  position: relative;
+  overflow: hidden;
+
+  div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  #titles_presentation {
+    position: relative;
+    width: 100%;
+
+    h1 {
+      width: 100%;
+      font-family: 'balbek', sans-serif;
+      color: black !important;
+      font-size: clamp(2rem, 5vw, 6rem);
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.2;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: finalPresentation 0.5s ease 1.5s forwards;
+    }
+
+    h3 {
+      width: 100%;
+      color: #39ff14;
+      font-family: 'houze', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 4rem);
+      font-weight: 300;
+      margin: 1rem 0;
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: finalPresentation 0.5s ease 2s forwards;
+    }
+  }
+
+  #container_imgtitle {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1.5s ease 2.5s forwards;
+
+    img {
+      background-color: white;
+      width: 50%;
+      height: 70%;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: imgAppear 1.5s ease 2.5s forwards;
+    }
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes initialPresentation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    filter: blur(10px);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2);
+    filter: blur(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+    visibility: hidden;
+  }
+}
+
+@keyframes finalPresentation {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imgAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeBackground {
+  0% {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+// Responsive
+// Smartphones
+@media (max-width: 412px) {
+  #presentation {
+    flex-direction: column-reverse !important;
+    padding: 0 1.5vh;
+
+    div {
+      width: 100%;
+      height: 50%;
+    }
+
+    #titles_presentation {
+      .h1-initial {
+        font-size: 4rem; /* Más pequeño en móviles */
+        transform: translate(-50%, -50%) scale(1.5);
+
+        @keyframes initialPresentation {
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.3);
+          }
+          20% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+          }
+          60% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.5);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.2);
+            visibility: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+
+@font-face {
+  font-family: balbek;
+  src: url(../../../assets/fonts/Balbek-Personal\ Use\ Only.otf);
+}
+@font-face {
+  font-family: houze;
+  src: url(../../../assets/fonts/HouzeDemoOutline.ttf);
+}

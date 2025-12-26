@@ -1,0 +1,199 @@
+#container-contact {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background-image: url(../../../../public/images/Wallpapers/tumblr_ojucdr7dPw1v9hzxjo1_500.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .background_container {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      margin: 0 auto;
+      max-width: 1200px;
+      width: 100%;
+
+      li {
+        width: min(22vw, 200px);
+        height: min(22vw, 200px);
+        min-width: 120px;
+        min-height: 120px;
+        margin: 0;
+        border: 2px solid transparent;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px;
+        position: relative;
+        box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, inset 0 0 10px rgba(0, 247, 255, 0.3);
+        animation: neonPulse 4s infinite alternate;
+
+        &:hover {
+          box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff,
+            inset 0 0 20px rgba(255, 0, 255, 0.5);
+          transform: scale(1.05);
+          transition: all 0.3s ease;
+        }
+
+        a {
+          text-decoration: none;
+          color: white;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            width: 60%;
+            height: 60%;
+            max-width: 80px;
+            max-height: 80px;
+            filter: drop-shadow(0 0 5px #00f7ff);
+            transition: all 0.3s ease;
+          }
+
+          &:hover svg {
+            filter: drop-shadow(0 0 15px #ff00ff);
+            transform: scale(1.1);
+          }
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          right: -5px;
+          bottom: -5px;
+          background: linear-gradient(45deg, #00f7ff, #ff00ff, #00ff9d, #ffeb3b);
+          border-radius: 15px;
+          z-index: -1;
+          filter: blur(20px);
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  #container-contact .background_container ul {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+
+    li {
+      width: min(25vw, 180px);
+      height: min(25vw, 180px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #container-contact {
+    padding: 1.5rem 0.5rem;
+    height: auto;
+
+    .background_container {
+      padding: 1.5rem 0.5rem;
+      min-height: auto;
+
+      ul {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.2rem;
+
+        li {
+          width: min(30vw, 150px);
+          height: min(30vw, 150px);
+          min-width: 100px;
+          min-height: 100px;
+
+          a svg {
+            width: 55%;
+            height: 55%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #container-contact {
+    padding: 1rem 0.5rem;
+
+    .background_container {
+      padding: 1rem 0.5rem;
+
+      ul {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        li {
+          width: min(40vw, 130px);
+          height: min(40vw, 130px);
+          min-width: 90px;
+          min-height: 90px;
+
+          a svg {
+            width: 50%;
+            height: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  #container-contact .background_container ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+
+    li {
+      width: min(45vw, 110px);
+      height: min(45vw, 110px);
+      min-width: 80px;
+      min-height: 80px;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #container-contact .background_container ul {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+
+    li {
+      width: min(20vw, 160px);
+      height: min(20vw, 160px);
+    }
+  }
+}
+
+@keyframes neonPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, inset 0 0 10px rgba(0, 247, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff, inset 0 0 15px rgba(255, 0, 255, 0.4);
+  }
+}

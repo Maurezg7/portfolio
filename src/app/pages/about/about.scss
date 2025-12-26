@@ -1,0 +1,351 @@
+#container_about {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../../../../public/images/Wallpapers/Background_Tuning.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#container_about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 1;
+}
+
+#container_background {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+}
+
+.title_container_about {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.title_container_about h1 {
+  font-family: 'fast-car';
+  font-weight: 900;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: white;
+  text-shadow: 0 0 10px rgb(95, 95, 95), 0 0 20px rgba(131, 131, 131, 0.5);
+  letter-spacing: 2px;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.title_container_about h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+#container_aboutmsg {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+#container_aboutimg {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#container_aboutimg:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.7);
+}
+
+#container_aboutimg img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  margin-bottom: 25px;
+}
+
+#container_aboutimg p {
+  font-family: 'manggo';
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#container_aboutimg b {
+  color: #adadad;
+  font-weight: 600;
+}
+
+#container_aboutme {
+  flex: 2;
+  min-width: 300px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#container_aboutme > h3 {
+  font-family: 'fast-car', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  margin: 0 0 20px 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+#container_aboutme > p {
+  font-family: monospace;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: #e0e0e0;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#container_aboutme strong {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.skill-card {
+  background: rgba(19, 19, 19, 0.8);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.skill-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.skill-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: 'fast-car';
+  font-weight: 900;
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+  color: #ffffff;
+  margin: 0 0 15px 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.skill-card h3 svg {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+}
+
+.subtitle {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.skill-card p:last-of-type {
+  font-family: monospace;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  #container_aboutmsg {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #container_aboutimg,
+  #container_aboutme {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .skill-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #container_about {
+    background-attachment: scroll;
+    padding: 10px 0;
+  }
+
+  #container_background {
+    padding: 20px 15px;
+  }
+
+  .title_container_about {
+    margin-bottom: 30px;
+  }
+
+  #container_aboutmsg {
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  #container_aboutimg {
+    padding: 20px;
+  }
+
+  #container_aboutimg img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .skill-card {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  #container_aboutimg {
+    padding: 15px;
+  }
+
+  #container_aboutimg img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .skill-card {
+    padding: 15px;
+  }
+
+  .skill-card h3 {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .skill-card h3 svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#container_aboutmsg > * {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.skill-card {
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: calc(var(--card-index, 0) * 0.2s);
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos para enlaces dentro del texto */
+#container_aboutimg p b,
+#container_aboutme p strong {
+  position: relative;
+}
+
+#container_aboutimg p b::after,
+#container_aboutme p strong::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  opacity: 0.5;
+}
+
+@font-face {
+  font-family: fast-car;
+  src: url(../../../assets/fonts/Fast\ In\ My\ Car.ttf);
+}
+
+@font-face {
+  font-family: titanone;
+  src: url(../../../assets/fonts/TitanOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: manggo;
+  src: url(../../../assets/fonts/Manggo\ Dream.ttf);
+}
