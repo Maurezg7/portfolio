@@ -1,10 +1,10 @@
 @font-face {
   font-family: NextUps;
-  src: url("/fonts/Next Ups.ttf") format("truetype");
+  src: url("/portfolio/fonts/Next Ups.ttf") format("truetype");
 }
 @font-face {
   font-family: nNungo;
-  src: url("/fonts/nNungo.ttf") format("truetype");
+  src: url("/portfolio/fonts/nNungo.ttf") format("truetype");
 }
 #container {
   display: flex;

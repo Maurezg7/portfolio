@@ -1,18 +1,18 @@
 @font-face {
     font-family: nNungo;
-    src: url(/fonts/nNungo.ttf);
+    src: url(/portfolio/fonts/nNungo.ttf);
 }
 
 #container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
 
-    @media (max-width: 900px) {
+    @media (max-width: 631px) {
         flex-direction: column;
         padding: 2rem 1rem;
         justify-content: flex-start;
@@ -26,10 +26,10 @@
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 900px) {
+    @media (max-width: 631px) {
         width: 100%;
-        height: auto;
-        margin-bottom: 2rem;
+        height: 50%;
+        margin-top: 2rem;
     }
 
     img {
@@ -39,7 +39,7 @@
         max-height: 70vh;
         object-fit: contain;
 
-        @media (max-width: 900px) {
+        @media (max-width: 631px) {
             max-height: 40vh;
         }
     }
@@ -47,34 +47,39 @@
 
 #sections_container {
     width: 50%;
-    min-height: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    @media (max-width: 900px) {
+    @media (max-width: 631px) {
         width: 100%;
+        height: 50%;
     }
 }
 
 #sections {
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
     list-style: none;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 
     li {
         display: flex;
         align-items: start;
         justify-content: left;
-        gap: 1rem;
+        gap: 0.5rem;
         cursor: pointer;
-        padding: 1rem;
+        padding: 0 1rem;
         transition: all 0.3s ease;
         border-left: 4px solid transparent;
+        width: 100%;
 
         &:hover {
             border-left: 4px solid orange;
@@ -115,7 +120,9 @@
         font-size: 1.1rem;
         width: fit-content;
 
-        &:hover { color: greenyellow; }
+        &:hover {
+            color: greenyellow;
+        }
     }
 
     :global(h1) {
@@ -127,9 +134,15 @@
 
     :global(.section_tools) {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-        gap: 1.5rem;
+        width: 100%;
+        height: 100%;
+        justify-content: left;
+        align-items: center;
+        grid-auto-flow: dense;
+        grid-auto-rows: 12vh;
+        grid-template-columns: repeat(auto-fill, minmax(10vh, 12vh));
         list-style: none;
+        gap: 1rem;
         padding: 0;
 
         :global(.icon-item) {
@@ -140,8 +153,14 @@
             justify-content: center;
             align-items: center;
             transition: transform 0.3s ease;
+            max-width: 12vh;
+            max-height: 12vh;
+            min-width: 10vh;
+            min-height: 10vh;
 
-            &:hover { transform: scale(1.1); }
+            &:hover {
+                transform: scale(1.1);
+            }
 
             :global(.cont_icon) {
                 width: 92%;
@@ -163,6 +182,13 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -5,5 +5,5 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   site: 'https://Maurezg7.github.io',
-  base: '/',
+  base: '/portfolio',
 });
