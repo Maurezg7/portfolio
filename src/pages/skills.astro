@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const items = [
+  {
+    title: "DATABASE",
+    icons: [
+      "/image/languages/mysql.webp",
+      "/image/languages/SQLite.webp",
+      "/image/languages/postgresql.webp",
+      "/image/tools/dbeaver.webp",
+      "/image/tools/drawio.webp"
+    ],
+  },
+  { title: "WEB DEVELOPMENT", icons: [
+    "/image/languages/html.webp",
+    "/image/languages/css.webp",
+    "/image/languages/typescript.webp",
+    "/image/languages/angular.webp",
+    "/image/languages/react.webp",
+    "/image/languages/sass.webp",
+    "/image/tools/visualcode.webp"
+  ] },
+  { title: "BACKEND", icons: [
+    "/image/languages/java.webp",
+    "/image/languages/springboot.webp",
+    "/image/tools/intellijidea.webp",
+    "/image/tools/eclipse.webp",
+    "/image/tools/apachenetbeans.webp",
+    "/image/tools/postman.webp",
+    "/image/tools/drawio.webp"
+  ] },
+];
+
+const image = [
+  { title: "BACKEND", image: "/image/banners/backend.webp"},
+  { title: "FRONTEND", image: "/image/banners/backend.webp"},
+  { title: "DATABASE", image: "/image/banners/backend.webp"}
+]
+---
+
+<Layout title="Mauro Gomez - Habilidades">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <div id="container" transition:persist>
+    <div id="img_container">
+      <img src="/image/perfil/Skills_Photo.webp" alt="" />
+    </div>
+    <div id="sections_container">
+      <ul id="sections">
+        <li data-index="0">
+          <span>[01]</span><h1>DATABASE</h1>
+        </li>
+        <li data-index="1">
+          <span>[02]</span><h1>WEB DEVELOPMENT</h1>
+        </li>
+        <li data-index="2">
+          <span>[03]</span><h1>BACKEND</h1>
+        </li>
+      </ul>
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ items }}>
+  const setupSkillsInteractivity = () => {
+    const container = document.getElementById("container");
+    const sections = document.getElementById("sections");
+    const container_sections = document.getElementById("sections_container");
+    const image_cont = document.getElementById("");
+
+    let sectionTools = document.getElementById("section-tools");
+    if (!sectionTools) {
+      sectionTools = document.createElement("ul");
+      sectionTools.id = "section-tools";
+    }
+
+    const buttons = document.querySelectorAll("li[data-index]");
+
+    buttons.forEach((button) => {
+      button.onclick = () => {
+        const index = button.getAttribute("data-index");
+        const info = items[index];
+
+        sections.style.display = "none";
+
+        sectionTools.innerHTML = `
+          <button id="back-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+</svg><span>Volver</span></button>
+          <h1>${info.title}</h1>
+          <ul class='section_tools'>
+                      ${info.icons
+                        .map(
+                          (icon) =>
+                            `<li class="icon-item">
+                <div class="cont_icon">
+                    <img src="${icon}" alt="" class="icon-img">
+                  </div>
+            </li>`,
+                        )
+                        .join("")}
+          </ul>
+        `;
+
+        container_sections.appendChild(sectionTools);
+
+        document.getElementById("back-btn").onclick = () => {
+          sectionTools.remove();
+          sections.style.display = "flex";
+        };
+      };
+    });
+  };
+
+  document.addEventListener("astro:page-load", setupSkillsInteractivity);
+</script>
+
+<style>
+  @import url(../assets/styles/css/skills.css);
+  *,
+  ::after,
+  ::before {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+</style>

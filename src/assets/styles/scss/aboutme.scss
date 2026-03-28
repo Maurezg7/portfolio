@@ -1,0 +1,195 @@
+@font-face {
+    font-family: "nNungo";
+    font-weight: 900;
+    src: url("/fonts/nNungo.ttf") format("truetype");
+}
+
+#aboutme_container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .container {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+        overflow: visible;
+    }
+
+    .container_img {
+        img {
+            width: clamp(45vh,2vw,55vh);
+            height: clamp(70vh,4vw,80vh);;
+            animation: all 0.3s ease;
+        }
+    }
+
+    .container_text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        text-align: left;
+        gap: 1rem;
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 2.8rem);
+            color: greenyellow;
+            font-family: "nNungo";
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            width: 100%;
+            height: auto;
+            overflow: visible;
+
+            li {
+                width: clamp(3rem, 2vw, 5rem);
+                height: clamp(3rem, 2vw, 5rem);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
+                fill: white;
+
+                .icon-box {
+                    width: 100%;
+                    height: 100%;
+                    background-color: orange;
+                    clip-path: polygon(25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%, 0% 25%);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: transform 0.3s ease, background-color 0.3s ease;
+                }
+
+                span {
+                    opacity: 0;
+                    visibility: hidden;
+                    position: absolute;
+                    left: calc(100% + 15px);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: greenyellow;
+                    color: #1a1a1a;
+                    padding: 6px 12px;
+                    font-family: monospace;
+                    font-weight: 900;
+                    white-space: nowrap;
+                    z-index: 100;
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                }
+
+                &:hover .icon-box {
+                    transform: scale(1.1);
+                    background-color: #ffb300;
+                    filter: drop-shadow(0 0 5px white);
+                }
+
+                &:hover span {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(-50%) translateX(5px);
+                }
+
+                svg {
+                    width: clamp(1.5rem, 2vw, 2.2rem);
+                    height: clamp(1.5rem, 2vw, 2.2rem);
+                }
+
+                img {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+
+            }
+        }
+
+        #text-h4,
+        #text-h5 {
+            transition: all 0.3s ease;
+        }
+
+        h4 {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            color: #fff;
+            font-family: monospace;
+            font-weight: 600;
+        }
+
+        h5 {
+            font-size: clamp(0.6rem, 2vw, 1rem);
+            color: #ffffff;
+            font-family: monospace;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #fff;
+            text-align: center;
+            width: 80%;
+        }
+
+        #skills {
+            width: fit-content;
+            height: fit-content;
+            background-color: rgba(255, 166, 0, 0.917);
+            color: white;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
+            border: none !important;
+            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+            font-family: nNungo, sans-serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            border-radius: 0.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: rgba(255, 166, 0, 0.639);
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 870px) {
+    #aboutme_container {
+        padding-top: 4rem;
+        flex-direction:column-reverse;
+        height: 100% !important;
+    }
+
+    .container{
+        width: 100% !important;
+    }
+}

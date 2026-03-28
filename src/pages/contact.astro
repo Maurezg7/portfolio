@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Mauro Gomez - Contactame">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+  <div id="container">
+    <form action="https://formspree.io/f/xeelygyy" method="POST">
+      <h1>HABLEMOS</h1>
+      <p>
+        Contáctame en mauroleonelg7@gmail.com para cualquier trabajo o consulta,
+        o envíame un mensaje aquí.
+      </p>
+      <input type="email" placeholder="Tu correo" />
+      <textarea name="message" placeholder="Comparte tu idea..."></textarea>
+      <button type="submit">ENVÍAME UN MENSAJE</button>
+    </form>
+  </div>
+</Layout>
+
+<style>
+  @import url(../assets/styles/css/contact.css);
+  *,
+  ::after,
+  ::before {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Mauro Gomez - Full Stack">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <div id="container">
+    <h1>SOY MAURO GOMEZ</h1>
+    <h2>FULL STACK DEVELOPER</h2>
+    <h3>JAVA ❖ SPRINGBOOT ❖ ANGULAR ❖ SQL</h3>
+    <p>
+      Transformo ideas en aplicaciones robustas utilizando la potencia de Java
+      (Spring Boot) en el backend y la agilidad de Angular/React en el frontend.
+    </p>
+    <button id="aboutme">Sobre mi</button>
+  </div>
+</Layout>
+
+<style>
+  @import "../assets/styles/css/welcome.css";
+  
+  *,
+  ::after,
+  ::before {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+</style>
+
+<script>
+  const changePage = () => {
+    const buttonAbout = document.getElementById("aboutme");
+    buttonAbout?.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "/aboutme";
+    });
+  };
+
+  document.addEventListener("astro:page-load", changePage);
+</script>
+
