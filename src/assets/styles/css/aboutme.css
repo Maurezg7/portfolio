@@ -3,6 +3,7 @@
   font-weight: 900;
   src: url("/portfolio/fonts/nNungo.ttf") format("truetype");
 }
+
 #aboutme_container {
   width: 100%;
   height: 100vh;
@@ -13,6 +14,7 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 #aboutme_container .container {
   width: 50%;
   height: 100%;
@@ -23,11 +25,13 @@
   padding: 1.5rem;
   overflow: visible;
 }
+
 #aboutme_container .container_img img {
   width: clamp(45vh, 2vw, 55vh);
   height: clamp(70vh, 4vw, 80vh);
   animation: all 0.3s ease;
 }
+
 #aboutme_container .container_text {
   display: flex;
   flex-direction: column;
@@ -36,11 +40,13 @@
   text-align: left;
   gap: 1rem;
 }
+
 #aboutme_container .container_text h1 {
   font-size: clamp(2.5rem, 6vw, 2.8rem);
   color: greenyellow;
   font-family: "nNungo";
 }
+
 #aboutme_container .container_text ul {
   display: flex;
   flex-direction: row;
@@ -52,6 +58,7 @@
   height: auto;
   overflow: visible;
 }
+
 #aboutme_container .container_text ul li {
   width: clamp(3rem, 2vw, 5rem);
   height: clamp(3rem, 2vw, 5rem);
@@ -62,6 +69,7 @@
   position: relative;
   fill: white;
 }
+
 #aboutme_container .container_text ul li .icon-box {
   width: 100%;
   height: 100%;
@@ -72,13 +80,14 @@
   align-items: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 #aboutme_container .container_text ul li span {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  left: calc(100% + 15px);
-  top: 50%;
-  transform: translateY(-50%);
+  left: calc(98% + 1px);
+  bottom: 70%;
+  transform: translateY(50%);
   background-color: greenyellow;
   color: #1a1a1a;
   padding: 6px 12px;
@@ -89,47 +98,57 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   border-radius: 5px;
   font-size: 1rem;
+  border: black 1px solid;
 }
+
 #aboutme_container .container_text ul li:hover .icon-box {
   transform: scale(1.1);
   background-color: #ffb300;
   filter: drop-shadow(0 0 5px white);
 }
+
 #aboutme_container .container_text ul li:hover span {
   opacity: 1;
   visibility: visible;
   transform: translateY(-50%) translateX(5px);
 }
+
 #aboutme_container .container_text ul li svg {
   width: clamp(1.5rem, 2vw, 2.2rem);
   height: clamp(1.5rem, 2vw, 2.2rem);
 }
+
 #aboutme_container .container_text ul li img {
   width: 2.5rem;
   height: 2.5rem;
 }
+
 #aboutme_container .container_text #text-h4,
 #aboutme_container .container_text #text-h5 {
   transition: all 0.3s ease;
 }
+
 #aboutme_container .container_text h4 {
   font-size: clamp(0.8rem, 2vw, 1.2rem);
   color: #fff;
   font-family: monospace;
-  font-weight: 600;
+  font-weight: 900;
 }
+
 #aboutme_container .container_text h5 {
   font-size: clamp(0.6rem, 2vw, 1rem);
   color: #ffffff;
   font-family: monospace;
   font-weight: 400;
 }
+
 #aboutme_container .container_text p {
   font-size: 1.5rem;
   color: #fff;
   text-align: center;
   width: 80%;
 }
+
 #aboutme_container .container_text #skills {
   width: fit-content;
   height: fit-content;
@@ -144,6 +163,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 #aboutme_container .container_text #skills:hover {
   background-color: rgba(255, 166, 0, 0.639);
 }
@@ -153,17 +173,26 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @media (max-width: 870px) {
   #aboutme_container {
     padding-top: 4rem;
     flex-direction: column-reverse;
     height: 100% !important;
   }
+
+  #aboutme_container .container_text ul li span {
+    left: calc(-10% + 0px);
+    bottom: 70%;
+    transform: translateY(50%);
+  }
+
   .container {
     width: 100% !important;
   }
