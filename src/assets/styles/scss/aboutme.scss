@@ -1,195 +1,296 @@
 @font-face {
-    font-family: "nNungo";
-    font-weight: 900;
-    src: url("/portfolio/fonts/nNungo.ttf") format("truetype");
+  font-family: "nNungo";
+  font-weight: 900;
+  src: url("/portfolio/fonts/nNungo.ttf") format("truetype");
 }
 
+// Variables
+$bg-dark: rgb(26, 26, 26);
+$accent: greenyellow;
+$orange: orange;
+$orange-hover: #ffb300;
+$border-subtle: rgba(255, 255, 255, 0.08);
+$text-muted: #555;
+$text-dim: rgba(255, 255, 255, 0.18);
+
+// Mixins
+@mixin monospace($size, $weight: 400) {
+  font-family: monospace;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+// ── Layout principal ──
 #aboutme_container {
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: $bg-dark;
+}
+
+// ── Panel izquierdo: imagen ──
+#aboutme_container .container_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11vh 2rem 2rem;
+
+  img {
+    width: clamp(220px, 32vw, 420px);
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+}
+
+// ── Panel derecho: texto ──
+#aboutme_container .container_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 11vh 3rem 3rem 2.5rem;
+  border-left: 1px solid $border-subtle;
+}
+
+// Etiqueta superior
+.aboutme_label {
+  @include monospace(0.72rem, 700);
+  color: $text-muted;
+  letter-spacing: 0.12em;
+}
+
+// Título principal
+#aboutme_container .container_text h1 {
+  font-family: "nNungo";
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  color: $accent;
+  line-height: 0.95;
+  margin: 0;
+}
+
+// Línea separadora naranja
+.title_line {
+  width: 52px;
+  height: 2px;
+  background: rgba(255, 165, 0, 0.65);
+  margin-top: -0.5rem;
+}
+
+// ── Fila de iconos interactivos ──
+#aboutme_container .container_text ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.85rem;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+
+  li {
+    width: clamp(2.8rem, 3.5vw, 3.5rem);
+    height: clamp(2.8rem, 3.5vw, 3.5rem);
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
-    overflow-y: auto;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
 
-    .container {
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1.5rem;
-        overflow: visible;
+    .icon-box {
+      width: 100%;
+      height: 100%;
+      background-color: $orange;
+      clip-path: polygon(25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%, 0% 25%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.25s ease, background-color 0.25s ease, filter 0.25s ease;
     }
 
-    .container_img {
-        img {
-            width: clamp(45vh,2vw,55vh);
-            height: clamp(70vh,4vw,80vh);;
-            animation: all 0.3s ease;
-        }
+    svg {
+      width: clamp(1.1rem, 1.6vw, 1.4rem);
+      height: clamp(1.1rem, 1.6vw, 1.4rem);
+      fill: white;
+      flex-shrink: 0;
     }
 
-    .container_text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        text-align: left;
-        gap: 1rem;
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 2.8rem);
-            color: greenyellow;
-            font-family: "nNungo";
-        }
-
-        ul {
-            display: flex;
-            flex-direction: row;
-            justify-content: left;
-            align-items: center;
-            gap: 1.5rem;
-            list-style: none;
-            width: 100%;
-            height: auto;
-            overflow: visible;
-
-            li {
-                width: clamp(3rem, 2vw, 5rem);
-                height: clamp(3rem, 2vw, 5rem);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                position: relative;
-                fill: white;
-
-                .icon-box {
-                    width: 100%;
-                    height: 100%;
-                    background-color: orange;
-                    clip-path: polygon(25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%, 0% 25%);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    transition: transform 0.3s ease, background-color 0.3s ease;
-                }
-
-                span {
-                    opacity: 0;
-                    visibility: hidden;
-                    position: absolute;
-                    left: calc(100% + 15px);
-                    top: 50%;
-                    transform: translateY(50%);
-                    background-color: greenyellow;
-                    color: #1a1a1a;
-                    padding: 6px 12px;
-                    font-family: monospace;
-                    font-weight: 900;
-                    white-space: nowrap;
-                    z-index: 100;
-                    transition: opacity 0.3s ease, transform 0.3s ease;
-                    border-radius: 5px;
-                    font-size: 1rem;
-                }
-
-                &:hover .icon-box {
-                    transform: scale(1.1);
-                    background-color: #ffb300;
-                    filter: drop-shadow(0 0 5px white);
-                }
-
-                &:hover span {
-                    opacity: 1;
-                    visibility: visible;
-                    transform: translateY(-50%) translateX(5px);
-                }
-
-                svg {
-                    width: clamp(1.5rem, 2vw, 2.2rem);
-                    height: clamp(1.5rem, 2vw, 2.2rem);
-                }
-
-                img {
-                    width: 2.5rem;
-                    height: 2.5rem;
-                }
-
-            }
-        }
-
-        #text-h4,
-        #text-h5 {
-            transition: all 0.3s ease;
-        }
-
-        h4 {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            color: #fff;
-            font-family: monospace;
-            font-weight: 600;
-        }
-
-        h5 {
-            font-size: clamp(0.6rem, 2vw, 1rem);
-            color: #ffffff;
-            font-family: monospace;
-            font-weight: 400;
-        }
-
-        p {
-            font-size: 1.5rem;
-            color: #fff;
-            text-align: center;
-            width: 80%;
-        }
-
-        #skills {
-            width: fit-content;
-            height: fit-content;
-            background-color: rgba(255, 166, 0, 0.917);
-            color: white;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
-            border: none !important;
-            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
-            font-family: nNungo, sans-serif;
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            border-radius: 0.1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: rgba(255, 166, 0, 0.639);
-            }
-        }
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+    span {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      left: calc(100% + 10px);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $accent;
+      color: #1a1a1a;
+      padding: 5px 10px;
+      @include monospace(0.78rem, 900);
+      white-space: nowrap;
+      z-index: 100;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
     }
 
-    to {
+    &:hover {
+      .icon-box {
+        transform: scale(1.1);
+        background-color: $orange-hover;
+        filter: drop-shadow(0 0 6px rgba(255, 165, 0, 0.45));
+      }
+
+      span {
         opacity: 1;
-        transform: translateY(0);
+        visibility: visible;
+        transform: translateY(-50%) translateX(4px);
+      }
     }
+  }
 }
 
-@media (max-width: 870px) {
-    #aboutme_container {
-        padding-top: 4rem;
-        flex-direction:column-reverse;
-        height: 100% !important;
+// ── Bloque de texto dinámico ──
+.text_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255, 165, 0, 0.2);
+}
+
+#aboutme_container .container_text h4,
+#aboutme_container .container_text h5 {
+  transition: opacity 0.3s ease;
+}
+
+#aboutme_container .container_text h4 {
+  @include monospace(clamp(0.82rem, 1.4vw, 1rem), 900);
+  color: white;
+  line-height: 1.7;
+}
+
+#aboutme_container .container_text h5 {
+  @include monospace(clamp(0.72rem, 1.1vw, 0.88rem));
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+}
+
+// ── Botón habilidades ──
+#aboutme_container .container_text #skills {
+  width: fit-content;
+  background-color: $orange;
+  color: white;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 88% 100%, 0% 100%);
+  border: none;
+  padding: 0.7rem 1.8rem;
+  font-family: "nNungo", sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  letter-spacing: 0.04em;
+
+  &:hover {
+    background-color: $orange-hover;
+  }
+}
+
+// ── Responsive tablet ──
+@media (max-width: 1024px) {
+  #aboutme_container .container_text {
+    padding: 10vh 2rem 3rem 1.5rem;
+    gap: 1.2rem;
+  }
+
+  #aboutme_container .container_text h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+  }
+}
+
+// ── Responsive móvil ──
+@media (max-width: 900px) {
+  #aboutme_container {
+    grid-template-columns: 1fr;
+  }
+
+  #aboutme_container .container_img {
+    padding: 12vh 2rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    img {
+      width: clamp(180px, 55vw, 300px);
+      max-height: 38vh;
+    }
+  }
+
+  #aboutme_container .container_text {
+    border-left: none;
+    padding: 2rem 1.5rem 4rem;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #aboutme_container .container_text {
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: clamp(1.8rem, 7vw, 2.8rem);
+      text-align: center;
     }
 
-    .container{
-        width: 100% !important;
+    ul {
+      justify-content: center;
+
+      li span {
+        left: 50%;
+        top: unset;
+        bottom: calc(100% + 8px);
+        transform: translateX(-50%);
+        clip-path: none;
+        border-radius: 4px;
+        font-size: 0.72rem;
+      }
+
+      li:hover span {
+        transform: translateX(-50%) translateY(-4px);
+      }
     }
+
+    h4 {
+      font-size: clamp(0.82rem, 3.5vw, 1rem);
+      text-align: center;
+    }
+
+    h5 {
+      font-size: clamp(0.72rem, 3vw, 0.88rem);
+      text-align: center;
+    }
+
+    #skills {
+      align-self: center;
+    }
+  }
+
+  .title_line {
+    align-self: center;
+  }
+
+  .text_block {
+    border-left: none;
+    border-top: 2px solid rgba(255, 165, 0, 0.2);
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #aboutme_container .container_text h1 {
+    font-size: 1.7rem;
+  }
+
+  #aboutme_container .container_text ul li {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }

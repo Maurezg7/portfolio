@@ -18,3 +18,23 @@ const { title = "Mi Portfolio" } = Astro.props;
     </main>
   </body>
 </html>
+
+<style is:global>
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    background-color: rgb(26, 26, 26);
+    color: white;
+    overflow-x: hidden;
+  }
+
+  main {
+    width: 100%;
+    display: block;
+  }
+</style>
