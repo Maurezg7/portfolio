@@ -1,6 +1,6 @@
 @font-face {
     font-family: NextUps;
-    src: url("/portfolio/fonts/Next\ Ups.ttf") format("truetype");
+    src: url("/portfolio/fonts/Street\ Drips.otf") format("truetype");
 }
 
 @font-face {
@@ -21,7 +21,8 @@
     h1 {
         font-family: 'NextUps', sans-serif;
         color: rgb(255, 255, 255);
-        font-size: clamp(1.1rem, 2.4vw, 4rem);
+        font-size: clamp(5.6rem, 4vw, 7rem);
+        font-weight: 100;
         padding-bottom: 1rem;
     }
 

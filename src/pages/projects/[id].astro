@@ -1,0 +1,167 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../assets/styles/scss/project-detail.scss";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { id: "hermes" },
+      props: {
+        title: "HERMES",
+        date: "MARZO_2026",
+        image: "/portfolio/image/projects/hermes_presentation.webp",
+        siteUrl: "https://hermes-inky-two.vercel.app/",
+        stack: ["Java", "SpringBoot", "Angular", "SASS - SCSS", "Typescript", "PostgreSQL"],
+        description:
+          "Hermes es una plataforma de gestión y comunicación empresarial desarrollada con una arquitectura full-stack moderna. El backend fue construido con Java y Spring Boot, exponiendo una API REST segura con autenticación JWT. El frontend en Angular consume dicha API y ofrece una interfaz dinámica y responsiva.",
+        highlights: [
+          "Autenticación y autorización con JWT",
+          "API REST documentada con Swagger",
+          "Diseño responsivo con SASS/SCSS",
+          "Base de datos relacional con PostgreSQL",
+          "Despliegue en Vercel",
+        ],
+      },
+    },
+    {
+      params: { id: "portfolio" },
+      props: {
+        title: "PORTFOLIO WEB",
+        date: "MAYO_2026",
+        image: "/portfolio/image/projects/Portfolio_Web.webp",
+        siteUrl: "https://maurezg7.github.io/portfolio/",
+        stack: ["AstroJS", "JavaScript", "SASS - SCSS", "CSS3", "HTML5"],
+        description:
+          "Portfolio personal desarrollado con Astro, un framework moderno orientado al rendimiento y la generación estática. El sitio presenta proyectos, habilidades y contacto con transiciones de vista nativas y un diseño oscuro personalizado.",
+        highlights: [
+          "Generación estática con Astro",
+          "Transiciones de vista con View Transitions API",
+          "Estilos personalizados con SASS/SCSS",
+          "Diseño responsivo para todos los dispositivos",
+          "Desplegado en GitHub Pages",
+        ],
+      },
+    },
+    {
+      params: { id: "sem-salta" },
+      props: {
+        title: "SEM SALTA",
+        date: "MAYO_2026",
+        image: "/portfolio/image/projects/SEM.webp",
+        siteUrl: "https://parki-pay.vercel.app/",
+        stack: ["NestJs", "React", "Vite", "Tailwind", "MercadoPago", "PostgreSQL"],
+        description:
+          "SEM Salta es un sistema de estacionamiento medido que permite a los usuarios pagar por tiempo de estacionamiento de forma digital. Integra MercadoPago como pasarela de pago y cuenta con un panel de administración para gestionar zonas, tarifas y usuarios. Desarrollado para la Municipalidad de Salta y premiado con el 2do puesto en el Hackathon PunaTech.",
+        highlights: [
+          "Integración con MercadoPago",
+          "Panel de administración",
+          "Backend con NestJS y PostgreSQL",
+          "Frontend con React + Vite + Tailwind",
+          "Despliegue en Vercel",
+        ],
+        award: "2DO PUESTO — HACKATHON PUNATECH",
+        team: [
+          { name: "Esteban Ardaya", linkedin: "https://www.linkedin.com/in/esteban-ardaya-aa4040266/" },
+          { name: "Leonel Morales", linkedin: "https://www.linkedin.com/in/leonel-tomas-ezequiel-morales-595688256/" },
+        ],
+      },
+    },
+  ];
+}
+
+const { id } = Astro.params;
+const { title, date, image, siteUrl, stack, description, highlights, award, team } = Astro.props;
+---
+
+<Layout title={`Mauro Gomez - ${title}`}>
+  <div id="detail_container">
+    <a href="/portfolio/projects" class="back_btn">
+      <svg viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+        ></path>
+      </svg>
+      PROYECTOS
+    </a>
+
+    <div class="detail_hero">
+      <div class="detail_img">
+        <img src={image} alt={title} />
+      </div>
+      <div class="detail_header">
+        <div class="detail_meta">
+          <span class="detail_date">{date}</span>
+          {award && <span class="detail_award">🏆 {award}</span>}
+        </div>
+        <h1>{title}</h1>
+        <ul class="detail_stack">
+          {stack.map((tech) => <li>{tech}</li>)}
+        </ul>
+        <a href={siteUrl} target="_blank" rel="noopener" class="detail_site_btn">
+          VISITAR SITIO
+          <svg viewBox="0 0 16 16">
+            <path
+              fill-rule="evenodd"
+              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="detail_body">
+      <div class="detail_section">
+        <h6>DESCRIPCIÓN</h6>
+        <div class="line"></div>
+      </div>
+      <p class="detail_desc">{description}</p>
+
+      <div class="detail_section">
+        <h6>CARACTERÍSTICAS</h6>
+        <div class="line"></div>
+      </div>
+      <ul class="detail_highlights">
+        {highlights.map((item) => <li>{item}</li>)}
+      </ul>
+
+      {team && (
+        <>
+          <div class="detail_section">
+            <h6>EQUIPO</h6>
+            <div class="line"></div>
+          </div>
+          <div class="detail_team">
+            {team.map((member: { name: string; linkedin: string }) => (
+              <a href={member.linkedin} target="_blank" rel="noopener" class="team_member">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                {member.name}
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  *,
+  ::after,
+  ::before {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    background-color: rgb(26, 26, 26);
+    color: white;
+    overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+</style>

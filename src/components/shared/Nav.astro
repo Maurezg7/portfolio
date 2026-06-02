@@ -1,12 +1,13 @@
 ---
 const navItems = [
-  { name: "INICIO", href: "/portfolio" },
-  { name: "SOBRE MI", href: "/portfolio/aboutme" },
-  { name: "HABILIDADES", href: "/portfolio/skills" },
-  { name: "PROYECTOS", href: "/portfolio/projects" },
-  { name: "CONTACTO", href: "/portfolio/contact" },
+  { name: "INICIO", href: "/portfolio/" },
+  { name: "SOBRE MI", href: "/portfolio/aboutme/" },
+  { name: "HABILIDADES", href: "/portfolio/skills/" },
+  { name: "PROYECTOS", href: "/portfolio/projects/" },
+  { name: "CONTACTO", href: "/portfolio/contact/" },
 ];
-const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const rawPath = Astro.url.pathname;
+const pathname = rawPath === "/portfolio/" ? "/portfolio/" : rawPath.replace(/\/$/, "");
 ---
 
 <nav>

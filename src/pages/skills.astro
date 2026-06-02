@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../assets/styles/scss/skills.scss";
 
 const items = [
   {
@@ -36,40 +37,35 @@ const image = [
 ---
 
 <Layout title="Mauro Gomez - Habilidades">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-  </head>
-  <div id="container" transition:persist>
+  <div id="container">
     <div id="img_container">
       <img src="/portfolio/image/perfil/Skills_Photo.webp" alt="" />
     </div>
     <div id="sections_container">
+      <span class="skills_label">HABILIDADES_</span>
       <ul id="sections">
         <li data-index="0">
-          <span>[01]</span><h1>DATABASE</h1>
+          <span>01</span><h1>DATABASE</h1>
         </li>
         <li data-index="1">
-          <span>[02]</span><h1>WEB DEVELOPMENT</h1>
+          <span>02</span><h1>WEB DEVELOPMENT</h1>
         </li>
         <li data-index="2">
-          <span>[03]</span><h1>BACKEND</h1>
+          <span>03</span><h1>BACKEND</h1>
         </li>
       </ul>
     </div>
   </div>
 </Layout>
 
-<script define:vars={{ items }}>
+<script is:inline define:vars={{ items }}>
   const setupSkillsInteractivity = () => {
-    const container = document.getElementById("container");
     const sections = document.getElementById("sections");
     const container_sections = document.getElementById("sections_container");
-    const image_cont = document.getElementById("");
 
     let sectionTools = document.getElementById("section-tools");
     if (!sectionTools) {
-      sectionTools = document.createElement("ul");
+      sectionTools = document.createElement("div");
       sectionTools.id = "section-tools";
     }
 
@@ -81,23 +77,27 @@ const image = [
         const info = items[index];
 
         sections.style.display = "none";
+        document.querySelector(".skills_label").style.display = "none";
 
         sectionTools.innerHTML = `
-          <button id="back-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-</svg><span>Volver</span></button>
-          <h1>${info.title}</h1>
-          <ul class='section_tools'>
-                      ${info.icons
-                        .map(
-                          (icon) =>
-                            `<li class="icon-item">
+          <button id="back-btn">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+            </svg>
+            HABILIDADES
+          </button>
+          <div class="detail_header">
+            <span class="skills_tag">CATEGORÍA_</span>
+            <h1>${info.title}</h1>
+            <div class="line"></div>
+          </div>
+          <ul class="section_tools">
+            ${info.icons.map((icon) => `
+              <li class="icon-item">
                 <div class="cont_icon">
-                    <img src="${icon}" alt="" class="icon-img">
-                  </div>
-            </li>`,
-                        )
-                        .join("")}
+                  <img src="${icon}" alt="" class="icon-img">
+                </div>
+              </li>`).join("")}
           </ul>
         `;
 
@@ -106,6 +106,7 @@ const image = [
         document.getElementById("back-btn").onclick = () => {
           sectionTools.remove();
           sections.style.display = "flex";
+          document.querySelector(".skills_label").style.display = "block";
         };
       };
     });
@@ -115,7 +116,6 @@ const image = [
 </script>
 
 <style>
-  @import url(../assets/styles/css/skills.css);
   *,
   ::after,
   ::before {

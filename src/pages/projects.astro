@@ -1,13 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../assets/styles/scss/projects.scss";
 ---
 
 <Layout title="Mauro Gomez - Proyectos">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-  </head>
-  <div id="container" transition:persist>
+  <div id="container">
     <h1>WEB</h1>
     <h1>DEVELOPMENTS</h1>
     <div class="prin_proj">
@@ -33,18 +30,26 @@ import Layout from "../layouts/Layout.astro";
           </ul>
           <div class="section_url">
             <span>MARZO_2026</span>
-            <a href="https://hermes-inky-two.vercel.app/">
-              SITIO WEB
-              <svg
-                class="../../public/image/icons/chevron-right.svg"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-                ></path>
-              </svg>
-            </a>
+            <div class="btn_group">
+              <a href="/portfolio/projects/hermes" class="btn_details">
+                VER DETALLES
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+              <a href="https://hermes-inky-two.vercel.app/">
+                SITIO WEB
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </li>
@@ -63,22 +68,31 @@ import Layout from "../layouts/Layout.astro";
           </ul>
           <div class="section_url">
             <span>MAYO_2026</span>
-            <a href="https://maurezg7.github.io/portfolio/">
-              SITIO WEB
-              <svg
-                class="/portfolio/image/icons/chevron-right.svg"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-                ></path>
-              </svg>
-            </a>
+            <div class="btn_group">
+              <a href="/portfolio/projects/portfolio" class="btn_details">
+                VER DETALLES
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+              <a href="https://maurezg7.github.io/portfolio/">
+                SITIO WEB
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </li>
-      <li class="item_project">
+      <li class="item_project item_project--award">
+        <div class="award_badge"><span>🏆 2DO PUESTO — HACKATHON PUNATECH</span></div>
         <div class="container_img">
           <img
             src="/portfolio/image/projects/SEM.webp"
@@ -91,24 +105,32 @@ import Layout from "../layouts/Layout.astro";
             <li>NestJs</li>
             <li>React</li>
             <li>Vite</li>
-            <li>TaildWinf</li>
+            <li>TaildWind</li>
             <li>MercadoPago</li>
             <li>PostgreSQL</li>
           </ul>
           <div class="section_url">
             <span>MAYO_2026</span>
-            <a href="https://parki-pay.vercel.app/">
-              SITIO WEB
-              <svg
-                class="../../public/image/icons/chevron-right.svg"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-                ></path>
-              </svg>
-            </a>
+            <div class="btn_group">
+              <a href="/portfolio/projects/sem-salta" class="btn_details">
+                VER DETALLES
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+              <a href="https://parki-pay.vercel.app/">
+                SITIO WEB
+                <svg viewBox="0 0 16 16">
+                  <path
+                    fill-rule="evenodd"
+                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                  ></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </li>
@@ -117,7 +139,6 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  @import url(../assets/styles/css/projects.css);
   *,
   ::after,
   ::before {
