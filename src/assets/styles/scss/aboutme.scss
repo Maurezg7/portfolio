@@ -59,6 +59,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
   @include monospace(0.72rem, 700);
   color: $text-muted;
   letter-spacing: 0.12em;
+  
 }
 
 // Título principal
@@ -284,7 +285,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
   }
 }
 
-@media (max-width: 400px) {
+@media (min-width: 320px) and (max-width: 400px) {
   #aboutme_container .container_text h1 {
     font-size: 1.7rem;
   }
@@ -292,5 +293,17 @@ $text-dim: rgba(255, 255, 255, 0.18);
   #aboutme_container .container_text ul li {
     width: 2.5rem;
     height: 2.5rem;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 1024px){
+    .container_text h1 {
+    font-size: 4rem !important;
+  }
+  #text-h4{
+    font-size: 3rem;
+  }
+  #text-h5{
+    font-size: 2.5rem;
   }
 }

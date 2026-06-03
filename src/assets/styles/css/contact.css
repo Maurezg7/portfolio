@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: rgb(26, 26, 26);
+  padding: 4rem 1rem !important;
 }
 
 /* ── Panel izquierdo ── */

@@ -1,10 +1,9 @@
+@charset "UTF-8";
 @font-face {
   font-family: "nNungo";
   font-weight: 900;
   src: url(/portfolio/fonts/nNungo.ttf) format("truetype");
 }
-
-/* ── Layout principal ── */
 #container {
   width: 100%;
   min-height: 100vh;
@@ -12,8 +11,13 @@
   grid-template-columns: 1fr 1fr;
   background-color: rgb(26, 26, 26);
 }
+@media (max-width: 900px) {
+  #container {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
-/* ── Panel izquierdo: imagen ── */
 #img_container {
   display: flex;
   justify-content: center;
@@ -21,7 +25,6 @@
   padding: 12vh 2rem 2rem;
   position: relative;
 }
-
 #img_container img {
   width: auto;
   max-width: 82%;
@@ -29,8 +32,17 @@
   max-height: 72vh;
   object-fit: contain;
 }
+@media (max-width: 900px) {
+  #img_container {
+    padding: 12vh 2rem 1.5rem;
+    min-height: 44vh;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  #img_container img {
+    max-height: 32vh;
+  }
+}
 
-/* ── Panel derecho: categorías ── */
 #sections_container {
   display: flex;
   flex-direction: column;
@@ -40,6 +52,14 @@
   border-left: 1px solid rgba(255, 255, 255, 0.08);
   min-height: 100vh;
 }
+@media (max-width: 900px) {
+  #sections_container {
+    border-left: none;
+    padding: 2rem 1.5rem 4rem;
+    min-height: unset;
+    gap: 1.5rem;
+  }
+}
 
 .skills_label {
   font-family: monospace;
@@ -48,8 +68,12 @@
   color: #555;
   letter-spacing: 0.12em;
 }
+@media (min-width: 600px) and (max-width: 900px) {
+  .skills_label {
+    font-size: 2rem !important;
+  }
+}
 
-/* ── Lista de categorías ── */
 #sections {
   width: 100%;
   display: flex;
@@ -58,7 +82,6 @@
   list-style: none;
   padding: 0;
 }
-
 #sections li {
   display: flex;
   align-items: center;
@@ -70,23 +93,27 @@
   position: relative;
   overflow: hidden;
 }
-
 #sections li:hover {
   border-left-color: greenyellow;
   background: rgba(173, 255, 47, 0.04);
   transform: translateX(6px);
 }
-
+#sections li:hover h1 {
+  color: greenyellow;
+}
+#sections li:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
 #sections li span {
   font-family: monospace;
-  color: rgba(255, 255, 255, 0.18);
   font-size: 0.7rem;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.18);
   letter-spacing: 0.1em;
   min-width: 22px;
   flex-shrink: 0;
 }
-
 #sections li h1 {
   font-family: "nNungo";
   font-weight: 200;
@@ -95,11 +122,16 @@
   transition: color 0.25s ease;
   line-height: 1;
 }
-
-#sections li:hover h1 {
-  color: greenyellow;
+@media (max-width: 900px) {
+  #sections li h1 {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+  }
 }
-
+@media (max-width: 480px) {
+  #sections li h1 {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+}
 #sections li::after {
   content: "→";
   font-family: monospace;
@@ -111,16 +143,12 @@
   transform: translateX(-10px);
   flex-shrink: 0;
 }
-
-#sections li:hover::after {
-  opacity: 1;
-  transform: translateX(0);
+@media (max-width: 900px) {
+  #sections li::after {
+    font-size: clamp(2.2rem, 7vw, 4rem);
+  }
 }
 
-/* ─────────────────────────────────────────────
-   Vista de detalle — #section-tools
-   (inyectado por JS, sin scoping de Astro)
-   ───────────────────────────────────────────── */
 #section-tools {
   width: 100%;
   display: flex;
@@ -128,7 +156,6 @@
   gap: 0;
   animation: fadeIn 0.35s ease forwards;
 }
-
 #section-tools #back-btn {
   display: inline-flex;
   align-items: center;
@@ -146,24 +173,42 @@
   transition: color 0.2s ease;
   width: fit-content;
 }
-
+@media (min-width: 600px) and (max-width: 900px) {
+  #section-tools #back-btn {
+    font-size: 1.6rem !important;
+  }
+}
 #section-tools #back-btn:hover {
   color: greenyellow;
 }
-
 #section-tools #back-btn svg {
   width: 14px;
   height: 14px;
   fill: currentColor;
-  flex-shrink: 0;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  #section-tools #back-btn svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+#section-tools h1 {
+  font-family: "nNungo";
+  color: greenyellow;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  line-height: 0.92;
+  margin: 0 0 1rem;
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  #section-tools h1 {
+    font-size: 5rem !important;
+  }
 }
 
-/* Header del detalle */
 .detail_header {
   margin-bottom: 2rem;
 }
-
-.skills_tag {
+.detail_header .skills_tag {
   display: block;
   font-family: monospace;
   font-size: 0.68rem;
@@ -172,22 +217,12 @@
   letter-spacing: 0.12em;
   margin-bottom: 0.5rem;
 }
-
-#section-tools h1 {
-  font-family: "nNungo";
-  color: greenyellow;
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  line-height: 0.92;
-  margin: 0 0 1rem;
-}
-
 .detail_header .line {
   width: 52px;
   height: 2px;
   background: rgba(173, 255, 47, 0.45);
 }
 
-/* ── Grid de iconos ── */
 .section_tools {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
@@ -195,6 +230,19 @@
   list-style: none;
   padding: 0;
   max-width: 460px;
+}
+@media (max-width: 480px) {
+  .section_tools {
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 0.7rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .section_tools {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
+    gap: 0.7rem;
+    max-width: max-content;
+  }
 }
 
 .icon-item {
@@ -208,11 +256,13 @@
   transition: all 0.22s ease;
   cursor: default;
 }
-
 .icon-item:hover {
   border-color: greenyellow;
   background: rgba(173, 255, 47, 0.08);
   transform: translateY(-4px);
+}
+.icon-item:hover .icon-img {
+  filter: brightness(1.1) saturate(1.1);
 }
 
 .cont_icon {
@@ -231,46 +281,6 @@
   transition: filter 0.22s ease;
 }
 
-.icon-item:hover .icon-img {
-  filter: brightness(1.1) saturate(1.1);
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  #container {
-    grid-template-columns: 1fr;
-  }
-
-  #img_container {
-    padding: 12vh 2rem 1.5rem;
-    min-height: 44vh;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  #img_container img {
-    max-height: 32vh;
-  }
-
-  #sections_container {
-    border-left: none;
-    padding: 2rem 1.5rem 4rem;
-    min-height: unset;
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #sections li h1 {
-    font-size: clamp(1.7rem, 7vw, 2.4rem);
-  }
-
-  .section_tools {
-    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-    gap: 0.7rem;
-  }
-}
-
-/* ── Animación ── */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -281,3 +291,5 @@
     transform: translateY(0);
   }
 }
+
+/*# sourceMappingURL=skills.css.map */
