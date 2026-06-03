@@ -26,7 +26,7 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem 5% 4rem;
+  padding: 6rem 5% 4rem !important;
   background-color: $bg-dark;
   box-sizing: border-box;
   gap: 2.5rem;

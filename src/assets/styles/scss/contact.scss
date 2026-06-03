@@ -30,7 +30,8 @@ $deco-line: rgba(255, 255, 255, 0.1);
 @mixin flex-column($gap: 0) {
   display: flex;
   flex-direction: column;
-  @if $gap != 0 {
+
+  @if $gap !=0 {
     gap: $gap;
   }
 }
@@ -41,6 +42,7 @@ $deco-line: rgba(255, 255, 255, 0.1);
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-color: $bg-dark;
+  padding: 4rem 1rem !important;
 }
 
 /* ── Panel izquierdo ── */
