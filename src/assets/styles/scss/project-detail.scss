@@ -140,7 +140,7 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
   text-decoration: none;
   background-color: $accent;
   color: #1a1a1a;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.5rem !important;
   @include monospace(0.85rem, 700);
   clip-path: polygon(15% 0%, 100% 0%, 100% 75%, 85% 100%, 0% 100%, 0% 25%);
   transition: background 0.25s ease;

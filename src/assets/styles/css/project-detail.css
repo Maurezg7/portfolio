@@ -125,7 +125,7 @@
   text-decoration: none;
   background-color: greenyellow;
   color: #1a1a1a;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.5rem !important;
   font-family: monospace;
   font-size: 0.85rem;
   font-weight: 700;
