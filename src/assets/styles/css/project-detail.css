@@ -86,7 +86,7 @@
   font-weight: 900;
   background-color: greenyellow;
   color: #1a1a1a;
-  padding: 0.25rem 0.7rem;
+  padding: 0.25rem 1.2rem !important;
   clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
   letter-spacing: 0.03em;
   white-space: nowrap;
@@ -213,7 +213,7 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.8);
   border: 1.5px solid rgba(255, 255, 255, 0.2);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem !important;
   clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
