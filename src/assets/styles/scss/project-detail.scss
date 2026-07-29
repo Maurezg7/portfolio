@@ -133,6 +133,13 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
   }
 }
 
+.detail_actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-self: flex-start;
+}
+
 .detail_site_btn {
   display: flex;
   align-items: center;
@@ -154,6 +161,21 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
     width: 14px;
     height: 14px;
     fill: #1a1a1a;
+  }
+}
+
+// Botón outline: enlace secundario (código)
+.detail_site_btn--ghost {
+  background-color: transparent;
+  color: $accent;
+  border: 1.5px solid $accent;
+
+  svg {
+    fill: $accent;
+  }
+
+  &:hover {
+    background-color: rgba(173, 255, 47, 0.12);
   }
 }
 
