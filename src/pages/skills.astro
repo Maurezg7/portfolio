@@ -2,38 +2,123 @@
 import Layout from "../layouts/Layout.astro";
 import "../assets/styles/scss/skills.scss";
 
+// Habilidades técnicas — las que tienen logo se muestran como icono + nombre,
+// el resto como chip de texto.
 const items = [
   {
-    title: "DATABASE",
-    icons: [
-      "/portfolio/image/languages/mysql.webp",
-      "/portfolio/image/languages/postgresql.webp",
-      "/portfolio/image/tools/dbeaver.webp",
-      "/portfolio/image/tools/drawio.webp"
+    title: "BACKEND",
+    skills: [
+      { name: "Java SE/EE", icon: "/portfolio/image/languages/java.webp" },
+      { name: "Spring Boot", icon: "/portfolio/image/languages/springboot.webp" },
+      { name: "NestJS", icon: "/portfolio/image/languages/icons8-nestjs.svg" },
+      { name: "Python", icon: "/portfolio/image/languages/python-svgrepo-com.svg" },
+      { name: "FastAPI", icon: "/portfolio/image/languages/FastAPI.svg" },
+      { name: "Spring Security" },
+      { name: "Spring Data JPA" },
+      { name: "Hibernate" },
+      { name: "JPA" },
+      { name: "Servlets" },
+      { name: "Maven" },
+      { name: "Pandas" },
+      { name: "C (fundamentos)" },
+      { name: "APIs RESTful" },
+      { name: "JWT" },
+      { name: "Docker" },
+      { name: "Nginx" },
     ],
   },
-  { title: "WEB DEVELOPMENT", icons: [
-    "/portfolio/image/languages/html.webp",
-    "/portfolio/image/languages/css.webp",
-    "/portfolio/image/languages/typescript.webp",
-    "/portfolio/image/languages/angular.webp",
-    "/portfolio/image/languages/sass.webp",
-    "/portfolio/image/tools/visualcode.webp"
-  ] },
-  { title: "BACKEND", icons: [
-    "/portfolio/image/languages/java.webp",
-    "/portfolio/image/languages/springboot.webp",
-    "/portfolio/image/tools/intellijidea.webp",
-    "/portfolio/image/tools/apachenetbeans.webp",
-    "/portfolio/image/tools/postman.webp",
-  ] },
+  {
+    title: "FRONTEND",
+    skills: [
+      { name: "Angular", icon: "/portfolio/image/languages/angular.webp" },
+      { name: "React", icon: "/portfolio/image/languages/react.webp" },
+      { name: "TypeScript", icon: "/portfolio/image/languages/typescript.webp" },
+      { name: "HTML5", icon: "/portfolio/image/languages/html.webp" },
+      { name: "CSS3", icon: "/portfolio/image/languages/css.webp" },
+      { name: "SCSS / Sass", icon: "/portfolio/image/languages/sass.webp" },
+      { name: "VS Code", icon: "/portfolio/image/tools/visualcode.webp" },
+      { name: "Astro" },
+      { name: "JavaScript" },
+      { name: "Tailwind CSS" },
+      { name: "Bootstrap" },
+      { name: "Vite" },
+      { name: "Vitest" },
+      { name: "PWA (Service Workers, IndexedDB, Web Push)" },
+      { name: "Diseño Responsivo" },
+    ],
+  },
+  {
+    title: "BASES DE DATOS",
+    skills: [
+      { name: "PostgreSQL", icon: "/portfolio/image/languages/postgresql.webp" },
+      { name: "MySQL", icon: "/portfolio/image/languages/mysql.webp" },
+      { name: "DBeaver", icon: "/portfolio/image/tools/dbeaver.webp" },
+      { name: "draw.io", icon: "/portfolio/image/tools/drawio.webp" },
+      { name: "DynamoDB" },
+      { name: "Modelado Relacional" },
+      { name: "Optimización de Consultas SQL" },
+    ],
+  },
+  {
+    title: "CLOUD Y SERVERLESS",
+    skills: [
+      { name: "AWS Lambda" },
+      { name: "API Gateway" },
+      { name: "DynamoDB" },
+      { name: "Amazon Bedrock" },
+      { name: "AWS SAM (Infraestructura como Código)" },
+    ],
+  },
+  {
+    title: "BLOCKCHAIN",
+    skills: [
+      { name: "Rust", icon: "/portfolio/image/languages/rust.svg" },
+      { name: "Odra Framework" },
+      { name: "Casper Network" },
+      { name: "Smart Contracts verificables on-chain" },
+    ],
+  },
+  {
+    title: "INTEGRACIONES",
+    skills: [
+      { name: "MercadoPago (procesamiento de pagos)" },
+      { name: "Web Push (VAPID)" },
+    ],
+  },
+  {
+    title: "ARQUITECTURA",
+    skills: [
+      { name: "APIs RESTful" },
+      { name: "Arquitectura Serverless" },
+      { name: "Offline-First" },
+      { name: "Microservicios (conceptos)" },
+      { name: "Patrón MVC" },
+      { name: "SOLID" },
+      { name: "DAO" },
+      { name: "DTO" },
+      { name: "Clean Code" },
+    ],
+  },
+  {
+    title: "HERRAMIENTAS",
+    skills: [
+      { name: "IntelliJ IDEA", icon: "/portfolio/image/tools/intellijidea.webp" },
+      { name: "Apache Netbeans", icon: "/portfolio/image/tools/apachenetbeans.webp" },
+      { name: "Postman", icon: "/portfolio/image/tools/postman.webp" },
+      { name: "Linux", icon: "/portfolio/image/languages/linux-svgrepo-com.svg" },
+      { name: "Debian" },
+      { name: "Fedora" },
+      { name: "Git" },
+      { name: "GitHub" },
+      { name: "Kiro" },
+      { name: "Render" },
+      { name: "Vercel" },
+      { name: "Netlify" },
+      { name: "npm" },
+      { name: "Maven" },
+    ],
+  },
 ];
-
-const image = [
-  { title: "BACKEND", image: "/image/banners/backend.webp"},
-  { title: "FRONTEND", image: "/image/banners/backend.webp"},
-  { title: "DATABASE", image: "/image/banners/backend.webp"}
-]
 ---
 
 <Layout title="Mauro Gomez - Habilidades">
@@ -44,15 +129,11 @@ const image = [
     <div id="sections_container">
       <span class="skills_label">HABILIDADES_</span>
       <ul id="sections">
-        <li data-index="0">
-          <span>01</span><h1>DATABASE</h1>
-        </li>
-        <li data-index="1">
-          <span>02</span><h1>WEB DEVELOPMENT</h1>
-        </li>
-        <li data-index="2">
-          <span>03</span><h1>BACKEND</h1>
-        </li>
+        {items.map((item, index) => (
+          <li data-index={index}>
+            <span>{String(index + 1).padStart(2, "0")}</span><h1>{item.title}</h1>
+          </li>
+        ))}
       </ul>
     </div>
   </div>
@@ -75,6 +156,8 @@ const image = [
       button.onclick = () => {
         const index = button.getAttribute("data-index");
         const info = items[index];
+        const withIcon = info.skills.filter((skill) => skill.icon);
+        const withoutIcon = info.skills.filter((skill) => !skill.icon);
 
         sections.style.display = "none";
         document.querySelector(".skills_label").style.display = "none";
@@ -91,14 +174,21 @@ const image = [
             <h1>${info.title}</h1>
             <div class="line"></div>
           </div>
-          <ul class="section_tools">
-            ${info.icons.map((icon) => `
-              <li class="icon-item">
-                <div class="cont_icon">
-                  <img src="${icon}" alt="" class="icon-img">
-                </div>
-              </li>`).join("")}
-          </ul>
+          ${withIcon.length ? `
+            <ul class="section_tools">
+              ${withIcon.map((skill) => `
+                <li class="icon-item">
+                  <div class="cont_icon">
+                    <img src="${skill.icon}" alt="" class="icon-img">
+                  </div>
+                  <span class="icon-name">${skill.name}</span>
+                </li>`).join("")}
+            </ul>` : ""}
+          ${withoutIcon.length ? `
+            <ul class="section_chips">
+              ${withoutIcon.map((skill) => `
+                <li class="skill-chip">${skill.name}</li>`).join("")}
+            </ul>` : ""}
         `;
 
         container_sections.appendChild(sectionTools);
