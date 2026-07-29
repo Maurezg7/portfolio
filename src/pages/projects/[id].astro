@@ -5,6 +5,45 @@ import "../../assets/styles/scss/project-detail.scss";
 export function getStaticPaths() {
   return [
     {
+      params: { id: "agrocentinela" },
+      props: {
+        title: "AGROCENTINELA",
+        date: "2026",
+        image: "/portfolio/image/projects/AgroCentinela.webp",
+        siteUrl: "https://agrocentinela.netlify.app",
+        repoUrl: "https://github.com/Maurezg7/AgroCentinela",
+        stack: ["React", "Vite", "TypeScript", "PWA", "NestJs", "AWS Lambda", "DynamoDB", "Zod", "AWS SAM"],
+        description:
+          "PWA de alertas agroclimáticas offline-first para productores del Noroeste Argentino, desarrollada para el Hackathon Kiro + AWS de Código Facilito. Evalúa riesgo de helada y estrés hídrico y entrega alertas accionables. El modo offline es el caso normal, no el plan B: funciona 100% sin señal y sincroniza sola al recuperar conexión.",
+        highlights: [
+          "Arquitectura offline-first real: Service Worker + Background Sync + IndexedDB",
+          "Motor de IA en tres capas con fallback: nube (Amazon Bedrock), on-device (Prompt API) y motor de reglas determinístico como garantía",
+          "8 APIs del navegador con propósito real (Geolocation, getUserMedia, Canvas, Web Push, Network Information, entre otras)",
+          "Web Push end-to-end con VAPID",
+          "Diagnóstico de hojas por foto con análisis de histograma en canvas, procesado on-device",
+        ],
+      },
+    },
+    {
+      params: { id: "yieldvault" },
+      props: {
+        title: "YIELDVAULT",
+        date: "2026",
+        image: "/portfolio/image/projects/CasperYield.webp",
+        siteUrl: "https://casper-yield-agent.vercel.app",
+        repoUrl: "https://github.com/EstebanNahuelok/casper-yield-agent",
+        stack: ["Rust", "Odra Framework", "Casper Network", "Smart Contracts"],
+        description:
+          "Agente autónomo de yield farming sobre Casper, construido durante el Casper Agentic Buildathon con el rol de Smart Contracts Lead. Smart contract en Rust sobre el framework Odra, desplegado y verificable en Casper Testnet, que registra las decisiones del agente on-chain para auditoría.",
+        highlights: [
+          "Contrato en Rust/Odra (v2.7.2) desplegado y verificable en Casper Testnet",
+          "Registro de acciones on-chain (log_action) para trazabilidad inmutable",
+          "Función execute_swap como núcleo del rebalanceo y depósito que lee el valor vía attached_value() del contexto de ejecución",
+          "Deploy resuelto tras diagnosticar y corregir una falla de out-of-gas (ajuste de 200 a 500 CSPR)",
+        ],
+      },
+    },
+    {
       params: { id: "hermes" },
       props: {
         title: "HERMES",
@@ -70,7 +109,7 @@ export function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const { title, date, image, siteUrl, stack, description, highlights, award, team } = Astro.props;
+const { title, date, image, siteUrl, repoUrl, stack, description, highlights, award, team } = Astro.props;
 ---
 
 <Layout title={`Mauro Gomez - ${title}`}>
@@ -98,15 +137,35 @@ const { title, date, image, siteUrl, stack, description, highlights, award, team
         <ul class="detail_stack">
           {stack.map((tech) => <li>{tech}</li>)}
         </ul>
-        <a href={siteUrl} target="_blank" rel="noopener" class="detail_site_btn">
-          VISITAR SITIO
-          <svg viewBox="0 0 16 16">
-            <path
-              fill-rule="evenodd"
-              d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-            ></path>
-          </svg>
-        </a>
+        <div class="detail_actions">
+          {siteUrl && (
+            <a href={siteUrl} target="_blank" rel="noopener noreferrer" class="detail_site_btn">
+              VISITAR SITIO
+              <svg viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                ></path>
+              </svg>
+            </a>
+          )}
+          {repoUrl && (
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="detail_site_btn detail_site_btn--ghost"
+            >
+              VER CÓDIGO
+              <svg viewBox="0 0 16 16">
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+                ></path>
+              </svg>
+            </a>
+          )}
+        </div>
       </div>
     </div>
 
