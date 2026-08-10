@@ -3,7 +3,32 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(npx sass *)",
+      "Bash(pnpm -v)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm exec *)",
+      "Bash(pnpm dev *)",
+      "Bash(curl -s http://localhost:4321/portfolio/ -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:4321/portfolio/)",
+      "Bash(npx -y playwright --version)",
+      "Read(//home/maurezg7/.cache/ms-playwright/**)",
+      "Bash(find / -iname \"*chromium*\" -type f)",
+      "Bash(npm ls *)",
+      "Bash(NODE_PATH=/home/maurezg7/.npm/_npx/e41f203b7505f1fb/node_modules node shot.mjs)",
+      "Read(//home/maurezg7/.npm/_npx/e41f203b7505f1fb/node_modules/**)",
+      "Bash(cp /tmp/claude-1000/-home-maurezg7-Documentos-CODE-portfolio/f367a29e-6a5a-4f93-b424-5bc9dd9d57fb/scratchpad/shot.mjs ./shot.mjs)",
+      "Bash(node shot.mjs)",
+      "Bash(find ~/.cache/ms-playwright/chromium-1228 -maxdepth 3 -iname \"*chrome*\" -type f 2>/dev/null)",
+      "Read(//home/maurezg7/.cache/ms-playwright/chromium-1228/**)",
+      "Bash(sed -i \"s|chromium.launch\\(\\)|chromium.launch\\({executablePath: '/home/maurezg7/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome'}\\)|\" shot.mjs)",
+      "Bash(find /home/maurezg7/.npm/_npx/e41f203b7505f1fb -iname \"nav1.png\")",
+      "Read(//home/maurezg7/.npm/_npx/e41f203b7505f1fb/**)",
+      "Bash(node shot2.mjs)",
+      "Bash(pkill -f \"astro dev\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/portfolio/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/portfolio/projects/)"
     ]
   }
 }

@@ -53,7 +53,7 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4.5rem;
 
   h6 {
     @include monospace(clamp(0.7rem, 2vw, 0.9rem));
