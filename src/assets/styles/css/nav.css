@@ -63,11 +63,12 @@ nav .despliegue #menu-items {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1050;
   backdrop-filter: blur(10px);
-  padding: 15vh 2rem 2rem;
+  padding: clamp(90px, 15vh, 160px) 2rem 2rem;
+  overflow-y: auto;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
   visibility: visible;
@@ -158,24 +159,55 @@ nav .despliegue #menu-items .contact-me .bi-caret-right {
   padding: 1rem;
 }
 nav .despliegue #menu-items .contact-me a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 5rem;
   height: 5rem;
   text-decoration: none;
   color: white;
-  transition: all 0.3s ease;
+  perspective: 800px;
   border-radius: 25px;
 }
-nav .despliegue #menu-items .contact-me a svg {
+nav .despliegue #menu-items .contact-me a .card-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+nav .despliegue #menu-items .contact-me a .card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  backface-visibility: hidden;
+  transition: background-color 0.3s ease;
+}
+nav .despliegue #menu-items .contact-me a .card-front {
+  background-color: transparent;
+  color: white;
+}
+nav .despliegue #menu-items .contact-me a .card-front svg {
   width: 70%;
   height: 70%;
 }
-nav .despliegue #menu-items .contact-me a:hover {
+nav .despliegue #menu-items .contact-me a .card-back {
   background-color: #ffa500;
   color: black;
-  transform: scale(1.1);
+  transform: rotateY(180deg);
+  font-family: "Heavitas", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding: 0.25rem;
+}
+nav .despliegue #menu-items .contact-me a:hover .card-inner, nav .despliegue #menu-items .contact-me a:focus-visible .card-inner {
+  transform: rotateY(180deg);
+}
+nav .despliegue #menu-items .contact-me a:hover .card-front, nav .despliegue #menu-items .contact-me a:focus-visible .card-front {
+  background-color: #ffa500;
 }
 nav .logo {
   display: flex;
@@ -247,16 +279,52 @@ nav .logo span {
   }
 }
 @media (min-width: 321px) and (max-width: 480px) {
+  nav {
+    height: 65px;
+    padding: 0 12px;
+  }
+  nav .despliegue #menu-toggle {
+    width: 55px;
+    height: 32px;
+  }
+  nav .despliegue #menu-toggle svg {
+    width: 20px;
+    height: 20px;
+  }
+  nav .despliegue #menu-items {
+    padding: clamp(80px, 13vh, 110px) 1.25rem 1.25rem;
+  }
+  nav .despliegue #menu-items li .cont_sections {
+    padding: 0.6rem 1rem;
+    gap: 6px;
+  }
   nav .despliegue #menu-items li .cont_sections a {
-    font-size: clamp(1.4rem, 2vw, 3rem);
+    font-size: clamp(1.4rem, 6vw, 2.6rem);
+    transform: translateY(8px);
   }
-  .contact-me {
-    gap: 0.8rem;
-    padding: 0.8rem;
+  nav .despliegue #menu-items li .cont_sections .menu-number {
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
   }
-  .contact-me a {
-    width: 2rem;
-    height: 2rem;
+  nav .despliegue #menu-items li .cont_sections svg {
+    width: 2.5vh;
+    height: 2vh;
+  }
+  nav .despliegue #menu-items .contact-me {
+    gap: 0.6rem;
+    padding: 0.6rem;
+    flex-wrap: wrap;
+  }
+  nav .despliegue #menu-items .contact-me .bi-caret-right {
+    display: none;
+  }
+  nav .despliegue #menu-items .contact-me a {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+  }
+  nav .logo span {
+    font-size: 1rem;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {
@@ -335,6 +403,52 @@ nav .logo span {
   }
   nav .logo span {
     font-size: 1.4rem;
+  }
+}
+@media (hover: none) {
+  nav .despliegue #menu-items .contact-me a {
+    perspective: none;
+    width: auto;
+    height: auto;
+    min-width: 3.25rem;
+    border-radius: 0;
+  }
+  nav .despliegue #menu-items .contact-me a .card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none !important;
+  }
+  nav .despliegue #menu-items .contact-me a .card-face {
+    position: static;
+    backface-visibility: visible;
+  }
+  nav .despliegue #menu-items .contact-me a .card-front {
+    width: 3.25rem;
+    height: 3.25rem;
+    background-color: rgba(255, 165, 0, 0.15);
+    border-radius: 12px;
+  }
+  nav .despliegue #menu-items .contact-me a .card-front svg {
+    width: 60%;
+    height: 60%;
+  }
+  nav .despliegue #menu-items .contact-me a .card-back {
+    position: static;
+    transform: none;
+    background-color: transparent;
+    color: #ffa500;
+    font-size: 0.65rem;
+    padding: 0;
+    border-radius: 0;
+  }
+  nav .despliegue #menu-items .contact-me a:active .card-front {
+    background-color: #ffa500;
+    color: black;
   }
 }
 
