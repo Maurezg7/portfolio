@@ -28,7 +28,8 @@
       "Bash(node shot2.mjs)",
       "Bash(pkill -f \"astro dev\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/portfolio/)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/portfolio/projects/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4321/portfolio/projects/)",
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/home/maurezg7/Documentos/CODE/portfolio/.github/workflows/deploy.yml'\\)\\)\")"
     ]
   }
 }
