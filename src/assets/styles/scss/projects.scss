@@ -75,7 +75,7 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
   gap: 2rem;
   list-style: none;
-  padding: 0;
+  padding: 2rem 0 0;
 }
 
 // ── Tarjeta de proyecto ──
