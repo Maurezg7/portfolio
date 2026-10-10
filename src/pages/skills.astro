@@ -2,120 +2,39 @@
 import Layout from "../layouts/Layout.astro";
 import "../assets/styles/scss/skills.scss";
 
-// Habilidades técnicas — las que tienen logo se muestran como icono + nombre,
-// el resto como chip de texto.
-const items = [
+const groups = [
+  {
+    title: "LENGUAJES",
+    skills: [
+      { name: "C", icon: "/portfolio/image/languages/c.svg" },
+      { name: "C++", icon: "/portfolio/image/languages/cpp.svg" },
+      { name: "Java", icon: "/portfolio/image/languages/java.webp" },
+      { name: "Python", icon: "/portfolio/image/languages/python-svgrepo-com.svg" },
+      { name: "TypeScript", icon: "/portfolio/image/languages/typescript.webp" },
+      { name: "Rust", icon: "/portfolio/image/languages/rust.svg" },
+    ],
+  },
   {
     title: "BACKEND",
     skills: [
-      { name: "Java SE/EE", icon: "/portfolio/image/languages/java.webp" },
       { name: "Spring Boot", icon: "/portfolio/image/languages/springboot.webp" },
       { name: "NestJS", icon: "/portfolio/image/languages/icons8-nestjs.svg" },
-      { name: "Python", icon: "/portfolio/image/languages/python-svgrepo-com.svg" },
       { name: "FastAPI", icon: "/portfolio/image/languages/FastAPI.svg" },
-      { name: "Spring Security" },
-      { name: "Spring Data JPA" },
-      { name: "Hibernate" },
-      { name: "JPA" },
-      { name: "Servlets" },
-      { name: "Maven" },
-      { name: "Pandas" },
-      { name: "C (fundamentos)" },
-      { name: "APIs RESTful" },
-      { name: "JWT" },
-      { name: "Docker" },
-      { name: "Nginx" },
     ],
   },
   {
     title: "FRONTEND",
     skills: [
       { name: "Angular", icon: "/portfolio/image/languages/angular.webp" },
-      { name: "React", icon: "/portfolio/image/languages/react.webp" },
-      { name: "TypeScript", icon: "/portfolio/image/languages/typescript.webp" },
-      { name: "HTML5", icon: "/portfolio/image/languages/html.webp" },
-      { name: "CSS3", icon: "/portfolio/image/languages/css.webp" },
-      { name: "SCSS / Sass", icon: "/portfolio/image/languages/sass.webp" },
-      { name: "VS Code", icon: "/portfolio/image/tools/visualcode.webp" },
-      { name: "Astro" },
-      { name: "JavaScript" },
-      { name: "Tailwind CSS" },
-      { name: "Bootstrap" },
-      { name: "Vite" },
-      { name: "Vitest" },
-      { name: "PWA (Service Workers, IndexedDB, Web Push)" },
-      { name: "Diseño Responsivo" },
+      { name: "Next.js", icon: "/portfolio/image/languages/nextjs.svg" },
+      { name: "Svelte", icon: "/portfolio/image/languages/svelte.svg" },
+      { name: "Astro", icon: "/portfolio/image/languages/astro.svg" },
     ],
   },
   {
-    title: "BASES DE DATOS",
+    title: "DATOS",
     skills: [
       { name: "PostgreSQL", icon: "/portfolio/image/languages/postgresql.webp" },
-      { name: "MySQL", icon: "/portfolio/image/languages/mysql.webp" },
-      { name: "DBeaver", icon: "/portfolio/image/tools/dbeaver.webp" },
-      { name: "draw.io", icon: "/portfolio/image/tools/drawio.webp" },
-      { name: "DynamoDB" },
-      { name: "Modelado Relacional" },
-      { name: "Optimización de Consultas SQL" },
-    ],
-  },
-  {
-    title: "CLOUD Y SERVERLESS",
-    skills: [
-      { name: "AWS Lambda" },
-      { name: "API Gateway" },
-      { name: "DynamoDB" },
-      { name: "Amazon Bedrock" },
-      { name: "AWS SAM (Infraestructura como Código)" },
-    ],
-  },
-  {
-    title: "BLOCKCHAIN",
-    skills: [
-      { name: "Rust", icon: "/portfolio/image/languages/rust.svg" },
-      { name: "Odra Framework" },
-      { name: "Casper Network" },
-      { name: "Smart Contracts verificables on-chain" },
-    ],
-  },
-  {
-    title: "INTEGRACIONES",
-    skills: [
-      { name: "MercadoPago (procesamiento de pagos)" },
-      { name: "Web Push (VAPID)" },
-    ],
-  },
-  {
-    title: "ARQUITECTURA",
-    skills: [
-      { name: "APIs RESTful" },
-      { name: "Arquitectura Serverless" },
-      { name: "Offline-First" },
-      { name: "Microservicios (conceptos)" },
-      { name: "Patrón MVC" },
-      { name: "SOLID" },
-      { name: "DAO" },
-      { name: "DTO" },
-      { name: "Clean Code" },
-    ],
-  },
-  {
-    title: "HERRAMIENTAS",
-    skills: [
-      { name: "IntelliJ IDEA", icon: "/portfolio/image/tools/intellijidea.webp" },
-      { name: "Apache Netbeans", icon: "/portfolio/image/tools/apachenetbeans.webp" },
-      { name: "Postman", icon: "/portfolio/image/tools/postman.webp" },
-      { name: "Linux", icon: "/portfolio/image/languages/linux-svgrepo-com.svg" },
-      { name: "Debian" },
-      { name: "Fedora" },
-      { name: "Git" },
-      { name: "GitHub" },
-      { name: "Kiro" },
-      { name: "Render" },
-      { name: "Vercel" },
-      { name: "Netlify" },
-      { name: "npm" },
-      { name: "Maven" },
     ],
   },
 ];
@@ -124,103 +43,39 @@ const items = [
 <Layout title="Mauro Gomez - Habilidades">
   <div id="container">
     <div id="img_container">
-      <img src="/portfolio/image/perfil/Skills_Photo.webp" alt="" />
+      <img src="/portfolio/image/perfil/Skills_Photo.webp" alt="Mauro Gomez" />
     </div>
     <div id="sections_container">
-      <span class="skills_label">HABILIDADES_</span>
-      <ul id="sections">
-        {items.map((item, index) => (
-          <li data-index={index}>
-            <span>{String(index + 1).padStart(2, "0")}</span><h1>{item.title}</h1>
-          </li>
-        ))}
-      </ul>
+      <header class="skills_head">
+        <span class="skills_label" data-i18n="skills.label">HABILIDADES_</span>
+        <h1>STACK</h1>
+        <div class="line"></div>
+      </header>
+
+      <div class="groups">
+        {
+          groups.map((group, index) => (
+            <section class="group">
+              <div class="group_title">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h2 data-i18n={["skills.languages", "skills.backend", "skills.frontend", "skills.data"][index]}>
+                  {group.title}
+                </h2>
+              </div>
+              <ul class="skill_grid">
+                {group.skills.map((skill) => (
+                  <li class="skill_card">
+                    <div class="cont_icon">
+                      <img src={skill.icon} alt="" />
+                    </div>
+                    <span class="skill_name">{skill.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
     </div>
   </div>
 </Layout>
-
-<script is:inline define:vars={{ items }}>
-  const setupSkillsInteractivity = () => {
-    const sections = document.getElementById("sections");
-    const container_sections = document.getElementById("sections_container");
-
-    let sectionTools = document.getElementById("section-tools");
-    if (!sectionTools) {
-      sectionTools = document.createElement("div");
-      sectionTools.id = "section-tools";
-    }
-
-    const buttons = document.querySelectorAll("li[data-index]");
-
-    buttons.forEach((button) => {
-      button.onclick = () => {
-        const index = button.getAttribute("data-index");
-        const info = items[index];
-        const withIcon = info.skills.filter((skill) => skill.icon);
-        const withoutIcon = info.skills.filter((skill) => !skill.icon);
-
-        sections.style.display = "none";
-        document.querySelector(".skills_label").style.display = "none";
-
-        sectionTools.innerHTML = `
-          <button id="back-btn">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
-            </svg>
-            HABILIDADES
-          </button>
-          <div class="detail_header">
-            <span class="skills_tag">CATEGORÍA_</span>
-            <h1>${info.title}</h1>
-            <div class="line"></div>
-          </div>
-          ${withIcon.length ? `
-            <ul class="section_tools">
-              ${withIcon.map((skill) => `
-                <li class="icon-item">
-                  <div class="cont_icon">
-                    <img src="${skill.icon}" alt="" class="icon-img">
-                  </div>
-                  <span class="icon-name">${skill.name}</span>
-                </li>`).join("")}
-            </ul>` : ""}
-          ${withoutIcon.length ? `
-            <ul class="section_chips">
-              ${withoutIcon.map((skill) => `
-                <li class="skill-chip">${skill.name}</li>`).join("")}
-            </ul>` : ""}
-        `;
-
-        container_sections.appendChild(sectionTools);
-
-        document.getElementById("back-btn").onclick = () => {
-          sectionTools.remove();
-          sections.style.display = "flex";
-          document.querySelector(".skills_label").style.display = "block";
-        };
-      };
-    });
-  };
-
-  document.addEventListener("astro:page-load", setupSkillsInteractivity);
-</script>
-
-<style>
-  *,
-  ::after,
-  ::before {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    background-color: rgb(26, 26, 26);
-    color: white;
-    overflow-x: hidden;
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-</style>

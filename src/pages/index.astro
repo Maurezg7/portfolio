@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../assets/styles/scss/welcome.scss";
 ---
 
 <Layout title="Mauro Gomez - Full Stack">
@@ -17,19 +18,17 @@ import Layout from "../layouts/Layout.astro";
   </head>
   <div id="container">
     <h1>SOY MAURO GOMEZ</h1>
-    <h2>FULL STACK DEVELOPER</h2>
-    <h3>JAVA ❖ SPRINGBOOT ❖ ANGULAR ❖ SQL</h3>
-    <p>
-      Transformo ideas en aplicaciones robustas utilizando la potencia de Java
-      (Spring Boot) en el backend y la agilidad de Angular/AstroJS en el frontend.
+    <h2 data-i18n="home.role">FULL STACK DEVELOPER</h2>
+    <h3>JAVA ❖ NESTJS ❖ ANGULAR ❖ POSTGRESQL</h3>
+    <p data-i18n="home.line">
+      Armo el producto completo: la API, la interfaz y los datos. Código claro,
+      pensado para crecer.
     </p>
-      <button id="aboutme">Sobre mí</button>
+      <button id="aboutme" data-i18n="home.cta">Sobre mí</button>
   </div>
 </Layout>
 
 <style>
-  @import "../assets/styles/css/welcome.css";
-  
   *,
   ::after,
   ::before {
@@ -39,7 +38,7 @@ import Layout from "../layouts/Layout.astro";
   }
   html,
   body {
-    background-color: rgb(26, 26, 26);
+    background-color: #111111;
     color: white;
     overflow-x: hidden;
     margin: 0%;
