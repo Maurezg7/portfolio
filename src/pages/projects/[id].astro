@@ -5,6 +5,65 @@ import "../../assets/styles/scss/project-detail.scss";
 export function getStaticPaths() {
   return [
     {
+      params: { id: "meetflow" },
+      props: {
+        title: "MEETFLOW",
+        date: "OCTUBRE_2026",
+        image: "/portfolio/image/projects/MeetFlow.webp",
+        siteUrl: "https://web-ruddy-mu-22.vercel.app",
+        repoUrl: "https://github.com/No-Country-simulation/S08-26-equipo-5",
+        stack: ["Next.js", "Tailwind", "Express", "Prisma", "PostgreSQL", "GetStream"],
+        description:
+          "MeetFlow es una app para crear y entrar a videollamadas, hecha en equipo durante la simulación laboral de No Country. El anfitrión abre una sala, comparte el enlace y aprueba a quien espera para entrar. Quien no tiene cuenta también puede unirse. El frontend está en Next.js y la API en Express, con Prisma y PostgreSQL. La llamada usa GetStream y la sala de espera avisa al anfitrión por Socket.IO.",
+        highlights: [
+          "Reunión inmediata o programada, con un código para unirse",
+          "Sala de espera: el anfitrión aprueba el ingreso, con cuenta o como invitado",
+          "Varios anfitriones, pantalla compartida, chat y reacciones",
+          "Grabación local y un micrófono por cuenta",
+          "Frontend en Vercel y API en Render, con Prisma sobre PostgreSQL",
+        ],
+      },
+    },
+    {
+      params: { id: "estelares" },
+      props: {
+        title: "ESTELARES",
+        date: "SEPTIEMBRE_2026",
+        image: "/portfolio/image/projects/Estelares.webp",
+        siteUrl: "https://frontend-estellares.vercel.app/",
+        stack: ["React", "Vite", "Tailwind", "Stellar", "Freighter", "Django"],
+        description:
+          "Estelares es una app de remesas sobre Stellar testnet, hecha para el Argentina Challenge. Permite enviar plata que llega en segundos, recibir con un QR, juntar un pool con la comunidad y armar una caja familiar. La clave nunca sale de Freighter: la firma queda en la billetera.",
+        highlights: [
+          "Pagos en Horizon testnet con la firma siempre en Freighter",
+          "Recepción con QR",
+          "Pool comunitario: vault on-chain y leaderboard leído del contrato",
+          "Caja familiar con multisig nativo de Stellar y roles de depósito y retiro",
+          "Swap referencial entre XLM, USDC y EURC",
+          "Backend en Django para los módulos de producto",
+        ],
+      },
+    },
+    {
+      params: { id: "invoice" },
+      props: {
+        title: "INVOICE",
+        date: "AGOSTO_2026",
+        image: "/portfolio/image/projects/Invoice.webp",
+        repoUrl: "https://github.com/leitolml1/invoice",
+        stack: ["React", "Vite", "TypeScript", "Express", "QVAC"],
+        description:
+          "INVOICE reconcilia una factura contra su orden de compra y explica cada diferencia, con todo el procesamiento en la máquina local. El frontend en React y Vite envía el documento a un backend en Express que extrae PDF o imágenes y los compara con reglas determinísticas y una capa semántica on-device usando QVAC. Nada se sube a la nube. Desarrollado para el Aleph Hackathon.",
+        highlights: [
+          "Subida de PDF e imágenes y extracción local con OCR",
+          "Comparación contra la orden de compra en el mismo equipo",
+          "Inferencia on-device con QVAC, sin API keys ni costo por token",
+          "Cada discrepancia queda explicada, con marca de revisión manual",
+          "Historial de la sesión en el frontend",
+        ],
+      },
+    },
+    {
       params: { id: "agrocentinela" },
       props: {
         title: "AGROCENTINELA",
@@ -121,7 +180,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
           d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
         ></path>
       </svg>
-      PROYECTOS
+      <span data-i18n="projects.back">PROYECTOS</span>
     </a>
 
     <div class="detail_hero">
@@ -130,8 +189,8 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
       </div>
       <div class="detail_header">
         <div class="detail_meta">
-          <span class="detail_date">{date}</span>
-          {award && <span class="detail_award">🏆 {award}</span>}
+          <span class="detail_date" data-i18n={`project.${id}.date`}>{date}</span>
+          {award && <span class="detail_award" data-i18n={`project.${id}.award`}>🏆 {award}</span>}
         </div>
         <h1>{title}</h1>
         <ul class="detail_stack">
@@ -140,7 +199,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
         <div class="detail_actions">
           {siteUrl && (
             <a href={siteUrl} target="_blank" rel="noopener noreferrer" class="detail_site_btn">
-              VISITAR SITIO
+              <span data-i18n="projects.visit">VISITAR SITIO</span>
               <svg viewBox="0 0 16 16">
                 <path
                   fill-rule="evenodd"
@@ -156,7 +215,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
               rel="noopener noreferrer"
               class="detail_site_btn detail_site_btn--ghost"
             >
-              VER CÓDIGO
+              <span data-i18n="projects.code">VER CÓDIGO</span>
               <svg viewBox="0 0 16 16">
                 <path
                   fill-rule="evenodd"
@@ -171,23 +230,23 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
 
     <div class="detail_body">
       <div class="detail_section">
-        <h6>DESCRIPCIÓN</h6>
+        <h6 data-i18n="projects.desc">DESCRIPCIÓN</h6>
         <div class="line"></div>
       </div>
-      <p class="detail_desc">{description}</p>
+      <p class="detail_desc" data-i18n={`project.${id}.desc`}>{description}</p>
 
       <div class="detail_section">
-        <h6>CARACTERÍSTICAS</h6>
+        <h6 data-i18n="projects.features">CARACTERÍSTICAS</h6>
         <div class="line"></div>
       </div>
-      <ul class="detail_highlights">
+      <ul class="detail_highlights" data-i18n-list={`project.${id}.points`}>
         {highlights.map((item) => <li>{item}</li>)}
       </ul>
 
       {team && (
         <>
           <div class="detail_section">
-            <h6>EQUIPO</h6>
+            <h6 data-i18n="projects.team">EQUIPO</h6>
             <div class="line"></div>
           </div>
           <div class="detail_team">
@@ -216,7 +275,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
   }
   html,
   body {
-    background-color: rgb(26, 26, 26);
+    background-color: #111111;
     color: white;
     overflow-x: hidden;
     margin: 0%;

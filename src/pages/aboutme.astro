@@ -4,25 +4,33 @@ import "../assets/styles/scss/aboutme.scss";
 
 const msgItems = [
   {
+    titleKey: "about.me.title",
+    textKey: "about.me.text",
     msgh4:
-      "Soy Mauro, un desarrollador de software que estudio su carrera en la UNIVERSIDAD PROVINCIAL DE ADMINISTRACIÓN, TECNOLOGÍA Y OFICIOS (UPATECO). Estoy en busca de retos que puedan mejorar mis habilidades como programador, dominar las tecnologías recientes y las nuevas que estén por venir.",
+      "Soy Mauro, desarrollador de software. Estudio en la Universidad Provincial de Administración, Tecnología y Oficios (UPATECO) y busco proyectos donde pueda construir de verdad.",
     msgh5:
-      "Me especializo en el desarrollo de aplicaciones web robustas y escalables utilizando Java y Spring Boot para el backend, Angular para interfaces modernas, y bases de datos como MySQL y PostgreSQL para soluciones de persistencia eficientes y flexibles.",
+      "Trabajo el producto de punta a punta: APIs con Java, Spring Boot, NestJS y FastAPI, interfaces con Angular, Next.js, Svelte y Astro, y PostgreSQL para los datos.",
   },
   {
-    msgh4: "Java & Spring Boot",
+    titleKey: "about.back.title",
+    textKey: "about.back.text",
+    msgh4: "Java, Spring Boot, NestJS y FastAPI",
     msgh5:
-      "Desarrollo de APIs RESTful, desarrollo de servicios RESTful, implementacion de seguridad basica con JWT y Spring Security, manejo de excepciones, programación funcional con Lambdas y Streams, y aplicación de patrones de diseño como MVC, DTO y SOLID.",
+      "Diseño APIs REST con autenticación JWT, validación y manejo de errores. Aplico DTO y SOLID para que el servicio se pueda mantener y extender.",
   },
   {
-    msgh4: "Angular & AstroJS",
+    titleKey: "about.front.title",
+    textKey: "about.front.text",
+    msgh4: "Angular, Next.js, Svelte y Astro",
     msgh5:
-      "Desarrollo de interfaces de usuario dinámicas y responsivas, integración con APIs REST y gestión de estados en aplicaciones modernas.",
+      "Armo interfaces que se leen bien en el escritorio y en el celular, conectadas a APIs REST y con el estado de la pantalla bajo control.",
   },
   {
-    msgh4: "MySQL & PostgreSQL",
+    titleKey: "about.data.title",
+    textKey: "about.data.text",
+    msgh4: "PostgreSQL",
     msgh5:
-      "Diseño y optimización de bases de datos relacionales (MySQL, PostgreSQL), modelado DER, consultas SQL avanzadas (joins, subconsultas), y experiencia con ORM como JPA/Hibernate para la gestión de datos.",
+      "Modelo la base, escribo consultas con joins y subconsultas, y la conecto desde Spring Boot, NestJS y FastAPI.",
   },
 ];
 ---
@@ -33,11 +41,13 @@ const msgItems = [
       <img src="/portfolio/image/perfil/Perfil_Photo.webp" alt="" />
     </div>
     <div class="container container_text">
-      <span class="aboutme_label">SOBRE_MÍ</span>
-      <h1>DESARROLLADOR FULL STACK</h1>
+      <span class="aboutme_label" data-i18n="about.kicker">SOBRE_MÍ</span>
+      <div class="title_mask">
+        <h1 data-i18n="about.title">DESARROLLADOR FULL STACK</h1>
+      </div>
       <div class="title_line"></div>
       <ul>
-        <li data-index="0">
+        <li data-index="0" class="is-active">
           <div class="icon-box">
             <svg viewBox="0 0 16 16">
               <path
@@ -45,7 +55,7 @@ const msgItems = [
               ></path>
             </svg>
           </div>
-          <span>Conóceme</span>
+          <span data-i18n="about.tab.me">Conóceme</span>
         </li>
         <li data-index="1">
           <div class="icon-box">
@@ -55,7 +65,7 @@ const msgItems = [
               ></path>
             </svg>
           </div>
-          <span>Backend</span>
+          <span data-i18n="about.tab.back">Backend</span>
         </li>
         <li data-index="2">
           <div class="icon-box">
@@ -65,7 +75,7 @@ const msgItems = [
               ></path>
             </svg>
           </div>
-          <span>Frontend</span>
+          <span data-i18n="about.tab.front">Frontend</span>
         </li>
         <li data-index="3">
           <div class="icon-box">
@@ -75,32 +85,36 @@ const msgItems = [
               ></path>
             </svg>
           </div>
-          <span>Database</span>
+          <span data-i18n="about.tab.data">Database</span>
         </li>
       </ul>
 
       <div class="text_block">
-        <h4 id="text-h4">
-          Soy Mauro, un desarrollador de software que estudió su carrera en la
-          UNIVERSIDAD PROVINCIAL DE ADMINISTRACIÓN, TECNOLOGÍA Y OFICIOS
-          (UPATECO). Estoy en busca de retos que puedan mejorar mis habilidades
-          como programador, dominar las tecnologías recientes y las nuevas que
-          estén por venir.
+        <h4 id="text-h4" data-i18n="about.me.title">
+          Soy Mauro, desarrollador de software. Estudio en la Universidad
+          Provincial de Administración, Tecnología y Oficios (UPATECO) y busco
+          proyectos donde pueda construir de verdad.
         </h4>
-        <h5 id="text-h5">
-          Me especializo en el desarrollo de aplicaciones web robustas y
-          escalables utilizando Java y Spring Boot para el backend, Angular para
-          interfaces modernas, y bases de datos como MySQL y PostgreSQL para
-          soluciones de persistencia eficientes y flexibles.
+        <h5 id="text-h5" data-i18n="about.me.text">
+          Trabajo el producto de punta a punta: APIs con Java, Spring Boot,
+          NestJS y FastAPI, interfaces con Angular, Next.js, Svelte y Astro, y
+          PostgreSQL para los datos.
         </h5>
       </div>
 
-      <button id="skills">HABILIDADES</button>
+      <button id="skills" data-i18n="about.cta">HABILIDADES</button>
     </div>
   </div>
 </Layout>
 
 <script define:vars={{ msgItems }}>
+  const writeAbout = (el, key, fallback) => {
+    el.dataset.i18n = key;
+    const lang = window.__portfolioLang ? window.__portfolioLang() : "es";
+    const translated = lang === "en" && window.__portfolioT ? window.__portfolioT(key) : "";
+    el.textContent = translated || fallback;
+  };
+
   const setupSkillsInteractivity = () => {
     const buttons = document.querySelectorAll("li[data-index]");
     const titleDisplay = document.getElementById("text-h4");
@@ -109,21 +123,21 @@ const msgItems = [
     if (!buttons.length || !titleDisplay || !descDisplay) return;
 
     buttons.forEach((button) => {
+      if (button.dataset.bound) return;
+      button.dataset.bound = "1";
       button.addEventListener("click", () => {
         const index = button.getAttribute("data-index");
         const info = msgItems[index];
 
         if (info) {
-          titleDisplay.textContent = info.msgh4;
-          descDisplay.textContent = info.msgh5;
-
-          titleDisplay.style.opacity = 0;
-          descDisplay.style.opacity = 0;
-
-          setTimeout(() => {
-            titleDisplay.style.opacity = 1;
-            descDisplay.style.opacity = 1;
-          }, 50);
+          buttons.forEach((item) => item.classList.remove("is-active"));
+          button.classList.add("is-active");
+          writeAbout(titleDisplay, info.titleKey, info.msgh4);
+          writeAbout(descDisplay, info.textKey, info.msgh5);
+          const block = titleDisplay.closest(".text_block");
+          block?.classList.remove("is-swapping");
+          void block?.offsetWidth;
+          block?.classList.add("is-swapping");
         }
       });
     });
@@ -152,7 +166,7 @@ const msgItems = [
   }
   html,
   body {
-    background-color: rgb(26, 26, 26);
+    background-color: #111111;
     color: white;
     overflow-x: hidden;
     margin: 0%;

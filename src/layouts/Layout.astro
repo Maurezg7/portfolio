@@ -16,6 +16,12 @@ const { title = "Mi Portfolio" } = Astro.props;
     <main transition:animate="fade">
       <slot />
     </main>
+    <script>
+      import { initLanguage } from "../scripts/i18n";
+      const bootLanguage = () => initLanguage();
+      document.addEventListener("astro:page-load", bootLanguage);
+      bootLanguage();
+    </script>
   </body>
 </html>
 
@@ -28,7 +34,7 @@ const { title = "Mi Portfolio" } = Astro.props;
 
   html, body {
     width: 100%;
-    background-color: rgb(26, 26, 26);
+    background-color: #111111;
     color: white;
     overflow-x: hidden;
   }
