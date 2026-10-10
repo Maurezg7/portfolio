@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# AI tooling
+.claude/
+.cursor/
+
+# local tooling
+.venv-cv/
