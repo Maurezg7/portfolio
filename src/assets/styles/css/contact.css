@@ -208,7 +208,7 @@ form button[type=submit] {
   width: fit-content;
   border: none;
   background-color: greenyellow;
-  color: #1a1a1a;
+  color: #121212;
   padding: 0.85rem 2rem;
   font-family: monospace;
   font-size: 0.9rem;
@@ -223,7 +223,7 @@ form button[type=submit]:hover {
 form button[type=submit] svg {
   width: 14px;
   height: 14px;
-  fill: #1a1a1a;
+  fill: #121212;
 }
 
 @media (max-width: 900px) {

@@ -22,6 +22,7 @@ import "../assets/styles/scss/contact.scss";
           </svg>
           mauroleonelg7@gmail.com
         </a>
+        <button type="button" class="copy_btn" id="copy_email" aria-label="Copy email">⧉</button>
 
         <div class="contact_socials">
           <a href="https://www.linkedin.com/in/maurezg7/" target="_blank" rel="noopener noreferrer" class="social_btn">
@@ -59,14 +60,15 @@ import "../assets/styles/scss/contact.scss";
     </div>
 
     <div class="contact_form_wrapper">
-      <form action="https://formspree.io/f/xeelygyy" method="POST">
+      <form action="https://formspree.io/f/xeelygyy" method="POST" autocomplete="on">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp_field" />
         <div class="form_group">
           <label for="email" data-i18n="contact.email">TU_CORREO</label>
-          <input id="email" type="email" name="email" placeholder="hola@ejemplo.com" data-i18n-placeholder="contact.emailPh" required />
+          <input id="email" type="email" name="email" maxlength="120" autocomplete="email" placeholder="hola@ejemplo.com" data-i18n-placeholder="contact.emailPh" required />
         </div>
         <div class="form_group">
           <label for="message" data-i18n="contact.message">MENSAJE</label>
-          <textarea id="message" name="message" placeholder="Contame tu idea..." data-i18n-placeholder="contact.messagePh" required></textarea>
+          <textarea id="message" name="message" minlength="10" maxlength="2000" placeholder="Contame tu idea..." data-i18n-placeholder="contact.messagePh" required></textarea>
         </div>
         <button type="submit">
           <span data-i18n="contact.send">ENVIAR MENSAJE</span>
@@ -80,13 +82,31 @@ import "../assets/styles/scss/contact.scss";
   </div>
 </Layout>
 
+<script>
+  const bindCopy = () => {
+    const btn = document.getElementById("copy_email");
+    if (!btn || btn.dataset.bound) return;
+    btn.dataset.bound = "1";
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("mauroleonelg7@gmail.com");
+        btn.textContent = "✓";
+        btn.classList.add("is-done");
+        setTimeout(() => { btn.textContent = "⧉"; btn.classList.remove("is-done"); }, 1800);
+      } catch {}
+    });
+  };
+  document.addEventListener("astro:page-load", bindCopy);
+  bindCopy();
+</script>
+
 <style>
   /* El reset vive en Layout.astro con is:global. Repetirlo acá lo vuelve
      scopeado ([data-astro-cid-*], especificidad 0-1-0), lo que empata con
      cualquier selector de clase y le gana por orden de aparición: eso anulaba
      el padding de .social_btn, .contact_email y los overrides responsive. */
   html, body {
-    background-color: #111111;
+    background-color: #0a0a0a;
     color: white;
     overflow-x: hidden;
     margin: 0%;

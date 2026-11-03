@@ -4,10 +4,10 @@
   src: url("/portfolio/fonts/nNungo.ttf") format("truetype");
 }
 
-$bg-dark: #111111;
-$accent: #ff2d8a;
-$orange: #ff7a18;
-$orange-hover: #ff9444;
+$bg-dark: #0a0a0a;
+$accent: #7dff5a;
+$orange: #ff9a3d;
+$orange-hover: #ffb066;
 $border-subtle: rgba(255, 255, 255, 0.08);
 $text-muted: #555;
 $text-dim: rgba(255, 255, 255, 0.18);
@@ -41,8 +41,8 @@ $text-dim: rgba(255, 255, 255, 0.18);
     background: linear-gradient(
       115deg,
       transparent 36%,
-      rgba(255, 45, 138, 0.34) 48%,
-      rgba(255, 122, 24, 0.28) 55%,
+      rgba(125, 255, 90, 0.34) 48%,
+      rgba(255, 154, 61, 0.28) 55%,
       transparent 68%
     );
     transform: translateX(-80%);
@@ -122,7 +122,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
       width: clamp(2.8rem, 3.5vw, 3.4rem);
       height: clamp(2.8rem, 3.5vw, 3.4rem);
       background-color: transparent;
-      border: 1.5px solid rgba(255, 122, 24, 0.7);
+      border: 1.5px solid rgba(255, 154, 61, 0.7);
       clip-path: polygon(25% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%, 0% 25%);
       display: flex;
       justify-content: center;
@@ -162,7 +162,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
       }
 
       svg {
-        fill: #111;
+        fill: #0a0a0a;
       }
 
       span {
@@ -177,7 +177,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
   flex-direction: column;
   gap: 0.8rem;
   padding-left: 1rem;
-  border-left: 2px solid rgba(255, 122, 24, 0.45);
+  border-left: 2px solid rgba(255, 154, 61, 0.45);
 
   &.is-swapping h4,
   &.is-swapping h5 {
@@ -289,7 +289,7 @@ $text-dim: rgba(255, 255, 255, 0.18);
 
   .text_block {
     border-left: none;
-    border-top: 2px solid rgba(255, 165, 0, 0.2);
+    border-top: 2px solid rgba(255, 154, 61, 0.2);
     padding-left: 0;
     padding-top: 1rem;
   }
@@ -422,3 +422,44 @@ $text-dim: rgba(255, 255, 255, 0.18);
     transform: none;
   }
 }
+
+// ---- Profile photo frame ----
+#aboutme_container .container_img img[data-tilt] {
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid rgba(125, 255, 90, 0.55);
+  box-shadow: 0 0 0 6px rgba(125, 255, 90, 0.07), 0 24px 60px -12px rgba(0, 0, 0, 0.8), 0 0 50px rgba(125, 255, 90, 0.25), 18px 18px 0 -2px rgba(255, 154, 61, 0.55);
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+
+// ---- Redesign polish ----
+.text_block {
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #ff9a3d;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(8px);
+}
+
+#aboutme_container .container_text ul li {
+  .icon-box { transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+
+  &:hover .icon-box { box-shadow: 0 0 22px rgba(255, 154, 61, 0.55); }
+  &.is-active .icon-box { box-shadow: 0 0 26px rgba(125, 255, 90, 0.6); }
+}
+
+#aboutme_container .container_text h1 { text-shadow: 0 0 30px rgba(125, 255, 90, 0.45); }
+
+#skills {
+  background: #ff9a3d;
+  color: #0a0a0a;
+  font-weight: 900;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+
+  &:hover { background: #ffb066; box-shadow: 0 0 34px rgba(255, 154, 61, 0.7); transform: translateY(-2px); }
+}
+
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { .text_block { backdrop-filter: none; padding: 0.4rem 0.5rem; } }

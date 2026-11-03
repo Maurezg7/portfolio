@@ -85,7 +85,7 @@
   font-size: 0.7rem;
   font-weight: 900;
   background-color: greenyellow;
-  color: #1a1a1a;
+  color: #121212;
   padding: 0.25rem 1.2rem !important;
   clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
   letter-spacing: 0.03em;
@@ -124,7 +124,7 @@
   gap: 0.5rem;
   text-decoration: none;
   background-color: greenyellow;
-  color: #1a1a1a;
+  color: #121212;
   padding: 0.8rem 1.5rem !important;
   font-family: monospace;
   font-size: 0.85rem;
@@ -139,7 +139,7 @@
 .detail_site_btn svg {
   width: 14px;
   height: 14px;
-  fill: #1a1a1a;
+  fill: #121212;
 }
 
 .detail_body {
