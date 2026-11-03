@@ -1,6 +1,6 @@
 @font-face {
   font-family: "nNungo";
-  src: url(/portfolio/fonts/nNungo.ttf);
+  src: url("/portfolio/fonts/nNungo.woff2") format("woff2"), url("/portfolio/fonts/nNungo.ttf") format("truetype");
 }
 
 $bg-dark: #0a0a0a;
