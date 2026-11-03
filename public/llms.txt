@@ -9,6 +9,7 @@
 - [Contact](https://maurezg7.github.io/portfolio/contact/)
 
 ## Featured projects
+- Brand mascot: NODUS, an original mecha character.
 - Dengue Centinela: dengue risk heat map for Salta from WhatsApp reports (React 19, TanStack Start, Express, Prisma). Not deployed. https://github.com/EstebanNahuelok/dengue-centinela
 - Cazatalentos: on-chain record of early artist backers (Solidity, React, NestJS, Monad). https://cazatalentos.vercel.app/ , https://github.com/Maurezg7/cazatalentos
 - SEM Salta: metered parking payments with MercadoPago (NestJS, React). 2nd place, PunaTech Hackathon.

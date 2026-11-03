@@ -374,3 +374,43 @@
     .home_stats li, .feat_card { backdrop-filter: none; }
     .feat_card p { display: none; }
 }
+
+
+// ---- NODUS brand ----
+.home_nodus {
+    position: relative;
+    width: 100%;
+    margin: 0;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid rgba(125, 255, 90, 0.55);
+        box-shadow: 0 0 60px -10px rgba(125, 255, 90, 0.35), 16px 16px 0 -2px rgba(255, 154, 61, 0.45);
+        transition: transform 0.15s ease-out;
+        will-change: transform;
+    }
+
+    figcaption {
+        position: absolute;
+        left: clamp(0.8rem, 3vw, 2rem);
+        bottom: clamp(0.8rem, 3vw, 1.6rem);
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        max-width: min(70%, 380px);
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
+
+        b { font-size: clamp(1.4rem, 4vw, 3rem); font-weight: 900; color: #7dff5a; letter-spacing: 0.08em; }
+        span { font-family: monospace; font-size: clamp(0.6rem, 1.4vw, 0.95rem); color: #fff; line-height: 1.5; }
+    }
+}
+
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) {
+    .home_nodus figcaption span { display: none; }
+    .home_nodus img { box-shadow: none; }
+}
