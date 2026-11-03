@@ -917,6 +917,9 @@ nav {
                     transform-origin: center;
                     opacity: 0;
                 }
+
+                // the short label is only for touch layouts; keep it out of the grid on desktop
+                .social-name--short { display: none; }
             }
 
             &:hover, &:focus-visible {
