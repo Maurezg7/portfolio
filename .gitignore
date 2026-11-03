@@ -24,8 +24,6 @@ pnpm-debug.log*
 .idea/
 
 # AI tooling
-.claude/
-.cursor/
 
 # local tooling
 .venv-cv/
