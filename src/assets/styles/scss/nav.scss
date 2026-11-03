@@ -929,3 +929,16 @@ nav {
     nav .despliegue #menu-items .contact-me .bi-caret-right { animation: none !important; transition: none !important; }
     nav .despliegue #menu-items .contact-me a .card-back .social-name { opacity: 1; }
 }
+
+
+// Large screens: center the social icons row in the menu
+@media (min-width: 1025px) {
+    nav .despliegue #menu-items .contact-me {
+        justify-content: center;
+        align-items: center;
+        gap: clamp(1rem, 2vw, 2rem);
+        padding-top: 1.5rem;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(255, 154, 61, 0.25);
+    }
+}
