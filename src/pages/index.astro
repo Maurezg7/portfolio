@@ -4,28 +4,53 @@ import "../assets/styles/scss/welcome.scss";
 ---
 
 <Layout title="Mauro Gomez - Full Stack">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@<version>/build/three.module.js",
-          "three/addons/": "https://cdn.jsdelivr.net/npm/three@<version>/examples/jsm/"
-        }
-      }
-    </script>
-  </head>
   <div id="container">
-    <h1>SOY MAURO GOMEZ</h1>
+    <span class="status"><i></i><b data-i18n="home.status">Disponible para nuevos proyectos</b></span>
+    <a class="award" href="/portfolio/projects/sem-salta">🏆 <span data-i18n="home.award">2º puesto · Hackathon PunaTech</span></a>
+    <h1>SOY <em>MAURO GOMEZ</em></h1>
     <h2 data-i18n="home.role">FULL STACK DEVELOPER</h2>
-    <h3>JAVA ❖ NESTJS ❖ ANGULAR ❖ POSTGRESQL</h3>
+    <ul class="stack" aria-label="Stack">
+      <li>Java</li><li>Python</li><li>Rust</li>
+      <li class="fe">Angular</li><li class="fe">Next.js</li><li class="fe">React</li><li class="fe">Astro</li>
+    </ul>
     <p data-i18n="home.line">
-      Armo el producto completo: la API, la interfaz y los datos. Código claro,
-      pensado para crecer.
+      Desarrollador full stack. Armo APIs en Java, Python y Rust y las conecto con interfaces en Angular, Next.js, React y Astro. Proyectos en producción, un podio en hackathon y código limpio y mantenible.
     </p>
+    <div class="actions">
       <button id="aboutme" data-i18n="home.cta">Sobre mí</button>
+      <button id="projects" class="ghost" data-i18n="home.cta2">Ver proyectos</button>
+    </div>
   </div>
+
+  <section class="home_more">
+    <ul class="home_stats" data-reveal>
+      <li><b>3</b><span data-i18n="home.stat.1">lenguajes backend</span></li>
+      <li><b>4</b><span data-i18n="home.stat.2">frameworks frontend</span></li>
+      <li><b>🏆 2º</b><span data-i18n="home.stat.3">podio en hackathon</span></li>
+    </ul>
+
+    <h2 class="home_h2" data-reveal data-i18n="home.feat.title">PROYECTOS DESTACADOS</h2>
+    <div class="home_feat">
+      <a class="feat_card" href="/portfolio/projects/sem-salta" data-reveal data-tilt>
+        <em>🏆 PunaTech</em><h3>SEM SALTA</h3>
+        <p data-i18n="home.feat.sem">Pagos de estacionamiento medido con MercadoPago y panel de administración. Hecho para la Municipalidad de Salta.</p>
+      </a>
+      <a class="feat_card" href="/portfolio/projects/cazatalentos" data-reveal data-tilt>
+        <em>Monad</em><h3>CAZATALENTOS</h3>
+        <p data-i18n="home.feat.caz">Registro on-chain de quién creyó primero en un artista, con un contrato inmutable en Solidity.</p>
+      </a>
+      <a class="feat_card" href="/portfolio/projects/dengue-centinela" data-reveal data-tilt>
+        <em>Salud pública</em><h3>DENGUE CENTINELA</h3>
+        <p data-i18n="home.feat.den">Mapa de calor de riesgo de dengue en Salta, a partir de reportes por WhatsApp y clasificación con IA.</p>
+      </a>
+    </div>
+    <a class="home_all" href="/portfolio/projects" data-reveal data-i18n="home.feat.all">VER TODOS LOS PROYECTOS</a>
+
+    <div class="home_cta" data-reveal>
+      <h2 data-i18n="home.cta.title">Construyamos algo juntos</h2>
+      <a href="/portfolio/contact" data-i18n="home.cta.btn">CONTACTAME</a>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -38,7 +63,7 @@ import "../assets/styles/scss/welcome.scss";
   }
   html,
   body {
-    background-color: #111111;
+    background-color: #0a0a0a;
     color: white;
     overflow-x: hidden;
     margin: 0%;
@@ -53,6 +78,10 @@ import "../assets/styles/scss/welcome.scss";
     buttonAbout?.addEventListener("click", (e) => {
       e.preventDefault();
       window.location.href = "/portfolio/aboutme";
+    });
+    document.getElementById("projects")?.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "/portfolio/projects";
     });
   };
 

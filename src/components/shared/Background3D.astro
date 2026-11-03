@@ -1,0 +1,34 @@
+<canvas id="bg3d" aria-hidden="true" transition:persist></canvas>
+
+<style>
+  #bg3d {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("bg3d") as HTMLCanvasElement | null;
+  const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+  const lowEnd =
+    (nav.deviceMemory !== undefined && nav.deviceMemory <= 2) ||
+    (nav.hardwareConcurrency !== undefined && nav.hardwareConcurrency <= 2) ||
+    nav.connection?.saveData === true ||
+    Math.min(innerWidth, innerHeight) < 300;
+
+  if (canvas && lowEnd) {
+    canvas.remove(); // static dark background from CSS
+  } else if (canvas) {
+    const start = () =>
+      import("../../scripts/bg3d")
+        .then((m) => m.initBackground(canvas))
+        .catch(() => canvas.remove());
+    // Load the 3D bundle after first paint so it never blocks content
+    if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 1500 });
+    else setTimeout(start, 400);
+  }
+</script>

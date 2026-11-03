@@ -4,10 +4,10 @@
   src: url(/portfolio/fonts/nNungo.ttf) format("truetype");
 }
 
-$bg-dark: #111111;
-$accent: #ff2d8a;
-$accent-hover: #ff9444;
-$orange: #ff7a18;
+$bg-dark: #0a0a0a;
+$accent: #7dff5a;
+$accent-hover: #ffb066;
+$orange: #ff9a3d;
 $text-muted: #555;
 $text-dim: rgba(255, 255, 255, 0.55);
 $text-faint: rgba(255, 255, 255, 0.2);
@@ -15,9 +15,9 @@ $border-subtle: rgba(255, 255, 255, 0.08);
 $border-dim: rgba(255, 255, 255, 0.15);
 $border-input: rgba(255, 255, 255, 0.2);
 $border-hover: rgba(255, 255, 255, 0.5);
-$accent-border: rgba(255, 45, 138, 0.35);
+$accent-border: rgba(125, 255, 90, 0.35);
 $deco-text: rgba(255, 255, 255, 0.15);
-$accent-deco: rgba(255, 45, 138, 0.7);
+$accent-deco: rgba(125, 255, 90, 0.7);
 $deco-line: rgba(255, 255, 255, 0.1);
 
 @mixin monospace($size, $weight: 400) {
@@ -227,7 +227,7 @@ form button[type="submit"] {
   width: fit-content;
   border: none;
   background-color: $orange;
-  color: #111111;
+  color: #0a0a0a;
   padding: 0.85rem 2rem;
   @include monospace(0.9rem, 900);
   clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 93% 100%, 0% 100%);
@@ -241,7 +241,7 @@ form button[type="submit"] {
   svg {
     width: 14px;
     height: 14px;
-    fill: #1a1a1a;
+    fill: #121212;
   }
 }
 
@@ -342,3 +342,136 @@ form button[type="submit"] {
     font-size: 0.72rem;
   }
 }
+
+// ---- Redesign polish ----
+@keyframes contact-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes dot-pulse {
+  50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+.contact_info > * { animation: contact-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.contact_info > :nth-child(2) { animation-delay: 0.07s; }
+.contact_info > :nth-child(3) { animation-delay: 0.14s; }
+.contact_info > :nth-child(4) { animation-delay: 0.21s; }
+.contact_info > :nth-child(5) { animation-delay: 0.28s; }
+
+.contact_tag { color: $orange; }
+
+.contact_info h1 .accent { text-shadow: 0 0 34px rgba(125, 255, 90, 0.5); }
+
+.contact_email {
+  padding: 0.8rem 1.1rem;
+  border: 1px solid $accent-border;
+  background: rgba(125, 255, 90, 0.06);
+  backdrop-filter: blur(6px);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  word-break: break-all;
+
+  &:hover {
+    opacity: 1;
+    background: rgba(125, 255, 90, 0.14);
+    box-shadow: 0 0 30px rgba(125, 255, 90, 0.35);
+    transform: translateY(-2px);
+  }
+}
+
+.copy_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  background: rgba(255, 154, 61, 0.1);
+  border: 1px solid rgba(255, 154, 61, 0.5);
+  color: $orange;
+  cursor: pointer;
+  @include monospace(0.9rem, 700);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover { background: $orange; color: #0a0a0a; box-shadow: 0 0 22px rgba(255, 154, 61, 0.6); }
+  &.is-done { background: $accent; border-color: $accent; color: #0a0a0a; }
+}
+
+.social_btn {
+  background: rgba(255, 255, 255, 0.03);
+
+  &:hover {
+    color: #0a0a0a;
+    background: $orange;
+    border-color: $orange;
+    box-shadow: 0 0 24px rgba(255, 154, 61, 0.5);
+    transform: translateY(-3px);
+  }
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.contact_deco span:last-child {
+  color: $accent;
+  position: relative;
+  padding-left: 1.1rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: $accent;
+    box-shadow: 0 0 12px $accent;
+    animation: dot-pulse 1.8s ease-in-out infinite;
+  }
+}
+
+.contact_form_wrapper form {
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+  backdrop-filter: blur(10px);
+  clip-path: polygon(0 18px, 18px 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  animation: contact-in 0.7s 0.15s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.form_group {
+  input, textarea {
+    background: rgba(10, 10, 10, 0.6);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+      box-shadow: 0 0 0 3px rgba(125, 255, 90, 0.18), 0 0 22px rgba(125, 255, 90, 0.25);
+    }
+  }
+
+  &:focus-within label { color: $accent; }
+}
+
+.contact_form_wrapper button[type="submit"] {
+  background: linear-gradient(135deg, $orange, $accent-hover);
+  color: #0a0a0a;
+  font-weight: 900;
+  border: none;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover { box-shadow: 0 0 34px rgba(255, 154, 61, 0.7); transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact_info > *, .contact_form_wrapper form, .contact_deco span:last-child::before { animation: none; }
+}
+
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) {
+  .contact_form_wrapper form { backdrop-filter: none; padding: 0.5rem; }
+  .copy_btn { display: none; }
+}
+
+.hp_field { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; pointer-events: none; }
