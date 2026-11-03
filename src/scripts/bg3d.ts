@@ -1,8 +1,28 @@
-import * as THREE from "three";
+import {
+  AdditiveBlending,
+  BufferAttribute,
+  BufferGeometry,
+  Clock,
+  Color,
+  Group,
+  IcosahedronGeometry,
+  Mesh,
+  MeshBasicMaterial,
+  PerspectiveCamera,
+  PlaneGeometry,
+  Points,
+  Scene,
+  ShaderMaterial,
+  TorusGeometry,
+  TorusKnotGeometry,
+  Vector2,
+  Vector3,
+  WebGLRenderer,
+} from "three";
 
-const GREEN = new THREE.Color(0x7dff5a);
-const ORANGE = new THREE.Color(0xff9a3d);
-const WHITE = new THREE.Color(0xffffff);
+const GREEN = new Color(0x7dff5a);
+const ORANGE = new Color(0xff9a3d);
+const WHITE = new Color(0xffffff);
 
 const pointsVert = /* glsl */ `
   attribute float aSeed;
@@ -129,10 +149,10 @@ function sceneProfile(path: string) {
 
 export function initBackground(canvas: HTMLCanvasElement) {
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
+  const renderer = new WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: "high-performance" });
   renderer.setClearColor(0x000000, 0);
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  const scene = new Scene();
+  const camera = new PerspectiveCamera(60, 1, 0.1, 100);
   camera.position.z = 14;
 
   const tiny = () => Math.min(innerWidth, innerHeight) < 500;
@@ -151,46 +171,46 @@ export function initBackground(canvas: HTMLCanvasElement) {
     col.set([c.r, c.g, c.b], i * 3);
     seed[i] = Math.random();
   }
-  const pg = new THREE.BufferGeometry();
-  pg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-  pg.setAttribute("aColor", new THREE.BufferAttribute(col, 3));
-  pg.setAttribute("aSeed", new THREE.BufferAttribute(seed, 1));
-  const pointsMat = new THREE.ShaderMaterial({
+  const pg = new BufferGeometry();
+  pg.setAttribute("position", new BufferAttribute(pos, 3));
+  pg.setAttribute("aColor", new BufferAttribute(col, 3));
+  pg.setAttribute("aSeed", new BufferAttribute(seed, 1));
+  const pointsMat = new ShaderMaterial({
     vertexShader: pointsVert,
     fragmentShader: pointsFrag,
     transparent: true,
     depthWrite: false,
-    blending: THREE.AdditiveBlending,
+    blending: AdditiveBlending,
     uniforms: {
       uTime: { value: 0 },
       uPulse: { value: -1 },
       uSize: { value: 1.6 },
       uPixel: { value: 1 },
-      uMouse: { value: new THREE.Vector3(999, 999, 0) },
+      uMouse: { value: new Vector3(999, 999, 0) },
     },
   });
-  const points = new THREE.Points(pg, pointsMat);
+  const points = new Points(pg, pointsMat);
   scene.add(points);
 
   // ---- hero object: glowing fresnel core + wire knot + orbit rings
-  const group = new THREE.Group();
-  const coreMat = new THREE.ShaderMaterial({
+  const group = new Group();
+  const coreMat = new ShaderMaterial({
     vertexShader: coreVert,
     fragmentShader: coreFrag,
     transparent: true,
     depthWrite: false,
-    blending: THREE.AdditiveBlending,
+    blending: AdditiveBlending,
     uniforms: { uTime: { value: 0 }, uMix: { value: 0 }, uA: { value: GREEN }, uB: { value: ORANGE } },
   });
-  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, tiny() ? 3 : 5), coreMat);
-  const knot = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(3.1, 0.35, tiny() ? 90 : 220, 10),
-    new THREE.MeshBasicMaterial({ color: GREEN, wireframe: true, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending }),
+  const core = new Mesh(new IcosahedronGeometry(2.1, tiny() ? 3 : 5), coreMat);
+  const knot = new Mesh(
+    new TorusKnotGeometry(3.1, 0.35, tiny() ? 90 : 220, 10),
+    new MeshBasicMaterial({ color: GREEN, wireframe: true, transparent: true, opacity: 0.2, blending: AdditiveBlending }),
   );
-  const rings: THREE.Mesh[] = [0, 1, 2].map((i) => {
-    const m = new THREE.Mesh(
-      new THREE.TorusGeometry(4.2 + i * 0.7, 0.012, 8, 160),
-      new THREE.MeshBasicMaterial({ color: i === 1 ? ORANGE : WHITE, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending }),
+  const rings: Mesh[] = [0, 1, 2].map((i) => {
+    const m = new Mesh(
+      new TorusGeometry(4.2 + i * 0.7, 0.012, 8, 160),
+      new MeshBasicMaterial({ color: i === 1 ? ORANGE : WHITE, transparent: true, opacity: 0.35, blending: AdditiveBlending }),
     );
     m.rotation.set(Math.random() * 3, Math.random() * 3, 0);
     return m;
@@ -199,28 +219,28 @@ export function initBackground(canvas: HTMLCanvasElement) {
   scene.add(group);
 
   // ---- deep-space nebula backdrop (fullscreen, always behind everything)
-  const nebulaMat = new THREE.ShaderMaterial({
+  const nebulaMat = new ShaderMaterial({
     vertexShader: nebulaVert,
     fragmentShader: nebulaFrag,
     depthTest: false,
     depthWrite: false,
-    uniforms: { uTime: { value: 0 }, uAspect: { value: 1 }, uMouse: { value: new THREE.Vector2() } },
+    uniforms: { uTime: { value: 0 }, uAspect: { value: 1 }, uMouse: { value: new Vector2() } },
   });
-  const nebula = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), nebulaMat);
+  const nebula = new Mesh(new PlaneGeometry(2, 2), nebulaMat);
   nebula.frustumCulled = false;
   nebula.renderOrder = -10;
   scene.add(nebula);
 
   // ---- infinite neon grid floor (perspective depth)
-  const gridMat = new THREE.ShaderMaterial({
+  const gridMat = new ShaderMaterial({
     vertexShader: gridVert,
     fragmentShader: gridFrag,
     transparent: true,
     depthWrite: false,
-    blending: THREE.AdditiveBlending,
-    uniforms: { uTime: { value: 0 }, uMouse: { value: new THREE.Vector3(999, 0, 999) } },
+    blending: AdditiveBlending,
+    uniforms: { uTime: { value: 0 }, uMouse: { value: new Vector3(999, 0, 999) } },
   });
-  const grid = new THREE.Mesh(new THREE.PlaneGeometry(160, 160), gridMat);
+  const grid = new Mesh(new PlaneGeometry(160, 160), gridMat);
   grid.rotation.x = -Math.PI / 2;
   grid.position.y = -7;
   grid.renderOrder = -5;
@@ -228,8 +248,8 @@ export function initBackground(canvas: HTMLCanvasElement) {
 
   // ---- interaction
   const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
-  const world = new THREE.Vector3();
-  const ndc = new THREE.Vector3();
+  const world = new Vector3();
+  const ndc = new Vector3();
   const updateWorld = () => {
     ndc.set(mouse.tx, -mouse.ty, 0.5).unproject(camera);
     const dir = ndc.sub(camera.position).normalize();
@@ -273,7 +293,7 @@ export function initBackground(canvas: HTMLCanvasElement) {
     camera.updateProjectionMatrix();
     apply();
   };
-  const clock = new THREE.Clock();
+  const clock = new Clock();
   resize();
   addEventListener("resize", resize);
 
