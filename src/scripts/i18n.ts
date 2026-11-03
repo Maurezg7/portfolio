@@ -17,6 +17,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "home.cta": "About me",
     "home.cta2": "View projects",
     "home.award": "2nd place · PunaTech Hackathon",
+    "home.nodus": "The sentinel that connects backend, frontend and data.",
     "home.feat.title": "FEATURED PROJECTS",
     "home.feat.sem": "Metered parking payments with MercadoPago and an admin panel. Built for the Municipality of Salta.",
     "home.feat.caz": "On-chain record of who believed in an artist first, with an immutable Solidity contract.",
