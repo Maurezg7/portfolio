@@ -5,70 +5,184 @@ import "../assets/styles/scss/skills.scss";
 const groups = [
   {
     title: "LENGUAJES",
+    key: "skills.languages",
     skills: [
-      { name: "C", icon: "/portfolio/image/languages/c.svg" },
-      { name: "C++", icon: "/portfolio/image/languages/cpp.svg" },
       { name: "Java", icon: "/portfolio/image/languages/java.webp" },
       { name: "Python", icon: "/portfolio/image/languages/python-svgrepo-com.svg" },
-      { name: "TypeScript", icon: "/portfolio/image/languages/typescript.webp" },
       { name: "Rust", icon: "/portfolio/image/languages/rust.svg" },
     ],
   },
   {
     title: "BACKEND",
+    key: "skills.backend",
     skills: [
       { name: "Spring Boot", icon: "/portfolio/image/languages/springboot.webp" },
-      { name: "NestJS", icon: "/portfolio/image/languages/icons8-nestjs.svg" },
       { name: "FastAPI", icon: "/portfolio/image/languages/FastAPI.svg" },
+      { name: "Django", icon: "/portfolio/image/languages/django.svg" },
     ],
   },
   {
     title: "FRONTEND",
+    key: "skills.frontend",
     skills: [
       { name: "Angular", icon: "/portfolio/image/languages/angular.webp" },
       { name: "Next.js", icon: "/portfolio/image/languages/nextjs.svg" },
-      { name: "Svelte", icon: "/portfolio/image/languages/svelte.svg" },
+      { name: "React", icon: "/portfolio/image/languages/react.webp" },
       { name: "Astro", icon: "/portfolio/image/languages/astro.svg" },
     ],
   },
   {
+    title: "WEB DEVELOPMENT",
+    key: "skills.web",
+    skills: [
+      { name: "HTML5", icon: "/portfolio/image/languages/html.webp" },
+      { name: "CSS3", icon: "/portfolio/image/languages/css.webp" },
+      { name: "SASS", icon: "/portfolio/image/languages/sass.webp" },
+      { name: "JavaScript", icon: "/portfolio/image/languages/javascript.svg" },
+      { name: "TypeScript", icon: "/portfolio/image/languages/typescript.webp" },
+      { name: "Tailwind", icon: "/portfolio/image/languages/tailwind.svg" },
+    ],
+  },
+  {
+    title: "TESTING & API",
+    key: "skills.qa",
+    skills: [
+      { name: "Testing / QA", icon: "/portfolio/image/languages/testing.svg" },
+      { name: "Swagger", icon: "/portfolio/image/languages/swagger.svg" },
+      { name: "Postman", icon: "/portfolio/image/languages/postman.svg" },
+    ],
+  },
+  {
+    title: "DEVOPS & CLOUD",
+    key: "skills.devops",
+    skills: [
+      { name: "Docker", icon: "/portfolio/image/languages/docker.svg" },
+      { name: "Kubernetes", icon: "/portfolio/image/languages/kubernetes.svg" },
+      { name: "AWS", icon: "/portfolio/image/languages/aws.svg" },
+    ],
+  },
+  {
     title: "DATOS",
+    key: "skills.data",
     skills: [
       { name: "PostgreSQL", icon: "/portfolio/image/languages/postgresql.webp" },
+      { name: "MongoDB", icon: "/portfolio/image/languages/mongodb.svg" },
+    ],
+  },
+  {
+    title: "VIDEOJUEGOS",
+    key: "skills.games",
+    skills: [
+      { name: "Godot", icon: "/portfolio/image/languages/godotengine.svg" },
+      { name: "Unity", icon: "/portfolio/image/languages/unity.svg" },
+      { name: "GDScript", icon: "/portfolio/image/languages/gdscript.svg" },
+      { name: "C#", icon: "/portfolio/image/languages/csharp.svg" },
+    ],
+  },
+  {
+    title: "APRENDIENDO",
+    key: "skills.learning",
+    skills: [
+      { name: "C", icon: "/portfolio/image/languages/c.svg", status: "learning" },
+      { name: "C++", icon: "/portfolio/image/languages/cpp.svg", status: "learning" },
+    ],
+  },
+  {
+    title: "PRÓXIMAMENTE",
+    key: "skills.next",
+    skills: [
+      { name: "Kotlin", icon: "/portfolio/image/languages/kotlin.svg", status: "next" },
+      { name: "Swift", icon: "/portfolio/image/languages/swift.svg", status: "next" },
+      { name: "SQLite", icon: "/portfolio/image/languages/SQLite.webp", status: "next" },
+    ],
+  },
+  {
+    title: "MATEMÁTICA",
+    key: "skills.math",
+    skills: [
+      { name: "Álgebra", icon: "/portfolio/image/languages/algebra.svg" },
+      { name: "Análisis Matemático", icon: "/portfolio/image/languages/calculus.svg" },
+    ],
+  },
+  {
+    title: "TOOLING",
+    key: "skills.tooling",
+    skills: [
+      { name: "pnpm", icon: "/portfolio/image/languages/pnpm.svg" },
+      { name: "Bun", icon: "/portfolio/image/languages/bun.svg" },
+    ],
+  },
+  {
+    title: "JAVA · APRENDIENDO",
+    key: "skills.learnJava",
+    skills: [
+      { name: "Spring Security", icon: "/portfolio/image/languages/springsecurity.svg", status: "learning" },
+      { name: "Spring Data JPA", icon: "/portfolio/image/languages/hibernate.svg", status: "learning" },
+      { name: "Kafka", icon: "/portfolio/image/languages/apachekafka.svg", status: "learning" },
+      { name: "JUnit", icon: "/portfolio/image/languages/junit5.svg", status: "learning" },
+      { name: "Mockito", icon: "/portfolio/image/languages/mockito.svg", status: "learning" },
+    ],
+  },
+  {
+    title: "PYTHON · APRENDIENDO",
+    key: "skills.learnPython",
+    skills: [
+      { name: "Pydantic", icon: "/portfolio/image/languages/pydantic.svg", status: "learning" },
+      { name: "SQLAlchemy", icon: "/portfolio/image/languages/sqlalchemy.svg", status: "learning" },
+      { name: "Celery", icon: "/portfolio/image/languages/celery.svg", status: "learning" },
+    ],
+  },
+  {
+    title: "RUST · APRENDIENDO",
+    key: "skills.learnRust",
+    skills: [
+      { name: "Tokio", icon: "/portfolio/image/languages/tokio.svg", status: "learning" },
+      { name: "Axum", icon: "/portfolio/image/languages/axum.svg", status: "learning" },
+      { name: "Actix Web", icon: "/portfolio/image/languages/actix.svg", status: "learning" },
+      { name: "SQLx", icon: "/portfolio/image/languages/sqlx.svg", status: "learning" },
+      { name: "Serde", icon: "/portfolio/image/languages/serde.svg", status: "learning" },
     ],
   },
 ];
+const total = groups.reduce((n, g) => n + g.skills.length, 0);
 ---
 
 <Layout title="Mauro Gomez - Habilidades">
   <div id="container">
-    <div id="img_container">
-      <img src="/portfolio/image/perfil/Skills_Photo.webp" alt="Mauro Gomez" />
-    </div>
     <div id="sections_container">
       <header class="skills_head">
         <span class="skills_label" data-i18n="skills.label">HABILIDADES_</span>
         <h1>STACK</h1>
         <div class="line"></div>
+        <div class="skills_stats">
+          <span><b>{total}</b> <i data-i18n="skills.stat.tech">tecnologías</i></span>
+          <span><b>{groups.length}</b> <i data-i18n="skills.stat.areas">áreas</i></span>
+        </div>
       </header>
+
+      <div class="filters" role="tablist">
+        <button type="button" class="chip is-on" data-filter="all" data-i18n="skills.all">TODO</button>
+        {groups.map((g) => <button type="button" class="chip" data-filter={g.key} data-i18n={g.key}>{g.title}</button>)}
+      </div>
 
       <div class="groups">
         {
           groups.map((group, index) => (
-            <section class="group">
+            <section class="group" data-group={group.key}>
               <div class="group_title">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <h2 data-i18n={["skills.languages", "skills.backend", "skills.frontend", "skills.data"][index]}>
+                <h2 data-i18n={group.key}>
                   {group.title}
                 </h2>
               </div>
               <ul class="skill_grid">
                 {group.skills.map((skill) => (
-                  <li class="skill_card">
+                  <li class="skill_card" data-tilt>
                     <div class="cont_icon">
                       <img src={skill.icon} alt="" />
                     </div>
                     <span class="skill_name">{skill.name}</span>
+                    {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>{skill.status === "learning" ? "APRENDIENDO" : "PRÓXIMO"}</em>}
                   </li>
                 ))}
               </ul>
@@ -79,3 +193,21 @@ const groups = [
     </div>
   </div>
 </Layout>
+
+<script>
+  const bindFilters = () => {
+    const chips = document.querySelectorAll<HTMLButtonElement>(".chip");
+    const groups = document.querySelectorAll<HTMLElement>(".group");
+    chips.forEach((chip) => {
+      if (chip.dataset.bound) return;
+      chip.dataset.bound = "1";
+      chip.addEventListener("click", () => {
+        chips.forEach((c) => c.classList.toggle("is-on", c === chip));
+        const f = chip.dataset.filter;
+        groups.forEach((g) => (g.hidden = f !== "all" && g.dataset.group !== f));
+      });
+    });
+  };
+  document.addEventListener("astro:page-load", bindFilters);
+  bindFilters();
+</script>

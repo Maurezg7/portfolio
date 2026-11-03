@@ -7,30 +7,23 @@ const msgItems = [
     titleKey: "about.me.title",
     textKey: "about.me.text",
     msgh4:
-      "Soy Mauro, desarrollador de software. Estudio en la Universidad Provincial de Administración, Tecnología y Oficios (UPATECO) y busco proyectos donde pueda construir de verdad.",
+      "Soy Mauro, desarrollador full stack y estudiante en UPATECO. Convierto ideas en productos que funcionan en producción y busco un equipo donde aportar desde el primer día.",
     msgh5:
-      "Trabajo el producto de punta a punta: APIs con Java, Spring Boot, NestJS y FastAPI, interfaces con Angular, Next.js, Svelte y Astro, y PostgreSQL para los datos.",
+      "Trabajo el producto de punta a punta: 2º puesto en el Hackathon PunaTech y varios proyectos desplegados: backends con Java, Python y Rust, e interfaces con Angular, Next.js, React y Astro.",
   },
   {
     titleKey: "about.back.title",
     textKey: "about.back.text",
-    msgh4: "Java, Spring Boot, NestJS y FastAPI",
+    msgh4: "Java, Python y Rust",
     msgh5:
-      "Diseño APIs REST con autenticación JWT, validación y manejo de errores. Aplico DTO y SOLID para que el servicio se pueda mantener y extender.",
+      "Diseño APIs REST seguras con JWT, validación y manejo claro de errores, en Java con Spring Boot y en Python con FastAPI, más contratos inteligentes en Rust. DTO y SOLID para que el código sea fácil de mantener.",
   },
   {
     titleKey: "about.front.title",
     textKey: "about.front.text",
-    msgh4: "Angular, Next.js, Svelte y Astro",
+    msgh4: "Angular, Next.js, React y Astro",
     msgh5:
-      "Armo interfaces que se leen bien en el escritorio y en el celular, conectadas a APIs REST y con el estado de la pantalla bajo control.",
-  },
-  {
-    titleKey: "about.data.title",
-    textKey: "about.data.text",
-    msgh4: "PostgreSQL",
-    msgh5:
-      "Modelo la base, escribo consultas con joins y subconsultas, y la conecto desde Spring Boot, NestJS y FastAPI.",
+      "Interfaces rápidas y accesibles que se adaptan desde un smartwatch hasta una TV, conectadas a APIs REST y con estado predecible.",
   },
 ];
 ---
@@ -38,7 +31,7 @@ const msgItems = [
 <Layout title="Mauro Gomez - Sobre Mi">
   <div id="aboutme_container">
     <div class="container container_img">
-      <img src="/portfolio/image/perfil/Perfil_Photo.webp" alt="" />
+      <img src="/portfolio/image/perfil/Perfil_Photo.webp" alt="Mauro Gomez, full stack developer" data-tilt />
     </div>
     <div class="container container_text">
       <span class="aboutme_label" data-i18n="about.kicker">SOBRE_MÍ</span>
@@ -77,27 +70,15 @@ const msgItems = [
           </div>
           <span data-i18n="about.tab.front">Frontend</span>
         </li>
-        <li data-index="3">
-          <div class="icon-box">
-            <svg viewBox="0 0 16 16">
-              <path
-                d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525"
-              ></path>
-            </svg>
-          </div>
-          <span data-i18n="about.tab.data">Database</span>
-        </li>
       </ul>
 
       <div class="text_block">
         <h4 id="text-h4" data-i18n="about.me.title">
-          Soy Mauro, desarrollador de software. Estudio en la Universidad
-          Provincial de Administración, Tecnología y Oficios (UPATECO) y busco
-          proyectos donde pueda construir de verdad.
+          Soy Mauro, desarrollador full stack y estudiante en UPATECO. Convierto ideas en productos que funcionan en producción y busco un equipo donde aportar desde el primer día.
         </h4>
         <h5 id="text-h5" data-i18n="about.me.text">
           Trabajo el producto de punta a punta: APIs con Java, Spring Boot,
-          NestJS y FastAPI, interfaces con Angular, Next.js, Svelte y Astro, y
+          NestJS y FastAPI, interfaces con Angular, Next.js, React y Astro, y
           PostgreSQL para los datos.
         </h5>
       </div>
@@ -166,7 +147,7 @@ const msgItems = [
   }
   html,
   body {
-    background-color: #111111;
+    background-color: #0a0a0a;
     color: white;
     overflow-x: hidden;
     margin: 0%;

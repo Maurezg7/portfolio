@@ -1,0 +1,16 @@
+# Mauro Gomez - Full Stack Developer
+
+> Full stack developer. Backends in Java (Spring Boot), Python (FastAPI) and Rust (also Django, Docker, Kubernetes, AWS, PostgreSQL, MongoDB); web fundamentals (HTML, CSS, SASS, JavaScript, TypeScript); software testing (QA) and API documentation with Swagger and Postman; Tailwind CSS; currently learning C and C++; learning Spring Security, Spring Data JPA, Kafka, JUnit and Mockito (Java), Pydantic, SQLAlchemy and Celery (Python), Tokio, Axum, Actix Web, SQLx and Serde (Rust); tooling: pnpm and Bun; plans to learn Kotlin, Swift and SQLite; solid base in algebra and mathematical analysis; game development with Godot, Unity, GDScript and C#; frontends in Angular, Next.js, React and Astro. Studies at UPATECO. 2nd place at the PunaTech Hackathon. Open to work.
+
+## Pages
+- [About](https://maurezg7.github.io/portfolio/aboutme/)
+- [Skills](https://maurezg7.github.io/portfolio/skills/)
+- [Projects](https://maurezg7.github.io/portfolio/projects/)
+- [Contact](https://maurezg7.github.io/portfolio/contact/)
+
+## Featured projects
+- Dengue Centinela: dengue risk heat map for Salta from WhatsApp reports (React 19, TanStack Start, Express, Prisma). Not deployed. https://github.com/EstebanNahuelok/dengue-centinela
+- Cazatalentos: on-chain record of early artist backers (Solidity, React, NestJS, Monad). https://cazatalentos.vercel.app/ , https://github.com/Maurezg7/cazatalentos
+- SEM Salta: metered parking payments with MercadoPago (NestJS, React). 2nd place, PunaTech Hackathon.
+- Hermes: company management platform (Java, Spring Boot, Angular).
+- YieldVault: autonomous yield agent smart contract in Rust (Odra, Casper).

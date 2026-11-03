@@ -5,6 +5,47 @@ import "../../assets/styles/scss/project-detail.scss";
 export function getStaticPaths() {
   return [
     {
+      params: { id: "dengue-centinela" },
+      props: {
+        title: "DENGUE CENTINELA",
+        date: "2026",
+        image: "/portfolio/image/projects/DengueCentinela.svg",
+        repoUrl: "https://github.com/EstebanNahuelok/dengue-centinela",
+        stack: ["React 19", "TanStack Start", "Tailwind", "Leaflet", "Express", "Prisma", "PostgreSQL", "Docker"],
+        description:
+          "Dengue Centinela es detección temprana y mapeo de riesgo de dengue en la ciudad de Salta. Las personas reportan síntomas o criaderos por WhatsApp, una IA clasifica cada reporte, el sistema lo cruza con el clima y arma un score de riesgo por barrio en un mapa de calor. Es un monorepo con un backend en Express, Prisma y PostgreSQL y un frontend en React 19 con TanStack Start, Tailwind, Leaflet y H3. Todavía no está desplegado.",
+        highlights: [
+          "Reportes por WhatsApp con Twilio, clasificados con IA",
+          "Score de riesgo por barrio cruzado con datos del clima",
+          "Mapa de calor con Leaflet y hexágonos H3",
+          "React 19 con TanStack Start (Router + SSR) y Tailwind",
+          "Express y Prisma sobre PostgreSQL (Neon), con Docker Compose como respaldo local",
+          "Modo mock en el frontend para trabajar sin el backend",
+        ],
+      },
+    },
+    {
+      params: { id: "cazatalentos" },
+      props: {
+        title: "CAZATALENTOS",
+        date: "OCTUBRE_2026",
+        image: "/portfolio/image/projects/Cazatalentos.svg",
+        siteUrl: "https://cazatalentos.vercel.app/",
+        repoUrl: "https://github.com/Maurezg7/cazatalentos",
+        stack: ["Solidity", "React", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "wagmi", "Monad"],
+        description:
+          "Cazatalentos es el registro público de quién creyó primero en un artista. Los primeros seguidores firman on-chain y, si el artista triunfa, se reparten un pozo de recompensa según qué tan temprano apostaron. Es un monorepo hecho para el hackathon de Monad: un contrato inmutable en Solidity sin admin ni proxy, una app web en React con login por billetera y una API en NestJS con Prisma y PostgreSQL.",
+        highlights: [
+          "Contrato inmutable en Solidity: sin proxy, sin owner, sin admin, con más de 87 tests y 6 invariantes",
+          "Protección de los pioneros contra la dilución: el peso se calcula con un snapshot de costo O(1)",
+          "Pagos por retiro (pull payments) y reglas de aprobación estrictas con quórum del 20%",
+          "App web en React con login por billetera (Privy, wagmi, viem)",
+          "API en NestJS sobre Fastify con Prisma, límite de peticiones y logs estructurados",
+          "Desplegado en Monad Testnet, con decisiones técnicas documentadas",
+        ],
+      },
+    },
+    {
       params: { id: "meetflow" },
       props: {
         title: "MEETFLOW",
@@ -184,8 +225,8 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
     </a>
 
     <div class="detail_hero">
-      <div class="detail_img">
-        <img src={image} alt={title} />
+      <div class="detail_img" data-tilt>
+        <img src={image} alt={title} decoding="async" fetchpriority="high" width="1280" height="720" />
       </div>
       <div class="detail_header">
         <div class="detail_meta">
@@ -228,7 +269,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
       </div>
     </div>
 
-    <div class="detail_body">
+    <div class="detail_body" data-reveal>
       <div class="detail_section">
         <h6 data-i18n="projects.desc">DESCRIPCIÓN</h6>
         <div class="line"></div>
@@ -275,7 +316,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
   }
   html,
   body {
-    background-color: #111111;
+    background-color: #0a0a0a;
     color: white;
     overflow-x: hidden;
     margin: 0%;
