@@ -929,3 +929,19 @@ nav {
     nav .despliegue #menu-items .contact-me .bi-caret-right { animation: none !important; transition: none !important; }
     nav .despliegue #menu-items .contact-me a .card-back .social-name { opacity: 1; }
 }
+
+
+// Large screens: center the menu link letters
+@media (min-width: 1025px) {
+    nav .despliegue #menu-items {
+        align-items: center;
+
+        > li:not(.contact-me) {
+            justify-content: center;
+            width: 100%;
+
+            .cont_sections { justify-content: center; align-items: center; }
+            .cont_sections a { text-align: center; }
+        }
+    }
+}
