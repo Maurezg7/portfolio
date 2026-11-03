@@ -835,8 +835,8 @@ nav {
 @keyframes caret-nudge { 50% { transform: translateX(5px); } }
 @keyframes shine-sweep { from { transform: translateX(-130%) skewX(-20deg); } to { transform: translateX(230%) skewX(-20deg); } }
 @keyframes label-in {
-    from { opacity: 0; letter-spacing: 0.25em; transform: translateY(8px) scale(0.85); filter: blur(3px); }
-    to { opacity: 1; letter-spacing: 0.02em; transform: none; filter: blur(0); }
+    from { opacity: 0; transform: translateY(8px) scale(0.85); filter: blur(3px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
 }
 
 @media (hover: hover) and (min-width: 1025px) {
@@ -900,6 +900,9 @@ nav {
                 text-transform: uppercase;
 
                 padding: 0.2rem;
+                display: grid;
+                place-items: center;
+                text-align: center;
 
                 // Heavitas is very wide: use a compact face so long names (Instagram) fit the 5rem tile
                 .social-name {
@@ -907,9 +910,11 @@ nav {
                     width: 100%;
                     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
                     font-size: 0.68rem;
-                    letter-spacing: 0.02em;
+                    letter-spacing: 0;
                     white-space: nowrap;
                     text-align: center;
+                    margin: 0 auto;
+                    transform-origin: center;
                     opacity: 0;
                 }
             }
