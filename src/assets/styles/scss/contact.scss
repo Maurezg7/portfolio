@@ -475,3 +475,7 @@ form button[type="submit"] {
 }
 
 .hp_field { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; pointer-events: none; }
+
+
+// Clear the fixed navbar at every size
+#contact_container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem); }
