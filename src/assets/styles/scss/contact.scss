@@ -479,3 +479,54 @@ form button[type="submit"] {
 
 // Clear the fixed navbar at every size
 #contact_container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem); }
+
+
+// ---- CV download block ----
+.contact_cv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cv_label {
+  @include monospace(0.75rem, 700);
+  color: $orange;
+  letter-spacing: 0.12em;
+}
+
+.cv_buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.cv_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  @include monospace(0.8rem, 700);
+  color: #0a0a0a;
+  background: linear-gradient(135deg, $accent, #b6ff9e);
+  border: 1px solid $accent;
+  padding: 0.6rem 1.05rem;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+
+  svg { width: 15px; height: 15px; fill: currentColor; flex-shrink: 0; }
+
+  &:nth-child(2) {
+    color: $orange;
+    background: transparent;
+    border-color: rgba(255, 154, 61, 0.6);
+    &:hover { background: rgba(255, 154, 61, 0.14); box-shadow: 0 0 26px rgba(255, 154, 61, 0.45); transform: translateY(-2px); }
+  }
+
+  &:hover { box-shadow: 0 0 30px rgba(125, 255, 90, 0.5); transform: translateY(-2px); }
+}
+
+.cv_hint {
+  @include monospace(0.68rem, 400);
+  color: $text-dim;
+  letter-spacing: 0.04em;
+}
