@@ -2,6 +2,10 @@
 
 > Full stack developer. Backends in Java (Spring Boot), Python (FastAPI) and Rust (also Django, Docker, Kubernetes, AWS, PostgreSQL, MongoDB); web fundamentals (HTML, CSS, SASS, JavaScript, TypeScript); software testing (QA) and API documentation with Swagger and Postman; Tailwind CSS; currently learning C and C++; learning Spring Security, Spring Data JPA, Kafka, JUnit and Mockito (Java), Pydantic, SQLAlchemy and Celery (Python), Tokio, Axum, Actix Web, SQLx and Serde (Rust); tooling: pnpm and Bun; plans to learn Kotlin, Swift and SQLite; solid base in algebra and mathematical analysis; game development with Godot, Unity, GDScript and C#; frontends in Angular, Next.js, React and Astro. Studies at UPATECO. 2nd place at the PunaTech Hackathon. Open to work.
 
+## CV
+- CV (Java / Spring Boot): https://maurezg7.github.io/portfolio/docs/Mauro_Gomez_CV_Java_EN.pdf (ES: Mauro_Gomez_CV_Java_ES.pdf)
+- CV (Python / REST APIs): https://maurezg7.github.io/portfolio/docs/Mauro_Gomez_CV_Python_EN.pdf (ES: Mauro_Gomez_CV_Python_ES.pdf)
+
 ## Pages
 - [About](https://maurezg7.github.io/portfolio/aboutme/)
 - [Skills](https://maurezg7.github.io/portfolio/skills/)

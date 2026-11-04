@@ -10,6 +10,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "nav.projects": "PROJECTS",
     "nav.contact": "CONTACT",
     "nav.lang": "Language",
+    "nav.cv": "Download CV",
 
     "home.role": "FULL STACK DEVELOPER",
     "home.line":
@@ -79,6 +80,12 @@ const messages: Record<Lang, Record<string, string>> = {
     "projects.features": "FEATURES",
     "projects.team": "TEAM",
 
+    "project.dengue-centinela.badge": "HACKATHON · PUBLIC HEALTH",
+    "project.dengue-centinela.date": "2026",
+    "project.dengue-centinela.desc":
+      "Dengue Centinela is early detection and risk mapping of dengue in the city of Salta. People report symptoms or breeding sites over WhatsApp, an AI classifies each report, the system crosses it with the weather and builds a risk score per neighborhood on a heat map. It is a monorepo with an Express, Prisma and PostgreSQL backend and a React 19 frontend with TanStack Start, Tailwind, Leaflet and H3. Not deployed yet.",
+    "project.dengue-centinela.points":
+      "Reports over WhatsApp with Twilio, classified with AI||Risk score per neighborhood crossed with weather data||Heat map with Leaflet and H3 hexagons||React 19 with TanStack Start (Router + SSR) and Tailwind||Express and Prisma over PostgreSQL (Neon), with Docker Compose as a local fallback||Mock mode in the frontend to work without the backend",
     "project.cazatalentos.badge": "HACKATHON · MONAD",
     "project.cazatalentos.date": "OCTOBER_2026",
     "project.cazatalentos.desc":
@@ -139,6 +146,10 @@ const messages: Record<Lang, Record<string, string>> = {
     "contact.tag": "CONTACT_",
     "contact.line":
       "Do you have a project in mind, or do you want to talk about a job? I am available.",
+    "cv.title": "DOWNLOAD CV",
+    "cv.java": "Java / Spring Boot",
+    "cv.python": "Python / REST APIs",
+    "cv.hint": "PDF · Spanish and English",
     "contact.ready": "OPEN TO WORK",
     "contact.email": "YOUR_EMAIL",
     "contact.message": "MESSAGE",
@@ -191,6 +202,11 @@ function apply(root: ParentNode = document) {
     if (!key || lang !== "en") return;
     const value = t(key);
     if (value) el.setAttribute("aria-label", value);
+  });
+
+  root.querySelectorAll<HTMLAnchorElement>("[data-href-es][data-href-en]").forEach((el) => {
+    const href = lang === "en" ? el.dataset.hrefEn : el.dataset.hrefEs;
+    if (href) el.setAttribute("href", href);
   });
 
   document.documentElement.lang = lang === "en" ? "en" : "es";
