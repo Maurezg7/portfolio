@@ -435,3 +435,8 @@ $card-clip: polygon(
 }
 
 @media (prefers-reduced-motion: reduce) { .item_project--award { animation: none; } }
+
+
+// Always clear the fixed navbar, whatever the screen height (the navbar is 10vh tall on desktop)
+#container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem) !important; }
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { #container { padding-top: calc(var(--nav-h, 36px) + 0.4rem) !important; } }

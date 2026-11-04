@@ -351,3 +351,8 @@ $card-clip: polygon(0% 20px, 20px 0%, calc(100% - 20px) 0%, 100% 20px, 100% 100%
 
 @media (prefers-reduced-motion: reduce) { .detail_hero > * { animation: none; } }
 @media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { .detail_body { backdrop-filter: none; padding: 0.5rem; } .detail_img { box-shadow: none; } }
+
+
+// Always clear the fixed navbar, whatever the screen height
+#detail_container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem) !important; }
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { #detail_container { padding-top: calc(var(--nav-h, 36px) + 0.4rem) !important; } }
