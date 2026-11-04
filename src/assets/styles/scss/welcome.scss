@@ -414,3 +414,11 @@
     .home_nodus figcaption span { display: none; }
     .home_nodus img { box-shadow: none; }
 }
+
+
+// Clear the navbar and never clip the top when content is taller than the viewport
+// Scoped to the home hero (other pages reuse the #container id)
+#container:has(> .status) {
+    padding-top: calc(var(--nav-h, 10vh) + 1rem);
+    justify-content: safe center;
+}

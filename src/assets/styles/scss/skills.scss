@@ -393,3 +393,24 @@ $text-dim: rgba(255, 255, 255, 0.28);
 }
 
 @media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { .tag { display: none; } }
+
+
+// Always clear the fixed navbar (the photo that used to reserve this space is gone)
+#sections_container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem); }
+@media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { #sections_container { padding-top: calc(var(--nav-h, 36px) + 0.4rem); } }
+
+
+// Phones/tablets: one swipeable row of filters instead of seven wrapped rows
+@media (max-width: 768px) {
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+
+    &::-webkit-scrollbar { display: none; }
+  }
+  .chip { flex: 0 0 auto; white-space: nowrap; }
+}
