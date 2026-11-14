@@ -1,288 +1,399 @@
 #!/usr/bin/env python3
-"""Genera public/docs/Mauro_Gomez_CV.pdf (formato Harvard / ATS, una página)."""
+"""Genera los CV en PDF (ES y EN) en public/docs. Requiere: pip install reportlab."""
 
+import shutil
 from pathlib import Path
 
-from reportlab.lib.colors import HexColor, black, white
+from reportlab.lib.colors import HexColor
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfgen import canvas
+from reportlab.platypus import (
+    HRFlowable,
+    KeepTogether,
+    Paragraph,
+    SimpleDocTemplate,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "public" / "docs" / "Mauro_Gomez_CV.pdf"
+DOCS = ROOT / "public" / "docs"
 
-SERIF = "/usr/share/fonts/noto/NotoSerif-Regular.ttf"
-SERIF_BOLD = "/usr/share/fonts/noto/NotoSerif-Bold.ttf"
-SANS = "/usr/share/fonts/noto/NotoSans-Regular.ttf"
-SANS_BOLD = "/usr/share/fonts/noto/NotoSans-Bold.ttf"
+INK = HexColor("#16181a")
+MUTED = HexColor("#4a5056")
+ACCENT = HexColor("#1b7a3a")
+RULE = HexColor("#c9ced3")
 
-# Fallback si Noto Bold no está con ese nombre
-for bold_try in (
-    "/usr/share/fonts/noto/NotoSerif-Bold.ttf",
-    "/usr/share/fonts/TTF/NimbusRoman-Bold.ttf",
-):
-    if Path(bold_try).exists():
-        SERIF_BOLD = bold_try
-        break
-for bold_try in (
-    "/usr/share/fonts/noto/NotoSans-Bold.ttf",
-    "/usr/share/fonts/TTF/crosextra/Carlito-Bold.ttf",
-):
-    if Path(bold_try).exists():
-        SANS_BOLD = bold_try
-        break
-
-pdfmetrics.registerFont(TTFont("CVSerif", SERIF))
-pdfmetrics.registerFont(TTFont("CVSerifBold", SERIF_BOLD))
-pdfmetrics.registerFont(TTFont("CVSans", SANS))
-pdfmetrics.registerFont(TTFont("CVSansBold", SANS_BOLD))
-
-INK = HexColor("#1a1a1a")
-MUTED = HexColor("#444444")
-RULE = HexColor("#222222")
+FONT_CANDIDATES = [
+    ("/usr/share/fonts/noto/NotoSans-Regular.ttf", "/usr/share/fonts/noto/NotoSans-Bold.ttf"),
+    ("/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf", "/usr/share/fonts/truetype/noto/NotoSans-Bold.ttf"),
+    ("/usr/share/fonts/liberation/LiberationSans-Regular.ttf", "/usr/share/fonts/liberation/LiberationSans-Bold.ttf"),
+    ("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"),
+    ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
+]
 
 
-def wrap(c, text, font, size, max_w):
-    words = text.split()
-    lines, cur = [], ""
-    for w in words:
-        trial = f"{cur} {w}".strip()
-        if c.stringWidth(trial, font, size) <= max_w:
-            cur = trial
-        else:
-            if cur:
-                lines.append(cur)
-            cur = w
-    if cur:
-        lines.append(cur)
-    return lines or [""]
+def register_fonts():
+    for regular, bold in FONT_CANDIDATES:
+        if Path(regular).exists() and Path(bold).exists():
+            pdfmetrics.registerFont(TTFont("CV", regular))
+            pdfmetrics.registerFont(TTFont("CV-Bold", bold))
+            pdfmetrics.registerFontFamily("CV", normal="CV", bold="CV-Bold", italic="CV", boldItalic="CV-Bold")
+            return "CV", "CV-Bold"
+    return "Helvetica", "Helvetica-Bold"
 
 
-def draw_section(c, y, title, left, right):
-    c.setFont("CVSansBold", 9.2)
-    c.setFillColor(INK)
-    c.drawString(left, y, title.upper())
-    y -= 2.2 * mm
-    c.setStrokeColor(RULE)
-    c.setLineWidth(0.7)
-    c.line(left, y, right, y)
-    return y - 3.6 * mm
+CONTACT = {
+    "phone": "+54 9 387 563 7692",
+    "email": "mauroleonelg7@gmail.com",
+    "links": [
+        ("maurezg7.github.io/portfolio", "https://maurezg7.github.io/portfolio/"),
+        ("github.com/Maurezg7", "https://github.com/Maurezg7"),
+        ("linkedin.com/in/maurezg7", "https://www.linkedin.com/in/maurezg7/"),
+    ],
+}
 
-
-def draw_bullets(c, y, items, left, width, size=8.4, leading=3.15 * mm):
-    for item in items:
-        lines = wrap(c, item, "CVSans", size, width - 4 * mm)
-        for i, line in enumerate(lines):
-            if y < 14 * mm:
-                return y
-            if i == 0:
-                c.setFont("CVSans", size)
-                c.setFillColor(INK)
-                c.drawString(left, y, "•")
-                c.drawString(left + 3.2 * mm, y, line)
-            else:
-                c.drawString(left + 3.2 * mm, y, line)
-            y -= leading
-        y -= 0.4 * mm
-    return y
-
-
-def build():
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    c = canvas.Canvas(str(OUT), pagesize=A4)
-    W, H = A4
-    left = 16 * mm
-    right = W - 16 * mm
-    width = right - left
-    y = H - 16 * mm
-
-    # Nombre
-    c.setFillColor(INK)
-    c.setFont("CVSerifBold", 20)
-    c.drawCentredString(W / 2, y, "MAURO GOMEZ")
-    y -= 6 * mm
-
-    c.setFont("CVSans", 9.5)
-    c.setFillColor(MUTED)
-    c.drawCentredString(W / 2, y, "Desarrollador Full Stack")
-    y -= 4.2 * mm
-
-    contact = (
-        "Salta, Argentina  |  +54 9 3875 637692  |  mauroleonelg7@gmail.com"
-    )
-    c.setFont("CVSans", 7.8)
-    c.drawCentredString(W / 2, y, contact)
-    y -= 3.4 * mm
-    links = (
-        "github.com/Maurezg7  |  linkedin.com/in/maurezg7  |  "
-        "instagram.com/isdeiko  |  maurezg7.github.io/portfolio"
-    )
-    c.drawCentredString(W / 2, y, links)
-    y -= 6 * mm
-
-    # Perfil (corto, tono humano)
-    y = draw_section(c, y, "Perfil", left, right)
-    profile = (
-        "Estudio Desarrollo de Software en UPATECO (Salta). Armo el producto "
-        "completo: API, interfaz y datos. Trabajo sobre todo con Java, Spring Boot, "
-        "NestJS, FastAPI, Angular, Next.js y PostgreSQL. Busco un equipo donde "
-        "pueda seguir construyendo en producción."
-    )
-    for line in wrap(c, profile, "CVSans", 8.6, width):
-        c.setFont("CVSans", 8.6)
-        c.setFillColor(INK)
-        c.drawString(left, y, line)
-        y -= 3.4 * mm
-    y -= 2.2 * mm
-
-    # Educación
-    y = draw_section(c, y, "Educación", left, right)
-    c.setFont("CVSansBold", 9)
-    c.setFillColor(INK)
-    c.drawString(left, y, "Tecnicatura en Desarrollo de Software")
-    c.setFont("CVSans", 8.5)
-    c.drawRightString(right, y, "2023 – actualidad")
-    y -= 3.3 * mm
-    c.setFont("CVSans", 8.3)
-    c.setFillColor(MUTED)
-    c.drawString(left, y, "UPATECO — Universidad Provincial de Administración, Tecnología y Oficios")
-    y -= 3.5 * mm
-    c.setFont("CVSansBold", 9)
-    c.setFillColor(INK)
-    c.drawString(left, y, "Club Java Master")
-    c.setFont("CVSans", 8.5)
-    c.drawRightString(right, y, "2025")
-    y -= 3.3 * mm
-    c.setFont("CVSans", 8.3)
-    c.setFillColor(MUTED)
-    c.drawString(left, y, "Udemy — formación intensiva en Java y Spring")
-    y -= 3.5 * mm
-    c.setFont("CVSansBold", 9)
-    c.setFillColor(INK)
-    c.drawString(left, y, "Desarrollo Web")
-    c.setFont("CVSans", 8.5)
-    c.drawRightString(right, y, "2021")
-    y -= 3.3 * mm
-    c.setFont("CVSans", 8.3)
-    c.setFillColor(MUTED)
-    c.drawString(left, y, "CoderHouse")
-    y -= 5 * mm
-
-    # Proyectos
-    y = draw_section(c, y, "Proyectos", left, right)
-
-    projects = [
-        {
-            "title": "MeetFlow",
-            "meta": "Simulación laboral No Country  |  Oct 2026",
-            "bullets": [
-                "App de videollamadas en equipo: salas, sala de espera e invitados sin cuenta.",
-                "Next.js + Express + Prisma + PostgreSQL; llamadas con GetStream y Socket.IO.",
-                "Sitio: web-ruddy-mu-22.vercel.app — github.com/No-Country-simulation/S08-26-equipo-5",
-            ],
+CV = {
+    "es": {
+        "file": "Mauro_Gomez_CV_Java_ES.pdf",
+        "lang": "es-AR",
+        "role": "Desarrollador Full Stack Junior — Java · React",
+        "location": "Salta, Argentina",
+        "subject": "CV de Mauro Gomez, desarrollador full stack: Java y React",
+        "sections": {
+            "profile": "Perfil",
+            "skills": "Habilidades técnicas",
+            "projects": "Proyectos",
+            "training": "Experiencia en formación",
+            "education": "Educación",
+            "extra": "Información adicional",
         },
-        {
-            "title": "SEM Salta",
-            "meta": "Hackathon PunaTech — 2.º puesto  |  May 2026",
-            "bullets": [
-                "Estacionamiento medido digital para la Municipalidad de Salta, con pagos MercadoPago.",
-                "NestJS, React, Vite, Tailwind y PostgreSQL. Equipo de tres.",
-                "Sitio: parki-pay.vercel.app",
-            ],
+        "profile": (
+            "Desarrollador de software (título universitario, UPATecO) orientado a full stack: "
+            "backend en <b>Java</b> con Spring Boot e interfaces en <b>React</b>. Construí APIs REST "
+            "con JWT sobre PostgreSQL y frontends en React con TypeScript, y participé en hackatones "
+            "en equipos de 3 personas, con un 2.º puesto en el Hackathon PunaTech. Actualmente estoy "
+            "aprendiendo <b>Rust</b>. Inglés B1. Busco mi primera posición formal y remota como "
+            "desarrollador backend o full stack."
+        ),
+        "skills": [
+            ("Backend", "Java, Spring Boot, Spring Security, Spring Data JPA, JWT, APIs REST"),
+            ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
+            ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
+            ("Prácticas", "REST, MVC, SOLID, POO, DTO, Clean Code"),
+            ("Aprendiendo", "Rust (Odra Framework; un contrato desplegado en Casper Testnet)"),
+        ],
+        "projects": [
+            {
+                "title": "Hermes — Plataforma de mensajería y comunidades",
+                "meta": "Proyecto personal · 2026",
+                "stack": "Java 21 · Spring Boot 3.4 · Spring Security · JWT · Spring Data JPA · PostgreSQL · Angular 21 · Docker · Nginx",
+                "bullets": [
+                    "Desarrollé una aplicación full stack de mensajería y gestión de comunidades, inspirada en Discord, con backend en Spring Boot.",
+                    "Implementé la autenticación con JWT y rutas protegidas (Spring Security), con verificación por email mediante códigos de 6 dígitos que expiran a los 5 minutos.",
+                    "Diseñé el modelo relacional en PostgreSQL (amistades, estados, servidores con canales dinámicos y notificaciones) y expuse una API REST que el cliente consulta por polling.",
+                    "Configuré Docker y Nginx como proxy inverso y desplegué en Render.",
+                ],
+                "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
+            },
+            {
+                "title": "SEM Salta — Sistema de estacionamiento medido",
+                "meta": "Hackathon PunaTech, 2.º puesto · 2026",
+                "stack": "React · Vite · Tailwind CSS · NestJS · PostgreSQL · MercadoPago",
+                "bullets": [
+                    "Desarrollé el frontend en React (Vite, Tailwind CSS) del sistema de estacionamiento medido para la Municipalidad de Salta.",
+                    "Construí la interfaz de pago sobre MercadoPago y el consumo de la API REST del backend.",
+                    "Trabajo en equipo de 3 con entrega bajo las restricciones de tiempo del evento.",
+                ],
+                "links": [("parki-pay.vercel.app", "https://parki-pay.vercel.app/")],
+            },
+            {
+                "title": "AgroCentinela — PWA de alertas agroclimáticas offline-first",
+                "meta": "Hackathon Kiro + AWS (Código Facilito) · 2026",
+                "stack": "React 18 · Vite · TypeScript · NestJS en AWS Lambda · DynamoDB · AWS SAM · Zod",
+                "bullets": [
+                    "Desarrollé el proyecto de forma individual: backend, frontend, infraestructura y despliegue.",
+                    "PWA offline-first en React y TypeScript (Service Worker, Background Sync, IndexedDB), con notificaciones push y un motor de recomendaciones en capas (Amazon Bedrock con respaldo on-device y reglas).",
+                    "Backend serverless con infraestructura como código (AWS SAM) y contratos de datos compartidos con Zod.",
+                    "Desplegado en Netlify; probado por jueces y ~15–20 usuarios durante el hackathon.",
+                ],
+                "links": [
+                    ("agrocentinela.netlify.app", "https://agrocentinela.netlify.app/"),
+                    ("github.com/Maurezg7/AgroCentinela", "https://github.com/Maurezg7/AgroCentinela"),
+                ],
+            },
+            {
+                "title": "Dengue Centinela — Vigilancia comunitaria de dengue",
+                "meta": "Hackathon · 2026",
+                "stack": "React 19 · Express · Prisma",
+                "bullets": [
+                    "Desarrollé el backend para el registro y la consulta de reportes comunitarios de dengue en Salta.",
+                    "Diseñé el modelo de datos y las rutas REST consumidas por el frontend en React 19.",
+                ],
+                "links": [],
+            },
+            {
+                "title": "YieldVault — Smart contract en Rust sobre Casper",
+                "meta": "Casper Agentic Buildathon · 2026",
+                "stack": "Rust · Odra Framework · Casper Testnet",
+                "bullets": [
+                    "Como Smart Contracts Lead, desarrollé un smart contract en Rust desplegado en Casper Testnet, con registro on-chain de las acciones del agente para trazabilidad y auditoría.",
+                    "Funciones de rebalanceo y depósito; resolví una falla out-of-gas en el despliegue al ajustar el gas de 200 a 500 CSPR.",
+                ],
+                "links": [],
+            },
+        ],
+        "link_label": "Enlaces",
+        "training": [
+            (
+                "Softtek — Prácticas / simulación laboral",
+                "Julio – agosto 2025",
+                "Desarrollo en equipo de un sistema de Gestión de Biblioteca en Java (patrón MVC).",
+                [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
+            ),
+            (
+                "No Country — Simulación laboral",
+                "Octubre 2026",
+                "Trabajo en equipo con metodologías ágiles sobre un proyecto real.",
+                [("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5")],
+            ),
+        ],
+        "education": [
+            ("Tecnicatura en Desarrollo de Software", "UPATecO — Universidad Provincial de Administración, Tecnología y Oficios", "2023 – 2025"),
+            ("Club Java Master, formación intensiva", "Udemy", "2025"),
+            ("Desarrollo Web", "CoderHouse", "2021"),
+        ],
+        "extra": [
+            ("Idiomas", "Español (nativo) · Inglés B1"),
+            ("Comunidad", "Participante activo de SaltaDev y de hackatones (PunaTech, Kiro + AWS, Casper)."),
+            ("Disponibilidad", "Trabajo remoto."),
+        ],
+    },
+    "en": {
+        "file": "Mauro_Gomez_CV_Java_EN.pdf",
+        "lang": "en",
+        "role": "Junior Full Stack Developer — Java · React",
+        "location": "Salta, Argentina (UTC-3)",
+        "subject": "Resume of Mauro Gomez, full stack developer: Java and React",
+        "sections": {
+            "profile": "Summary",
+            "skills": "Technical skills",
+            "projects": "Projects",
+            "training": "Training experience",
+            "education": "Education",
+            "extra": "Additional information",
         },
-        {
-            "title": "Estelares",
-            "meta": "Hackathon Argentina Challenge  |  Sep 2026",
-            "bullets": [
-                "Remesas sobre Stellar testnet: envío, QR, pool comunitario y caja familiar con Freighter.",
-                "React, Vite, Tailwind y Django. Sitio: frontend-estellares.vercel.app",
-            ],
-        },
-        {
-            "title": "INVOICE",
-            "meta": "Hackathon Aleph  |  Ago 2026",
-            "bullets": [
-                "Compara factura y orden de compra en la máquina local (OCR + reglas + QVAC on-device).",
-                "React, Vite, TypeScript y Express. Repo: github.com/leitolml1/invoice",
-            ],
-        },
-        {
-            "title": "AgroCentinela",
-            "meta": "Hackathon Kiro + AWS  |  2026",
-            "bullets": [
-                "PWA offline-first de alertas de helada y estrés hídrico para productores del NOA.",
-                "React, NestJS en AWS Lambda, DynamoDB. Sitio: agrocentinela.netlify.app",
-            ],
-        },
-        {
-            "title": "YieldVault",
-            "meta": "Casper Agentic Buildathon — Smart Contracts Lead  |  2026",
-            "bullets": [
-                "Contrato en Rust/Odra en Casper Testnet; log on-chain de las decisiones del agente.",
-            ],
-        },
-        {
-            "title": "Hermes",
-            "meta": "Proyecto personal  |  Mar 2026",
-            "bullets": [
-                "Plataforma de gestión y comunicación: Spring Boot + JWT, Angular y PostgreSQL.",
-                "Sitio: hermes-inky-two.vercel.app",
-            ],
-        },
+        "profile": (
+            "Software developer (university degree, UPATecO) focused on full stack work: "
+            "<b>Java</b> backends with Spring Boot and <b>React</b> interfaces. I built REST APIs with "
+            "JWT on PostgreSQL and React frontends in TypeScript, and competed in hackathons in teams "
+            "of three, including 2nd place at the PunaTech Hackathon. Currently learning <b>Rust</b>. "
+            "English B1. Seeking my first full-time, remote role as a backend or full stack developer."
+        ),
+        "skills": [
+            ("Backend", "Java, Spring Boot, Spring Security, Spring Data JPA, JWT, REST APIs"),
+            ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
+            ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
+            ("Practices", "REST, MVC, SOLID, OOP, DTO, Clean Code"),
+            ("Currently learning", "Rust (Odra Framework; one contract deployed on Casper Testnet)"),
+        ],
+        "projects": [
+            {
+                "title": "Hermes — Messaging and community platform",
+                "meta": "Personal project · 2026",
+                "stack": "Java 21 · Spring Boot 3.4 · Spring Security · JWT · Spring Data JPA · PostgreSQL · Angular 21 · Docker · Nginx",
+                "bullets": [
+                    "Built a full stack, Discord-inspired messaging and community application with a Spring Boot backend.",
+                    "Implemented JWT authentication and protected routes (Spring Security), with email verification via 6-digit codes that expire after 5 minutes.",
+                    "Designed the PostgreSQL relational model (friendships, statuses, servers with dynamic channels, notifications) and exposed a REST API the client polls to refresh messages.",
+                    "Configured Docker and Nginx as a reverse proxy and deployed on Render.",
+                ],
+                "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
+            },
+            {
+                "title": "SEM Salta — Metered parking system",
+                "meta": "PunaTech Hackathon, 2nd place · 2026",
+                "stack": "React · Vite · Tailwind CSS · NestJS · PostgreSQL · MercadoPago",
+                "bullets": [
+                    "Built the React frontend (Vite, Tailwind CSS) of the metered-parking system for the Municipality of Salta.",
+                    "Built the MercadoPago payment UI and the integration with the backend REST API.",
+                    "Worked in a team of 3, delivering under the event's time constraints.",
+                ],
+                "links": [("parki-pay.vercel.app", "https://parki-pay.vercel.app/")],
+            },
+            {
+                "title": "AgroCentinela — Offline-first agro-climate alerts PWA",
+                "meta": "Kiro + AWS Hackathon (Código Facilito) · 2026",
+                "stack": "React 18 · Vite · TypeScript · NestJS on AWS Lambda · DynamoDB · AWS SAM · Zod",
+                "bullets": [
+                    "Built the project individually: backend, frontend, infrastructure and deployment.",
+                    "Offline-first PWA in React and TypeScript (Service Worker, Background Sync, IndexedDB), with push notifications and a layered recommendation engine (Amazon Bedrock with on-device fallback and rules).",
+                    "Serverless backend with infrastructure as code (AWS SAM) and shared data contracts with Zod.",
+                    "Deployed on Netlify; tested by judges and ~15–20 users during the hackathon.",
+                ],
+                "links": [
+                    ("agrocentinela.netlify.app", "https://agrocentinela.netlify.app/"),
+                    ("github.com/Maurezg7/AgroCentinela", "https://github.com/Maurezg7/AgroCentinela"),
+                ],
+            },
+            {
+                "title": "Dengue Centinela — Community dengue surveillance",
+                "meta": "Hackathon · 2026",
+                "stack": "React 19 · Express · Prisma",
+                "bullets": [
+                    "Built the backend for logging and querying community dengue reports in Salta.",
+                    "Designed the data model and the REST routes consumed by the React 19 frontend.",
+                ],
+                "links": [],
+            },
+            {
+                "title": "YieldVault — Rust smart contract on Casper",
+                "meta": "Casper Agentic Buildathon · 2026",
+                "stack": "Rust · Odra Framework · Casper Testnet",
+                "bullets": [
+                    "As Smart Contracts Lead, built a Rust smart contract deployed on Casper Testnet, with on-chain logging of the agent's actions for traceability and auditing.",
+                    "Implemented rebalancing and deposit functions; fixed an out-of-gas deployment failure by raising the deploy gas from 200 to 500 CSPR.",
+                ],
+                "links": [],
+            },
+        ],
+        "link_label": "Links",
+        "training": [
+            (
+                "Softtek — Internship / work simulation",
+                "July – August 2025",
+                "Team development of a Library Management system in Java (MVC pattern).",
+                [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
+            ),
+            (
+                "No Country — Work simulation",
+                "October 2026",
+                "Teamwork with agile methodologies on a real project.",
+                [("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5")],
+            ),
+        ],
+        "education": [
+            ("Technical Degree in Software Development", "UPATecO — Provincial University of Administration, Technology and Trades", "2023 – 2025"),
+            ("Club Java Master, intensive training", "Udemy", "2025"),
+            ("Web Development", "CoderHouse", "2021"),
+        ],
+        "extra": [
+            ("Languages", "Spanish (native) · English B1"),
+            ("Community", "Active member of SaltaDev; hackathon participant (PunaTech, Kiro + AWS, Casper)."),
+            ("Availability", "Remote work."),
+        ],
+    },
+}
+
+
+def link(label, url):
+    return f'<link href="{url}" color="#1b7a3a">{label}</link>'
+
+
+def build(lang, font, bold):
+    cv = CV[lang]
+    out = DOCS / cv["file"]
+
+    def style(name, **kw):
+        base = dict(fontName=font, fontSize=9.6, leading=13.2, textColor=INK)
+        base.update(kw)
+        return ParagraphStyle(name, **base)
+
+    s_name = style("name", fontName=bold, fontSize=23, leading=27, alignment=TA_CENTER, spaceAfter=1)
+    s_role = style("role", fontName=bold, fontSize=10.6, leading=14, alignment=TA_CENTER, textColor=ACCENT)
+    s_contact = style("contact", fontSize=8.8, leading=12.2, alignment=TA_CENTER, textColor=MUTED)
+    s_section = style("section", fontName=bold, fontSize=9.6, leading=12, textColor=ACCENT, spaceBefore=9, spaceAfter=2)
+    s_body = style("body")
+    s_title = style("title", fontName=bold, fontSize=9.8, leading=12.8)
+    s_meta = style("meta", fontSize=8.6, leading=12.8, textColor=MUTED, alignment=2)
+    s_stack = style("stack", fontSize=8.5, leading=11.4, textColor=MUTED, spaceAfter=1.5)
+    s_bullet = style("bullet", leftIndent=9, bulletIndent=1, spaceAfter=0.6)
+    s_small = style("small", fontSize=8.7, leading=11.8, textColor=MUTED)
+
+    width = A4[0] - 32 * mm - 12  # el frame de platypus tiene 6 pt de padding por lado
+
+    def section(key):
+        return [
+            Paragraph(cv["sections"][key].upper(), s_section),
+            HRFlowable(width="100%", thickness=0.7, color=RULE, spaceBefore=0, spaceAfter=4),
+        ]
+
+    def heading(title, meta):
+        t = Table([[Paragraph(title, s_title), Paragraph(meta, s_meta)]], colWidths=[width * 0.6, width * 0.4], hAlign="LEFT")
+        t.setStyle(TableStyle([
+            ("VALIGN", (0, 0), (-1, -1), "TOP"),
+            ("LEFTPADDING", (0, 0), (-1, -1), 0),
+            ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+            ("TOPPADDING", (0, 0), (-1, -1), 0),
+            ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+        ]))
+        return t
+
+    story = [
+        Paragraph("MAURO GOMEZ", s_name),
+        Paragraph(cv["role"], s_role),
+        Spacer(1, 2),
+        Paragraph(f'{cv["location"]} · {CONTACT["phone"]} · {link(CONTACT["email"], "mailto:" + CONTACT["email"])}', s_contact),
+        Paragraph(" · ".join(link(l, u) for l, u in CONTACT["links"]), s_contact),
     ]
 
-    for p in projects:
-        if y < 28 * mm:
-            break
-        c.setFont("CVSansBold", 9)
-        c.setFillColor(INK)
-        c.drawString(left, y, p["title"])
-        y -= 3.1 * mm
-        c.setFont("CVSans", 7.8)
-        c.setFillColor(MUTED)
-        c.drawString(left, y, p["meta"])
-        y -= 3.2 * mm
-        y = draw_bullets(c, y, p["bullets"], left, width, size=8.1, leading=3.0 * mm)
-        y -= 1.4 * mm
+    story += section("profile") + [Paragraph(cv["profile"], s_body)]
 
-    # Skills
-    y = draw_section(c, y, "Habilidades", left, right)
-    skills = [
-        ("Lenguajes", "Java, TypeScript, Python, C, C++, Rust"),
-        ("Backend", "Spring Boot, NestJS, FastAPI, Express, JWT, Prisma"),
-        ("Frontend", "Angular, Next.js, Svelte, Astro, React, Tailwind, SCSS"),
-        ("Datos", "PostgreSQL"),
-        ("Otros", "Git, Docker, Vercel, Render, GetStream, Stellar"),
-    ]
-    for label, value in skills:
-        c.setFont("CVSansBold", 8.2)
-        c.setFillColor(INK)
-        label_t = f"{label}: "
-        c.drawString(left, y, label_t)
-        x = left + c.stringWidth(label_t, "CVSansBold", 8.2)
-        c.setFont("CVSans", 8.2)
-        c.setFillColor(MUTED)
-        for line in wrap(c, value, "CVSans", 8.2, width - (x - left)):
-            c.drawString(x, y, line)
-            y -= 3.1 * mm
-            x = left + 2 * mm
-        y += 0.3 * mm
-    y -= 1.5 * mm
+    story += section("skills")
+    for label, value in cv["skills"]:
+        story.append(Paragraph(f"<b>{label}:</b> {value}", s_body))
 
-    # Extra
-    y = draw_section(c, y, "Idiomas y más", left, right)
-    extras = [
-        "Español nativo. Inglés en progreso (cerca de B1).",
-        "Participo en SaltaDev y en hackathons cuando puedo.",
-    ]
-    y = draw_bullets(c, y, extras, left, width, size=8.2, leading=3.1 * mm)
+    story += section("projects")
+    for p in cv["projects"]:
+        block = [heading(p["title"], p["meta"]), Paragraph(p["stack"], s_stack)]
+        block += [Paragraph(b, s_bullet, bulletText="•") for b in p["bullets"]]
+        if p["links"]:
+            block.append(Paragraph(f'{cv["link_label"]}: ' + " · ".join(link(l, u) for l, u in p["links"]), s_bullet))
+        block.append(Spacer(1, 5))
+        story.append(KeepTogether(block))
 
-    c.showPage()
-    c.save()
-    print(f"OK -> {OUT}")
+    story += section("training")
+    for title, when, text, links in cv["training"]:
+        story.append(KeepTogether([
+            heading(title, when),
+            Paragraph(text, s_body),
+            Paragraph("Repo: " + " · ".join(link(l, u) for l, u in links), s_body),
+            Spacer(1, 4),
+        ]))
+
+    story += section("education")
+    for title, place, when in cv["education"]:
+        story.append(KeepTogether([heading(title, when), Paragraph(place, s_small), Spacer(1, 3)]))
+
+    story += section("extra")
+    for label, value in cv["extra"]:
+        story.append(Paragraph(f"<b>{label}:</b> {value}", s_body))
+
+    doc = SimpleDocTemplate(
+        str(out),
+        pagesize=A4,
+        leftMargin=16 * mm,
+        rightMargin=16 * mm,
+        topMargin=14 * mm,
+        bottomMargin=13 * mm,
+        title="Mauro Gomez — " + cv["role"],
+        author="Mauro Gomez",
+        subject=cv["subject"],
+        keywords="Java, Spring Boot, React, TypeScript, PostgreSQL, Rust",
+        lang=cv["lang"],
+    )
+    doc.build(story)
+    print(f"OK -> {out.relative_to(ROOT)} ({doc.page} pág.)")
 
 
 if __name__ == "__main__":
-    build()
+    DOCS.mkdir(parents=True, exist_ok=True)
+    regular, bold = register_fonts()
+    for lang in CV:
+        build(lang, regular, bold)
+    shutil.copyfile(DOCS / CV["es"]["file"], DOCS / "Mauro_Gomez_CV.pdf")
