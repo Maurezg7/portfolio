@@ -1,6 +1,6 @@
 @font-face {
     font-family: NextUps;
-    src: url("/portfolio/fonts/Street\ Drips.otf") format("opentype");
+    src: url("/portfolio/fonts/StreetDrips.woff2") format("woff2"), url("/portfolio/fonts/Street\ Drips.otf") format("opentype");
 }
 
 @font-face {
@@ -114,6 +114,19 @@
                 color: #fff;
                 border-color: rgba(255, 255, 255, 0.35);
                 background: rgba(255, 255, 255, 0.05);
+            }
+
+            &.learn {
+                color: #7dff5a;
+                border: 1px dashed rgba(125, 255, 90, 0.55);
+                background: rgba(125, 255, 90, 0.05);
+
+                small {
+                    font-size: 0.72em;
+                    font-weight: 400;
+                    opacity: 0.8;
+                    margin-left: 0.35em;
+                }
             }
 
             &:hover {

@@ -1,9 +1,8 @@
 ---
-import Background3D from '../components/shared/Background3D.astro';
 import Nav from '../components/shared/Nav.astro';
 import { ClientRouter } from 'astro:transitions';
 const { title = "Mi Portfolio" } = Astro.props;
-const description = "Mauro Gomez, desarrollador full stack: backends en Java, Python y Rust e interfaces en Angular, Next.js, React y Astro. 2º puesto en el Hackathon PunaTech.";
+const description = "Mauro Gomez, desarrollador full stack: backend en Java e interfaces en React, aprendiendo Rust. 2º puesto en el Hackathon PunaTech.";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -12,7 +11,7 @@ const jsonLd = {
   description,
   url: "https://maurezg7.github.io/portfolio/",
   sameAs: ["https://github.com/Maurezg7"],
-  knowsAbout: ["Java", "Spring Boot", "Python", "FastAPI", "Rust", "Angular", "Next.js", "React", "Astro", "Solidity", "Django", "Docker", "Kubernetes", "AWS", "PostgreSQL", "MongoDB", "HTML", "CSS", "JavaScript", "TypeScript", "Software Testing", "Swagger", "Postman", "Tailwind CSS", "C", "C++", "Algebra", "Mathematical Analysis", "Godot", "Unity", "GDScript", "C#"],
+  knowsAbout: ["Java", "React"],
   alumniOf: "UPATECO",
 };
 ---
@@ -38,7 +37,6 @@ const jsonLd = {
     <ClientRouter />
   </head>
   <body>
-    <Background3D />
     <Nav />
     <main transition:animate="fade">
       <slot />
