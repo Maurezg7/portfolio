@@ -68,6 +68,7 @@ CV = {
         "sections": {
             "profile": "Perfil",
             "skills": "Habilidades técnicas",
+            "experience": "Experiencia laboral",
             "projects": "Proyectos",
             "training": "Experiencia en formación",
             "education": "Educación",
@@ -87,6 +88,22 @@ CV = {
             ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
             ("Prácticas", "REST, MVC, SOLID, POO, DTO, Clean Code"),
             ("Aprendiendo", "Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
+        ],
+        "experience": [
+            {
+                "title": "MeetFlow — App de videollamadas",
+                "meta": "No Country (simulación laboral) · Octubre 2026",
+                "stack": "Next.js · Tailwind CSS · Express · Prisma · PostgreSQL · GetStream · Socket.IO",
+                "bullets": [
+                    "Desarrollé en equipo, con metodologías ágiles, una app para crear y unirse a videollamadas: reunión inmediata o programada, con código de acceso.",
+                    "Sala de espera en la que el anfitrión aprueba cada ingreso (con cuenta o como invitado) y recibe el aviso en tiempo real por Socket.IO; llamadas sobre GetStream con varios anfitriones, pantalla compartida, chat y reacciones.",
+                    "Frontend desplegado en Vercel y API en Render, con Prisma sobre PostgreSQL.",
+                ],
+                "links": [
+                    ("web-ruddy-mu-22.vercel.app", "https://web-ruddy-mu-22.vercel.app"),
+                    ("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5"),
+                ],
+            },
         ],
         "projects": [
             {
@@ -170,12 +187,6 @@ CV = {
                 "Desarrollo en equipo de un sistema de Gestión de Biblioteca en Java (patrón MVC).",
                 [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
             ),
-            (
-                "No Country — Simulación laboral",
-                "Octubre 2026",
-                "Trabajo en equipo con metodologías ágiles sobre un proyecto real.",
-                [("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5")],
-            ),
         ],
         "education": [
             ("Tecnicatura en Desarrollo de Software", "UPATecO — Universidad Provincial de Administración, Tecnología y Oficios", "2023 – 2025"),
@@ -197,6 +208,7 @@ CV = {
         "sections": {
             "profile": "Summary",
             "skills": "Technical skills",
+            "experience": "Work experience",
             "projects": "Projects",
             "training": "Training experience",
             "education": "Education",
@@ -216,6 +228,22 @@ CV = {
             ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
             ("Practices", "REST, MVC, SOLID, OOP, DTO, Clean Code"),
             ("Currently learning", "Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
+        ],
+        "experience": [
+            {
+                "title": "MeetFlow — Video call app",
+                "meta": "No Country (work simulation) · October 2026",
+                "stack": "Next.js · Tailwind CSS · Express · Prisma · PostgreSQL · GetStream · Socket.IO",
+                "bullets": [
+                    "Built with an agile team an app to start and join video calls: instant or scheduled meetings, with a join code.",
+                    "Waiting room where the host approves each person (with an account or as a guest) and is notified in real time through Socket.IO; calls on GetStream with several hosts, screen sharing, chat and reactions.",
+                    "Frontend deployed on Vercel and API on Render, with Prisma on PostgreSQL.",
+                ],
+                "links": [
+                    ("web-ruddy-mu-22.vercel.app", "https://web-ruddy-mu-22.vercel.app"),
+                    ("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5"),
+                ],
+            },
         ],
         "projects": [
             {
@@ -299,12 +327,6 @@ CV = {
                 "Team development of a Library Management system in Java (MVC pattern).",
                 [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
             ),
-            (
-                "No Country — Work simulation",
-                "October 2026",
-                "Teamwork with agile methodologies on a real project.",
-                [("github.com/No-Country-simulation/S08-26-equipo-5", "https://github.com/No-Country-simulation/S08-26-equipo-5")],
-            ),
         ],
         "education": [
             ("Technical Degree in Software Development", "UPATecO — Provincial University of Administration, Technology and Trades", "2023 – 2025"),
@@ -377,14 +399,15 @@ def build(lang, font, bold):
     for label, value in cv["skills"]:
         story.append(Paragraph(f"<b>{label}:</b> {value}", s_body))
 
-    story += section("projects")
-    for p in cv["projects"]:
-        block = [heading(p["title"], p["meta"]), Paragraph(p["stack"], s_stack)]
-        block += [Paragraph(b, s_bullet, bulletText="•") for b in p["bullets"]]
-        if p["links"]:
-            block.append(Paragraph(f'{cv["link_label"]}: ' + " · ".join(link(l, u) for l, u in p["links"]), s_bullet))
-        block.append(Spacer(1, 5))
-        story.append(KeepTogether(block))
+    for key in ("experience", "projects"):
+        story += section(key)
+        for p in cv[key]:
+            block = [heading(p["title"], p["meta"]), Paragraph(p["stack"], s_stack)]
+            block += [Paragraph(b, s_bullet, bulletText="•") for b in p["bullets"]]
+            if p["links"]:
+                block.append(Paragraph(f'{cv["link_label"]}: ' + " · ".join(link(l, u) for l, u in p["links"]), s_bullet))
+            block.append(Spacer(1, 5))
+            story.append(KeepTogether(block))
 
     story += section("training")
     for title, when, text, links in cv["training"]:

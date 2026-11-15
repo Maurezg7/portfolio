@@ -96,6 +96,7 @@ export function getStaticPaths() {
         image: "/portfolio/image/projects/MeetFlow.webp",
         siteUrl: "https://web-ruddy-mu-22.vercel.app",
         repoUrl: "https://github.com/No-Country-simulation/S08-26-equipo-5",
+        work: "EXPERIENCIA LABORAL · NO COUNTRY",
         stack: ["Next.js", "Tailwind", "Express", "Prisma", "PostgreSQL", "GetStream"],
         description:
           "MeetFlow es una app para crear y entrar a videollamadas, hecha en equipo durante la simulación laboral de No Country. El anfitrión abre una sala, comparte el enlace y aprueba a quien espera para entrar. Quien no tiene cuenta también puede unirse. El frontend está en Next.js y la API en Express, con Prisma y PostgreSQL. La llamada usa GetStream y la sala de espera avisa al anfitrión por Socket.IO.",
@@ -252,7 +253,7 @@ export function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const { title, date, image, siteUrl, repoUrl, stack, description, highlights, award, team } = Astro.props;
+const { title, date, image, siteUrl, repoUrl, stack, description, highlights, award, work, team } = Astro.props;
 ---
 
 <Layout title={`Mauro Gomez - ${title}`}>
@@ -275,6 +276,7 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
         <div class="detail_meta">
           <span class="detail_date" data-i18n={`project.${id}.date`}>{date}</span>
           {award && <span class="detail_award" data-i18n={`project.${id}.award`}>🏆 {award}</span>}
+          {work && <span class="detail_award" data-i18n={`project.${id}.work`}>💼 {work}</span>}
         </div>
         <h1>{title}</h1>
         <ul class="detail_stack">

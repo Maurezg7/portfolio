@@ -13,6 +13,7 @@
 
 ## Featured projects
 - Brand mascot: NODUS, an original mecha character.
+- MeetFlow (work experience, No Country work simulation, October 2026): video call app with a waiting room, several hosts, screen sharing and chat, built with an agile team (Next.js, Express, Prisma, PostgreSQL, GetStream). https://web-ruddy-mu-22.vercel.app , https://github.com/No-Country-simulation/S08-26-equipo-5
 - Achique: live blocking of pirate streams with a duty judge who approves and signs every order (Python, standard library only). 1st place, Football Challenge, Argentina Space 2026 Hackathon. https://achique-g8j6.onrender.com , https://github.com/Maurezg7/achique
 - Trasluz: confidential B2B settlement on Avalanche eERC with a read-only window for the auditor (Solidity, React, wagmi). Avalanche track, Argentina Space 2026 Hackathon. https://trasluz-2av.pages.dev , https://github.com/Maurezg7/trasluz
 - Dengue Centinela: dengue risk heat map for Salta from WhatsApp reports (React 19, TanStack Start, Express, Prisma). Not deployed. https://github.com/EstebanNahuelok/dengue-centinela

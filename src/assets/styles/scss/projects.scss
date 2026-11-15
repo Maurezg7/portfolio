@@ -491,3 +491,20 @@ $card-clip: polygon(
     gap: 1rem;
   }
 }
+
+.hack_group--work {
+  border-color: rgba(255, 154, 61, 0.45);
+  background: linear-gradient(160deg, rgba(255, 154, 61, 0.07), rgba(125, 255, 90, 0.03));
+
+  .hack_group_head h2 { color: $orange; }
+}
+
+@media (min-width: 800px) {
+  .item_project--work {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+
+    .award_badge { grid-column: 1 / -1; }
+    .info_project { justify-content: center; }
+  }
+}
