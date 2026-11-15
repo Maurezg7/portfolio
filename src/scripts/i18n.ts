@@ -60,6 +60,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "skills.stat.areas": "areas",
     "skills.learning": "RUST · LEARNING",
     "skills.javalearning": "JAVA · LEARNING",
+    "skills.next": "JAVA · UP NEXT",
     "skills.math": "MATH",
     "skills.games": "GAME DEV",
     "skills.languages": "LANGUAGES",
@@ -70,6 +71,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "skills.name.algebra": "Algebra",
     "skills.name.calculus": "Calculus",
     "skills.tag.learning": "LEARNING",
+    "skills.tag.next": "UP NEXT",
 
     "projects.kicker": "PROJECTS",
     "projects.details": "SEE DETAILS",

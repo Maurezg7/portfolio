@@ -5,6 +5,8 @@ import "../assets/styles/scss/skills.scss";
 const lang = "/portfolio/image/languages/";
 const learning = (name: string, file: string) => ({ name, icon: lang + file, status: "learning" });
 
+const next = (name: string, file: string) => ({ name, icon: lang + file, status: "next" });
+
 const groups = [
   {
     title: "BACKEND · JAVA",
@@ -31,6 +33,11 @@ const groups = [
       learning("AWS", "aws.svg"),
       learning("GitHub Actions", "githubactions.svg"),
     ],
+  },
+  {
+    title: "JAVA · PRÓXIMO",
+    key: "skills.next",
+    skills: [next("Quarkus", "quarkus.svg"), next("Micronaut", "micronaut.webp")],
   },
   {
     title: "FRONTEND",
@@ -113,7 +120,7 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
                       <img src={skill.icon} alt="" width="40" height="40" loading="lazy" decoding="async" />
                     </div>
                     <span class="skill_name" data-i18n={skill.key}>{skill.name}</span>
-                    {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>APRENDIENDO</em>}
+                    {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>{skill.status === "learning" ? "APRENDIENDO" : "PRÓXIMO"}</em>}
                     {skill.level && <em class="tag tag--level" data-i18n={`skills.level.${skill.level}`}>{skill.level === "native" ? "NATIVO" : "B1"}</em>}
                   </li>
                 ))}
