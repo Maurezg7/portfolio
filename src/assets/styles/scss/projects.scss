@@ -440,3 +440,54 @@ $card-clip: polygon(
 // Always clear the fixed navbar, whatever the screen height (the navbar is 10vh tall on desktop)
 #container { padding-top: calc(var(--nav-h, 10vh) + 1.5rem) !important; }
 @media (max-width: 280px), (max-width: 420px) and (max-height: 420px) { #container { padding-top: calc(var(--nav-h, 36px) + 0.4rem) !important; } }
+
+.hack_group {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.4rem !important;
+  border: 1px solid rgba(125, 255, 90, 0.35);
+  background: linear-gradient(160deg, rgba(125, 255, 90, 0.06), rgba(255, 154, 61, 0.03));
+  clip-path: $card-clip;
+}
+
+.hack_group_head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  h2 {
+    @include monospace(clamp(0.95rem, 2.4vw, 1.3rem), 700);
+    color: $accent;
+    letter-spacing: 0.12em;
+  }
+
+  p {
+    @include monospace(0.72rem);
+    color: $text-muted;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
+.hack_group_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 1.5rem;
+  list-style: none;
+
+  .item_project--award {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hack_group {
+    padding: 0.8rem !important;
+  }
+
+  .hack_group_list {
+    gap: 1rem;
+  }
+}

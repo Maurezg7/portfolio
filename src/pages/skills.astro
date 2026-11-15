@@ -2,21 +2,37 @@
 import Layout from "../layouts/Layout.astro";
 import "../assets/styles/scss/skills.scss";
 
+const lang = "/portfolio/image/languages/";
+const learning = (name: string, file: string) => ({ name, icon: lang + file, status: "learning" });
+
 const groups = [
   {
-    title: "BACKEND",
+    title: "BACKEND · JAVA",
     key: "skills.backend",
-    skills: [{ name: "Java", icon: "/portfolio/image/languages/java.webp" }],
+    skills: [
+      { name: "Java", icon: lang + "java.webp" },
+      { name: "Spring Boot", icon: lang + "springboot.webp" },
+      { name: "Spring Security", icon: lang + "springsecurity.svg" },
+      { name: "Spring Data JPA", icon: lang + "hibernate.svg" },
+    ],
   },
   {
     title: "FRONTEND",
     key: "skills.frontend",
-    skills: [{ name: "React", icon: "/portfolio/image/languages/react.webp" }],
+    skills: [{ name: "React", icon: lang + "react.webp" }],
   },
   {
-    title: "APRENDIENDO",
+    title: "RUST · APRENDIENDO",
     key: "skills.learning",
-    skills: [{ name: "Rust", icon: "/portfolio/image/languages/rust.svg", status: "learning" }],
+    skills: [
+      learning("Rust", "rust.svg"),
+      learning("Tokio", "tokio.svg"),
+      learning("Axum", "axum.svg"),
+      learning("Actix Web", "actix.svg"),
+      learning("SQLx", "sqlx.svg"),
+      learning("Serde", "serde.svg"),
+      learning("Odra", "odra.svg"),
+    ],
   },
 ];
 const total = groups.reduce((n, g) => n + g.skills.length, 0);
@@ -54,7 +70,7 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
                 {group.skills.map((skill) => (
                   <li class="skill_card" data-tilt>
                     <div class="cont_icon">
-                      <img src={skill.icon} alt="" />
+                      <img src={skill.icon} alt="" width="40" height="40" loading="lazy" decoding="async" />
                     </div>
                     <span class="skill_name">{skill.name}</span>
                     {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>{skill.status === "learning" ? "APRENDIENDO" : "PRÓXIMO"}</em>}

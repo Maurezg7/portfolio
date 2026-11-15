@@ -6,15 +6,15 @@ import "../assets/styles/scss/welcome.scss";
 <Layout title="Mauro Gomez - Full Stack">
   <div id="container">
     <span class="status"><i></i><b data-i18n="home.status">Disponible para nuevos proyectos</b></span>
-    <a class="award" href="/portfolio/projects/sem-salta">🏆 <span data-i18n="home.award">2º puesto · Hackathon PunaTech</span></a>
+    <a class="award" href="/portfolio/projects/achique">🏆 <span data-i18n="home.award">1.er puesto · Hackathon Argentina Space</span></a>
     <h1>SOY <em>MAURO GOMEZ</em></h1>
     <h2 data-i18n="home.role">FULL STACK DEVELOPER</h2>
     <ul class="stack" aria-label="Stack">
-      <li>Java</li><li class="fe">React</li>
+      <li>Java</li><li>Spring Boot</li><li class="fe">React</li>
       <li class="learn">Rust <small data-i18n="home.learning">aprendiendo</small></li>
     </ul>
     <p data-i18n="home.line">
-      Desarrollador full stack. Armo APIs en Java y las conecto con interfaces en React, y estoy aprendiendo Rust. Proyectos en producción, un podio en hackathon y código limpio y mantenible.
+      Desarrollador full stack. Armo APIs en Java con Spring Boot y las conecto con interfaces en React, y estoy aprendiendo Rust con Tokio y Axum. Proyectos en producción, un 1.er y un 2.º puesto en hackathons y código limpio y mantenible.
     </p>
     <div class="actions">
       <button id="aboutme" data-i18n="home.cta">Sobre mí</button>
@@ -26,7 +26,7 @@ import "../assets/styles/scss/welcome.scss";
     <ul class="home_stats" data-reveal>
       <li><b>Java</b><span data-i18n="home.stat.1">backend</span></li>
       <li><b>React</b><span data-i18n="home.stat.2">frontend</span></li>
-      <li><b>🏆 2º</b><span data-i18n="home.stat.3">podio en hackathon</span></li>
+      <li><b>🏆 1º</b><span data-i18n="home.stat.3">puesto en hackathon</span></li>
     </ul>
 
     <figure class="home_nodus" data-reveal>
@@ -39,6 +39,10 @@ import "../assets/styles/scss/welcome.scss";
 
     <h2 class="home_h2" data-reveal data-i18n="home.feat.title">PROYECTOS DESTACADOS</h2>
     <div class="home_feat">
+      <a class="feat_card" href="/portfolio/projects/achique" data-reveal data-tilt>
+        <em>🏆 Argentina Space</em><h3>ACHIQUE</h3>
+        <p data-i18n="home.feat.ach">Bloqueo de streams piratas en vivo: cada orden la aprueba y firma un juez de turno. 1.er puesto en el Desafío Fútbol.</p>
+      </a>
       <a class="feat_card" href="/portfolio/projects/sem-salta" data-reveal data-tilt>
         <em>🏆 PunaTech</em><h3>SEM SALTA</h3>
         <p data-i18n="home.feat.sem">Pagos de estacionamiento medido con MercadoPago y panel de administración. Hecho para la Municipalidad de Salta.</p>

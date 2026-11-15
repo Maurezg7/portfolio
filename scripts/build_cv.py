@@ -76,9 +76,9 @@ CV = {
         "profile": (
             "Desarrollador de software (título universitario, UPATecO) orientado a full stack: "
             "backend en <b>Java</b> con Spring Boot e interfaces en <b>React</b>. Construí APIs REST "
-            "con JWT sobre PostgreSQL y frontends en React con TypeScript, y participé en hackatones "
-            "en equipos de 3 personas, con un 2.º puesto en el Hackathon PunaTech. Actualmente estoy "
-            "aprendiendo <b>Rust</b>. Inglés B1. Busco mi primera posición formal y remota como "
+            "con JWT sobre PostgreSQL y frontends en React con TypeScript, y competí en hackatones, "
+            "con un 1.er puesto en el Desafío Fútbol del Hackathon Argentina Space 2026 y un 2.º puesto "
+            "en el Hackathon PunaTech. Actualmente estoy aprendiendo <b>Rust</b>. Inglés B1. Busco mi primera posición formal y remota como "
             "desarrollador backend o full stack."
         ),
         "skills": [
@@ -86,7 +86,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
             ("Prácticas", "REST, MVC, SOLID, POO, DTO, Clean Code"),
-            ("Aprendiendo", "Rust (Odra Framework; un contrato desplegado en Casper Testnet)"),
+            ("Aprendiendo", "Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
         ],
         "projects": [
             {
@@ -100,6 +100,20 @@ CV = {
                     "Configuré Docker y Nginx como proxy inverso y desplegué en Render.",
                 ],
                 "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
+            },
+            {
+                "title": "Achique — Bloqueo judicial de streaming pirata en vivo",
+                "meta": "Hackathon Argentina Space, 1.er puesto (Desafío Fútbol) · 2026",
+                "stack": "Python 3 · biblioteca estándar · HMAC · SHA-256 · Docker",
+                "bullets": [
+                    "Plataforma de órdenes de bloqueo en vivo: cada stream pirata detectado llega como expediente con evidencia verificable a un juez de turno, que aprueba y firma.",
+                    "Envío de la orden a cada proveedor según el tipo de bloqueo que acepta, con seguimiento, reintentos y vencimiento automático de los bloqueos por IP al terminar el partido.",
+                    "Auditoría encadenada por hashes y registro público de transparencia; en el partido final, 8 streams bloqueados de 8 y ningún sitio legítimo afectado.",
+                ],
+                "links": [
+                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
+                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
+                ],
             },
             {
                 "title": "SEM Salta — Sistema de estacionamiento medido",
@@ -170,7 +184,7 @@ CV = {
         ],
         "extra": [
             ("Idiomas", "Español (nativo) · Inglés B1"),
-            ("Comunidad", "Participante activo de SaltaDev y de hackatones (PunaTech, Kiro + AWS, Casper)."),
+            ("Comunidad", "Participante activo de SaltaDev y de hackatones (Argentina Space, PunaTech, Kiro + AWS, Casper)."),
             ("Disponibilidad", "Trabajo remoto."),
         ],
     },
@@ -191,8 +205,9 @@ CV = {
         "profile": (
             "Software developer (university degree, UPATecO) focused on full stack work: "
             "<b>Java</b> backends with Spring Boot and <b>React</b> interfaces. I built REST APIs with "
-            "JWT on PostgreSQL and React frontends in TypeScript, and competed in hackathons in teams "
-            "of three, including 2nd place at the PunaTech Hackathon. Currently learning <b>Rust</b>. "
+            "JWT on PostgreSQL and React frontends in TypeScript, and competed in hackathons: 1st place "
+            "in the Football Challenge at the Argentina Space 2026 Hackathon and 2nd place at the "
+            "PunaTech Hackathon. Currently learning <b>Rust</b>. "
             "English B1. Seeking my first full-time, remote role as a backend or full stack developer."
         ),
         "skills": [
@@ -200,7 +215,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
             ("Practices", "REST, MVC, SOLID, OOP, DTO, Clean Code"),
-            ("Currently learning", "Rust (Odra Framework; one contract deployed on Casper Testnet)"),
+            ("Currently learning", "Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
         ],
         "projects": [
             {
@@ -214,6 +229,20 @@ CV = {
                     "Configured Docker and Nginx as a reverse proxy and deployed on Render.",
                 ],
                 "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
+            },
+            {
+                "title": "Achique — Live judicial blocking of pirate streaming",
+                "meta": "Argentina Space Hackathon, 1st place (Football Challenge) · 2026",
+                "stack": "Python 3 · standard library · HMAC · SHA-256 · Docker",
+                "bullets": [
+                    "Platform for live blocking orders: every detected pirate stream reaches a duty judge as a case file with verifiable evidence, to approve and sign.",
+                    "Sends the order to each provider in the kind of block it accepts, with tracking, retries and automatic expiry of IP blocks when the match ends.",
+                    "Hash-chained audit log and public transparency log; in the final match, 8 of 8 pirate streams blocked and no legitimate site affected.",
+                ],
+                "links": [
+                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
+                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
+                ],
             },
             {
                 "title": "SEM Salta — Metered parking system",
@@ -284,7 +313,7 @@ CV = {
         ],
         "extra": [
             ("Languages", "Spanish (native) · English B1"),
-            ("Community", "Active member of SaltaDev; hackathon participant (PunaTech, Kiro + AWS, Casper)."),
+            ("Community", "Active member of SaltaDev; hackathon participant (Argentina Space, PunaTech, Kiro + AWS, Casper)."),
             ("Availability", "Remote work."),
         ],
     },

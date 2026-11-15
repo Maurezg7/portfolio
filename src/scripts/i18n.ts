@@ -14,12 +14,13 @@ const messages: Record<Lang, Record<string, string>> = {
 
     "home.role": "FULL STACK DEVELOPER",
     "home.line":
-      "Full stack developer. I build APIs in Java and connect them to React interfaces, and I am learning Rust. Shipped projects, a hackathon podium and clean, maintainable code.",
+      "Full stack developer. I build APIs in Java with Spring Boot and connect them to React interfaces, and I am learning Rust with Tokio and Axum. Shipped projects, a 1st and a 2nd place at hackathons and clean, maintainable code.",
     "home.cta": "About me",
     "home.cta2": "View projects",
-    "home.award": "2nd place · PunaTech Hackathon",
+    "home.award": "1st place · Argentina Space Hackathon",
     "home.nodus": "The sentinel that connects backend, frontend and data.",
     "home.feat.title": "FEATURED PROJECTS",
+    "home.feat.ach": "Live blocking of pirate streams: a duty judge approves and signs every order. 1st place in the Football Challenge.",
     "home.feat.sem": "Metered parking payments with MercadoPago and an admin panel. Built for the Municipality of Salta.",
     "home.feat.caz": "On-chain record of who believed in an artist first, with an immutable Solidity contract.",
     "home.feat.den": "Dengue risk heat map for Salta, from WhatsApp reports and AI classification.",
@@ -27,7 +28,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "home.learning": "learning",
     "home.stat.1": "backend",
     "home.stat.2": "frontend",
-    "home.stat.3": "hackathon podium",
+    "home.stat.3": "place at a hackathon",
     "home.cta.title": "Let's build something together",
     "home.cta.btn": "CONTACT ME",
     "home.status": "Available for new projects",
@@ -40,22 +41,22 @@ const messages: Record<Lang, Record<string, string>> = {
     "about.me.title":
       "I'm Mauro, a full stack developer studying at UPATECO. I turn ideas into products that are live and working, and I look for a team where I can contribute from day one.",
     "about.me.text":
-      "I work on the product end to end: 2nd place at the PunaTech Hackathon and several deployed projects, with Java backends and React interfaces. I am now learning Rust.",
-    "about.back.title": "Java · learning Rust",
+      "I work on the product end to end: 1st place at the Argentina Space Hackathon (Football Challenge), 2nd place at the PunaTech Hackathon and several deployed projects, with Java and Spring Boot backends and React interfaces. I am now learning Rust.",
+    "about.back.title": "Java + Spring · learning Rust",
     "about.back.text":
-      "I design secure REST APIs in Java, with JWT, validation and clear error handling. DTO and SOLID keep the code easy to maintain. I am learning Rust: I have already deployed a smart contract on Casper Testnet.",
+      "I design secure REST APIs in Java with Spring Boot, Spring Security and Spring Data JPA: JWT, validation and clear error handling. DTO and SOLID keep the code easy to maintain. I am learning Rust (Tokio, Axum, Actix Web, SQLx and Serde): I have already deployed a smart contract on Casper Testnet with Odra.",
     "about.front.title": "React",
     "about.front.text":
       "Fast, accessible interfaces that adapt from a smartwatch to a TV, connected to REST APIs with predictable state.",
     "about.cta": "SKILLS",
 
     "skills.label": "SKILLS_",
-    "skills.backend": "BACKEND",
+    "skills.backend": "BACKEND · JAVA",
     "skills.frontend": "FRONTEND",
     "skills.all": "ALL",
     "skills.stat.tech": "technologies",
     "skills.stat.areas": "areas",
-    "skills.learning": "LEARNING",
+    "skills.learning": "RUST · LEARNING",
     "skills.tag.learning": "LEARNING",
 
     "projects.kicker": "PROJECTS",
@@ -69,6 +70,20 @@ const messages: Record<Lang, Record<string, string>> = {
     "projects.features": "FEATURES",
     "projects.team": "TEAM",
 
+    "projects.group.argspace": "My latest hackathon · 2 projects · 🏆 1st place in the Football Challenge",
+    "project.achique.badge": "🏆 1ST PLACE — FOOTBALL CHALLENGE",
+    "project.achique.award": "🏆 1ST PLACE — FOOTBALL CHALLENGE · ARGENTINA SPACE 2026 HACKATHON",
+    "project.achique.date": "NOVEMBER_2026",
+    "project.achique.desc":
+      "Achique is a platform for live blocking orders against pirate football streaming, built for the Football Challenge at the Argentina Space 2026 Hackathon. During a match, every detected pirate stream reaches a duty judge as a case file with verifiable evidence, and the judge approves it with one click. The platform signs the order at that moment, sends it to each provider in the kind of block it accepts, tracks the confirmation, retries the ones that fail and lets IP blocks expire on their own when the match ends. It is written in Python with only the standard library and runs against the official challenge simulator.",
+    "project.achique.points":
+      "Full circuit: detection, case file, duty judge, providers, confirmation and expiry||No collateral damage: if the IP is shared or behind a CDN, the order targets the domain||Verifiable evidence with SHA-256 and a hash-chained audit log||Only the judge who logged in and is still on duty signs; pending cases pass to the incoming judge||Public transparency log with every order||Final match: 8 pirate streams detected and 8 blocked, 0 legitimate sites affected, 2.3 minutes on average from detection to block",
+    "project.trasluz.badge": "AVALANCHE TRACK",
+    "project.trasluz.date": "NOVEMBER_2026",
+    "project.trasluz.desc":
+      "Trasluz is confidential B2B settlement on Avalanche eERC, built for the Avalanche track at the Argentina Space 2026 Hackathon. A company pays its supplier on delivery and the amount stays encrypted on-chain: nobody in the market sees how much is paid or to whom. A designated auditor has a read-only window to decrypt and reconcile every operation, and only approved entities can use the rail. The official EncryptedERC contracts and circuits are used unmodified.",
+    "project.trasluz.points":
+      "Payment on delivery with one eERC vault per obligation (EIP-1167 clone)||Amounts encrypted on-chain: events and reverts expose no figures||Auditor portal that runs 100% locally: decrypts, reconciles and exports to CSV||Groth16 proofs generated in a Web Worker, without blocking the interface||React frontend with wagmi (EIP-6963), Vite and Tailwind||Deployed on Avalanche Fuji, with a public demo on Cloudflare Pages",
     "project.dengue-centinela.badge": "HACKATHON · PUBLIC HEALTH",
     "project.dengue-centinela.date": "2026",
     "project.dengue-centinela.desc":

@@ -5,6 +5,49 @@ import "../../assets/styles/scss/project-detail.scss";
 export function getStaticPaths() {
   return [
     {
+      params: { id: "achique" },
+      props: {
+        title: "ACHIQUE",
+        date: "NOVIEMBRE_2026",
+        image: "/portfolio/image/projects/Achique.svg",
+        siteUrl: "https://achique-g8j6.onrender.com",
+        repoUrl: "https://github.com/Maurezg7/achique",
+        stack: ["Python", "Biblioteca estándar", "HMAC", "SHA-256", "Docker"],
+        description:
+          "Achique es una plataforma de órdenes de bloqueo en vivo contra el streaming pirata de fútbol, hecha para el Desafío Fútbol del Hackathon Argentina Space 2026. Durante un partido, cada stream pirata detectado llega como expediente con evidencia verificable a un juez de turno, que aprueba con un clic. La plataforma firma la orden en ese momento, la envía a cada proveedor en el tipo de bloqueo que acepta, sigue la confirmación, reintenta las que fallan y deja que los bloqueos por IP venzan solos al terminar el partido. Está escrita en Python con solo la biblioteca estándar y corre contra el simulador oficial del desafío.",
+        highlights: [
+          "Circuito completo: detección, expediente, juez de turno, proveedores, confirmación y vencimiento",
+          "Sin daño colateral: si la IP es compartida o está detrás de un CDN, la orden se pide por dominio",
+          "Evidencia verificable con SHA-256 y auditoría encadenada por hashes",
+          "Firma solo el juez que inició sesión y sigue de turno; lo pendiente pasa al juez entrante",
+          "Registro público de transparencia con todas las órdenes",
+          "Partido final: 8 streams piratas detectados y 8 bloqueados, 0 sitios legítimos afectados, 2,3 minutos promedio de detección a bloqueo",
+        ],
+        award: "1ER PUESTO — DESAFÍO FÚTBOL · HACKATHON ARGENTINA SPACE 2026",
+      },
+    },
+    {
+      params: { id: "trasluz" },
+      props: {
+        title: "TRASLUZ",
+        date: "NOVIEMBRE_2026",
+        image: "/portfolio/image/projects/Trasluz.svg",
+        siteUrl: "https://trasluz-2av.pages.dev",
+        repoUrl: "https://github.com/Maurezg7/trasluz",
+        stack: ["Solidity", "React", "Vite", "Tailwind", "wagmi", "Avalanche eERC", "Groth16"],
+        description:
+          "Trasluz es liquidación B2B confidencial sobre Avalanche eERC, hecha para el track Avalanche del Hackathon Argentina Space 2026. Una empresa le paga a su proveedor contra entrega y el monto queda cifrado on-chain: nadie en el mercado ve cuánto se paga ni a quién. Un auditor designado tiene una ventana de solo lectura para descifrar y conciliar cada operación, y solo las entidades habilitadas operan el riel. Los contratos y circuitos oficiales de EncryptedERC se usan sin modificar.",
+        highlights: [
+          "Pago contra entrega con un vault eERC por obligación (clon EIP-1167)",
+          "Montos cifrados on-chain: los eventos y los reverts no exponen cifras",
+          "Portal del auditor 100% local: descifra, concilia y exporta a CSV",
+          "Pruebas Groth16 generadas en un Web Worker, sin bloquear la interfaz",
+          "Frontend en React con wagmi (EIP-6963), Vite y Tailwind",
+          "Desplegado en Avalanche Fuji, con demo pública en Cloudflare Pages",
+        ],
+      },
+    },
+    {
       params: { id: "dengue-centinela" },
       props: {
         title: "DENGUE CENTINELA",

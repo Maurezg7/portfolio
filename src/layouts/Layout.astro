@@ -2,7 +2,7 @@
 import Nav from '../components/shared/Nav.astro';
 import { ClientRouter } from 'astro:transitions';
 const { title = "Mi Portfolio" } = Astro.props;
-const description = "Mauro Gomez, desarrollador full stack: backend en Java e interfaces en React, aprendiendo Rust. 2º puesto en el Hackathon PunaTech.";
+const description = "Mauro Gomez, desarrollador full stack: backend en Java con Spring Boot e interfaces en React, aprendiendo Rust. 1.er puesto en el Hackathon Argentina Space y 2º en PunaTech.";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -11,7 +11,7 @@ const jsonLd = {
   description,
   url: "https://maurezg7.github.io/portfolio/",
   sameAs: ["https://github.com/Maurezg7"],
-  knowsAbout: ["Java", "React"],
+  knowsAbout: ["Java", "Spring Boot", "React"],
   alumniOf: "UPATECO",
 };
 ---
