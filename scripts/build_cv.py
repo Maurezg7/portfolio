@@ -87,7 +87,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
             ("Prácticas", "REST, MVC, SOLID, POO, DTO, Clean Code"),
-            ("Aprendiendo", "Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
+            ("Aprendiendo", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS y GitHub Actions · Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
         ],
         "experience": [
             {
@@ -229,7 +229,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
             ("Practices", "REST, MVC, SOLID, OOP, DTO, Clean Code"),
-            ("Currently learning", "Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
+            ("Currently learning", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS and GitHub Actions · Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
         ],
         "experience": [
             {

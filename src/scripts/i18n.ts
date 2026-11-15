@@ -43,7 +43,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "about.me.title":
       "I'm Mauro, a full stack developer studying at UPATECO. I turn ideas into products that are live and working, and I look for a team where I can contribute from day one.",
     "about.me.text":
-      "I work on the product end to end: 1st place at the Argentina Space Hackathon (Football Challenge), 2nd place at the PunaTech Hackathon and several deployed projects, with Java and Spring Boot backends and React interfaces. I am now learning Rust.",
+      "I work on the product end to end: 1st place at the Argentina Space Hackathon (Football Challenge), 2nd place at the PunaTech Hackathon and several deployed projects, with Java and Spring Boot backends and React interfaces. I am now learning Rust. English B1.",
     "about.back.title": "Java + Spring · learning Rust",
     "about.back.text":
       "I design secure REST APIs in Java with Spring Boot, Spring Security and Spring Data JPA: JWT, validation and clear error handling. DTO and SOLID keep the code easy to maintain. I am learning Rust (Tokio, Axum, Actix Web, SQLx and Serde): I have already deployed a smart contract on Casper Testnet with Odra.",
@@ -59,6 +59,16 @@ const messages: Record<Lang, Record<string, string>> = {
     "skills.stat.tech": "technologies",
     "skills.stat.areas": "areas",
     "skills.learning": "RUST · LEARNING",
+    "skills.javalearning": "JAVA · LEARNING",
+    "skills.math": "MATH",
+    "skills.games": "GAME DEV",
+    "skills.languages": "LANGUAGES",
+    "skills.name.spanish": "Spanish",
+    "skills.name.english": "English",
+    "skills.level.native": "NATIVE",
+    "skills.level.b1": "B1",
+    "skills.name.algebra": "Algebra",
+    "skills.name.calculus": "Calculus",
     "skills.tag.learning": "LEARNING",
 
     "projects.kicker": "PROJECTS",

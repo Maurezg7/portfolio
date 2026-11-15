@@ -14,12 +14,28 @@ const groups = [
       { name: "Spring Boot", icon: lang + "springboot.webp" },
       { name: "Spring Security", icon: lang + "springsecurity.svg" },
       { name: "Spring Data JPA", icon: lang + "hibernate.svg" },
+      { name: "PostgreSQL", icon: lang + "postgresql.webp" },
+      { name: "Docker", icon: lang + "docker.svg" },
+      { name: "Git", icon: lang + "git.svg" },
+    ],
+  },
+  {
+    title: "JAVA · APRENDIENDO",
+    key: "skills.javalearning",
+    skills: [
+      learning("JUnit", "junit5.svg"),
+      learning("Mockito", "mockito.webp"),
+      learning("Kafka", "apachekafka.svg"),
+      learning("Spring Cloud", "springcloud.svg"),
+      learning("Kubernetes", "kubernetes.svg"),
+      learning("AWS", "aws.svg"),
+      learning("GitHub Actions", "githubactions.svg"),
     ],
   },
   {
     title: "FRONTEND",
     key: "skills.frontend",
-    skills: [{ name: "React", icon: lang + "react.webp" }],
+    skills: [{ name: "React", icon: lang + "react.webp" }, learning("Next.js", "nextjs.svg")],
   },
   {
     title: "RUST · APRENDIENDO",
@@ -30,11 +46,35 @@ const groups = [
       learning("Axum", "axum.svg"),
       learning("Actix Web", "actix.svg"),
       learning("SQLx", "sqlx.svg"),
-      learning("Serde", "serde.svg"),
-      learning("Odra", "odra.svg"),
+      learning("Serde", "serde.webp"),
+      learning("Odra", "odra.webp"),
     ],
   },
-];
+  {
+    title: "MATEMÁTICA",
+    key: "skills.math",
+    skills: [
+      { name: "Álgebra", icon: lang + "algebra.svg", key: "skills.name.algebra" },
+      { name: "Análisis Matemático", icon: lang + "calculus.svg", key: "skills.name.calculus" },
+    ],
+  },
+  {
+    title: "IDIOMAS",
+    key: "skills.languages",
+    skills: [
+      { name: "Español", icon: lang + "lang-es.svg", key: "skills.name.spanish", level: "native" },
+      { name: "Inglés", icon: lang + "lang-en.svg", key: "skills.name.english", level: "b1" },
+    ],
+  },
+  {
+    title: "VIDEOJUEGOS",
+    key: "skills.games",
+    skills: [
+      { name: "Unity", icon: lang + "unity.svg" },
+      { name: "Godot", icon: lang + "godotengine.svg" },
+    ],
+  },
+] as { title: string; key: string; skills: { name: string; icon: string; status?: string; key?: string; level?: string }[] }[];
 const total = groups.reduce((n, g) => n + g.skills.length, 0);
 ---
 
@@ -72,8 +112,9 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
                     <div class="cont_icon">
                       <img src={skill.icon} alt="" width="40" height="40" loading="lazy" decoding="async" />
                     </div>
-                    <span class="skill_name">{skill.name}</span>
-                    {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>{skill.status === "learning" ? "APRENDIENDO" : "PRÓXIMO"}</em>}
+                    <span class="skill_name" data-i18n={skill.key}>{skill.name}</span>
+                    {skill.status && <em class={`tag tag--${skill.status}`} data-i18n={`skills.tag.${skill.status}`}>APRENDIENDO</em>}
+                    {skill.level && <em class="tag tag--level" data-i18n={`skills.level.${skill.level}`}>{skill.level === "native" ? "NATIVO" : "B1"}</em>}
                   </li>
                 ))}
               </ul>
