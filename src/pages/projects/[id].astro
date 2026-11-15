@@ -53,10 +53,11 @@ export function getStaticPaths() {
         title: "DENGUE CENTINELA",
         date: "2026",
         image: "/portfolio/image/projects/DengueCentinela.svg",
+        siteUrl: "https://app.dengue-centinela.workers.dev",
         repoUrl: "https://github.com/EstebanNahuelok/dengue-centinela",
         stack: ["React 19", "TanStack Start", "Tailwind", "Leaflet", "Express", "Prisma", "PostgreSQL", "Docker"],
         description:
-          "Dengue Centinela es detección temprana y mapeo de riesgo de dengue en la ciudad de Salta. Las personas reportan síntomas o criaderos por WhatsApp, una IA clasifica cada reporte, el sistema lo cruza con el clima y arma un score de riesgo por barrio en un mapa de calor. Es un monorepo con un backend en Express, Prisma y PostgreSQL y un frontend en React 19 con TanStack Start, Tailwind, Leaflet y H3. Todavía no está desplegado.",
+          "Dengue Centinela es detección temprana y mapeo de riesgo de dengue en la ciudad de Salta. Las personas reportan síntomas o criaderos por WhatsApp, una IA clasifica cada reporte, el sistema lo cruza con el clima y arma un score de riesgo por barrio en un mapa de calor. Es un monorepo con un backend en Express, Prisma y PostgreSQL y un frontend en React 19 con TanStack Start, Tailwind, Leaflet y H3. La app está desplegada en Cloudflare Workers.",
         highlights: [
           "Reportes por WhatsApp con Twilio, clasificados con IA",
           "Score de riesgo por barrio cruzado con datos del clima",

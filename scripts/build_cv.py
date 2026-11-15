@@ -166,7 +166,9 @@ CV = {
                     "Desarrollé el backend para el registro y la consulta de reportes comunitarios de dengue en Salta.",
                     "Diseñé el modelo de datos y las rutas REST consumidas por el frontend en React 19.",
                 ],
-                "links": [],
+                "links": [
+                    ("app.dengue-centinela.workers.dev", "https://app.dengue-centinela.workers.dev"),
+                ],
             },
             {
                 "title": "YieldVault — Smart contract en Rust sobre Casper",
@@ -306,7 +308,9 @@ CV = {
                     "Built the backend for logging and querying community dengue reports in Salta.",
                     "Designed the data model and the REST routes consumed by the React 19 frontend.",
                 ],
-                "links": [],
+                "links": [
+                    ("app.dengue-centinela.workers.dev", "https://app.dengue-centinela.workers.dev"),
+                ],
             },
             {
                 "title": "YieldVault — Rust smart contract on Casper",

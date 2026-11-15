@@ -91,7 +91,7 @@ const messages: Record<Lang, Record<string, string>> = {
     "project.dengue-centinela.badge": "HACKATHON · PUBLIC HEALTH",
     "project.dengue-centinela.date": "2026",
     "project.dengue-centinela.desc":
-      "Dengue Centinela is early detection and risk mapping of dengue in the city of Salta. People report symptoms or breeding sites over WhatsApp, an AI classifies each report, the system crosses it with the weather and builds a risk score per neighborhood on a heat map. It is a monorepo with an Express, Prisma and PostgreSQL backend and a React 19 frontend with TanStack Start, Tailwind, Leaflet and H3. Not deployed yet.",
+      "Dengue Centinela is early detection and risk mapping of dengue in the city of Salta. People report symptoms or breeding sites over WhatsApp, an AI classifies each report, the system crosses it with the weather and builds a risk score per neighborhood on a heat map. It is a monorepo with an Express, Prisma and PostgreSQL backend and a React 19 frontend with TanStack Start, Tailwind, Leaflet and H3. The app is deployed on Cloudflare Workers.",
     "project.dengue-centinela.points":
       "Reports over WhatsApp with Twilio, classified with AI||Risk score per neighborhood crossed with weather data||Heat map with Leaflet and H3 hexagons||React 19 with TanStack Start (Router + SSR) and Tailwind||Express and Prisma over PostgreSQL (Neon), with Docker Compose as a local fallback||Mock mode in the frontend to work without the backend",
     "project.cazatalentos.badge": "HACKATHON · MONAD",
