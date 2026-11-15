@@ -87,7 +87,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
             ("Prácticas", "REST, MVC, SOLID, POO, DTO, Clean Code"),
-            ("Aprendiendo", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS y GitHub Actions · Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
+            ("Aprendiendo", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS y GitHub Actions · Next.js · Rust: Tokio, Axum, Actix Web, SQLx, Serde y Odra Framework (un contrato desplegado en Casper Testnet)"),
         ],
         "experience": [
             {
@@ -120,7 +120,7 @@ CV = {
             },
             {
                 "title": "Achique — Bloqueo judicial de streaming pirata en vivo",
-                "meta": "Hackathon Argentina Space, 1.er puesto (Desafío Fútbol) · 2026",
+                "meta": "Hackathon Argentina Space, 1.er puesto · 2026",
                 "stack": "Python 3 · biblioteca estándar · HMAC · SHA-256 · Docker",
                 "bullets": [
                     "Plataforma de órdenes de bloqueo en vivo: cada stream pirata detectado llega como expediente con evidencia verificable a un juez de turno, que aprueba y firma.",
@@ -197,6 +197,7 @@ CV = {
         ],
         "extra": [
             ("Idiomas", "Español (nativo) · Inglés B1"),
+            ("Otros conocimientos", "Álgebra y Análisis Matemático · Unity y Godot"),
             ("Comunidad", "Participante activo de SaltaDev y de hackatones (Argentina Space, PunaTech, Kiro + AWS, Casper)."),
             ("Disponibilidad", "Trabajo remoto."),
         ],
@@ -229,7 +230,7 @@ CV = {
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
             ("Practices", "REST, MVC, SOLID, OOP, DTO, Clean Code"),
-            ("Currently learning", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS and GitHub Actions · Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
+            ("Currently learning", "Java: JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS and GitHub Actions · Next.js · Rust: Tokio, Axum, Actix Web, SQLx, Serde and Odra Framework (one contract deployed on Casper Testnet)"),
         ],
         "experience": [
             {
@@ -262,7 +263,7 @@ CV = {
             },
             {
                 "title": "Achique — Live judicial blocking of pirate streaming",
-                "meta": "Argentina Space Hackathon, 1st place (Football Challenge) · 2026",
+                "meta": "Argentina Space Hackathon, 1st place · 2026",
                 "stack": "Python 3 · standard library · HMAC · SHA-256 · Docker",
                 "bullets": [
                     "Platform for live blocking orders: every detected pirate stream reaches a duty judge as a case file with verifiable evidence, to approve and sign.",
@@ -339,7 +340,8 @@ CV = {
         ],
         "extra": [
             ("Languages", "Spanish (native) · English B1"),
-            ("Community", "Active member of SaltaDev; hackathon participant (Argentina Space, PunaTech, Kiro + AWS, Casper)."),
+            ("Other knowledge", "Algebra and Calculus · Unity and Godot"),
+            ("Community", "Active member of SaltaDev; hackathons: Argentina Space, PunaTech, Kiro + AWS, Casper."),
             ("Availability", "Remote work."),
         ],
     },
