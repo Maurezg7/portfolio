@@ -12,14 +12,24 @@ const groups = [
     title: "BACKEND · JAVA",
     key: "skills.backend",
     skills: [
-      { name: "Java", icon: lang + "java.webp" },
-      { name: "Spring Boot", icon: lang + "springboot.webp" },
+      { name: "Java", icon: lang + "java.svg" },
+      { name: "Spring Boot", icon: lang + "springboot.svg" },
       { name: "Spring Security", icon: lang + "springsecurity.svg" },
-      { name: "Spring Data JPA", icon: lang + "hibernate.svg" },
-      { name: "PostgreSQL", icon: lang + "postgresql.webp" },
+      { name: "Spring Data JPA", icon: lang + "springdata.svg" },
+      { name: "PostgreSQL", icon: lang + "postgresql.svg" },
       { name: "Docker", icon: lang + "docker.svg" },
       { name: "Git", icon: lang + "git.svg" },
     ],
+  },
+  {
+    title: "FRONTEND",
+    key: "skills.frontend",
+    skills: [{ name: "React", icon: lang + "react.svg" }, learning("Next.js", "nextjs.svg")],
+  },
+  {
+    title: "PROGRAMACIÓN DE SISTEMAS",
+    key: "skills.systems",
+    skills: [{ name: "C", icon: lang + "c.svg" }],
   },
   {
     title: "JAVA · APRENDIENDO",
@@ -38,11 +48,6 @@ const groups = [
     title: "JAVA · PRÓXIMO",
     key: "skills.next",
     skills: [next("Quarkus", "quarkus.svg"), next("Micronaut", "micronaut.webp")],
-  },
-  {
-    title: "FRONTEND",
-    key: "skills.frontend",
-    skills: [{ name: "React", icon: lang + "react.webp" }, learning("Next.js", "nextjs.svg")],
   },
   {
     title: "RUST · APRENDIENDO",
@@ -89,18 +94,17 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
   <div id="container">
     <div id="sections_container">
       <header class="skills_head">
-        <span class="skills_label" data-i18n="skills.label">HABILIDADES_</span>
-        <h1>STACK</h1>
-        <div class="line"></div>
+        <span class="skills_label">Portfolio / 03</span>
+        <h1 data-i18n="skills.label">Habilidades</h1>
         <div class="skills_stats">
           <span><b>{total}</b> <i data-i18n="skills.stat.tech">tecnologías</i></span>
           <span><b>{groups.length}</b> <i data-i18n="skills.stat.areas">áreas</i></span>
         </div>
       </header>
 
-      <div class="filters" role="tablist">
-        <button type="button" class="chip is-on" data-filter="all" data-i18n="skills.all">TODO</button>
-        {groups.map((g) => <button type="button" class="chip" data-filter={g.key} data-i18n={g.key}>{g.title}</button>)}
+      <div class="filters" role="group" aria-label="Filtrar por área" data-i18n-aria="skills.filters">
+        <button type="button" class="chip is-on" aria-pressed="true" data-filter="all" data-i18n="skills.all">TODO</button>
+        {groups.map((g) => <button type="button" class="chip" aria-pressed="false" data-filter={g.key} data-i18n={g.key}>{g.title}</button>)}
       </div>
 
       <div class="groups">
@@ -115,7 +119,7 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
               </div>
               <ul class="skill_grid">
                 {group.skills.map((skill) => (
-                  <li class="skill_card" data-tilt>
+                  <li class="skill_card">
                     <div class="cont_icon">
                       <img src={skill.icon} alt="" width="40" height="40" loading="lazy" decoding="async" />
                     </div>
@@ -141,7 +145,10 @@ const total = groups.reduce((n, g) => n + g.skills.length, 0);
       if (chip.dataset.bound) return;
       chip.dataset.bound = "1";
       chip.addEventListener("click", () => {
-        chips.forEach((c) => c.classList.toggle("is-on", c === chip));
+        chips.forEach((c) => {
+          c.classList.toggle("is-on", c === chip);
+          c.setAttribute("aria-pressed", String(c === chip));
+        });
         const f = chip.dataset.filter;
         groups.forEach((g) => (g.hidden = f !== "all" && g.dataset.group !== f));
       });

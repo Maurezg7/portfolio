@@ -7,12 +7,12 @@ const navItems = [
   { name: "CONTACTO", key: "nav.contact", href: "/portfolio/contact/" },
 ];
 const rawPath = Astro.url.pathname;
-const pathname = rawPath === "/portfolio/" ? "/portfolio/" : rawPath.replace(/\/$/, "");
+const pathname = rawPath.replace(/\/?$/, "/");
 ---
 
 <nav>
   <div class="despliegue">
-    <button id="menu-toggle" type="button" aria-label="Menú" data-i18n-aria="nav.menu">
+    <button id="menu-toggle" type="button" aria-label="Menú" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="menu-items">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -219,12 +219,16 @@ const pathname = rawPath === "/portfolio/" ? "/portfolio/" : rawPath.replace(/\/
     </ul>
   </div>
 
+  <ul class="nav-shortcuts">
+    {navItems.slice(1).map((item) => <li><a href={item.href} aria-current={pathname === item.href ? "page" : undefined} data-i18n={item.key}>{item.name}</a></li>)}
+  </ul>
+
   <div class="logo">
     <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-aria="nav.lang">
       <button type="button" data-set-lang="es" class="is-on" aria-pressed="true">ES</button>
       <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
     </div>
-    <span>MAURO</span>
+    <a class="brand-home" href="/portfolio/"><span>MAURO</span></a>
   </div>
 </nav>
 
@@ -232,11 +236,39 @@ const pathname = rawPath === "/portfolio/" ? "/portfolio/" : rawPath.replace(/\/
   const initNav = () => {
     const btn = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu-items");
-    btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+    if (!btn || !menu || btn.dataset.bound) return;
+    btn.dataset.bound = "1";
+    const setOpen = (open: boolean) => {
+      menu.classList.toggle("hidden", !open);
+      btn.setAttribute("aria-expanded", String(open));
+    };
+    btn.addEventListener("click", () => setOpen(menu.classList.contains("hidden")));
+    btn.closest("nav")?.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !menu.classList.contains("hidden")) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
   };
   document.addEventListener("astro:page-load", initNav);
 </script>
 
 <style lang="scss" is:global>
   @use "../../assets/styles/scss/nav.scss";
+
+  nav .nav-shortcuts { display: none; }
+  nav .brand-home { text-decoration: none; }
+  @media (min-width: 900px) {
+    nav {
+      padding-inline: max(5vw, calc((100% - 1160px) / 2));
+      border-bottom: 1px solid #292e27;
+      background: #0a0c0af5;
+    }
+    nav .nav-shortcuts {
+      display: flex; gap: clamp(.8rem, 2.5vw, 2.1rem); list-style: none;
+      a { color: #d6dcd1; text-decoration: none; font: 650 .78rem system-ui, sans-serif; letter-spacing: .045em; }
+      a:hover, a[aria-current] { color: var(--neon-green); }
+    }
+    nav:has(#menu-toggle[aria-expanded="true"]) .nav-shortcuts { visibility: hidden; }
+  }
 </style>

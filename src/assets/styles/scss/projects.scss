@@ -54,26 +54,15 @@ $card-clip: polygon(
   }
 }
 
-.prin_proj {
+.project-heading {
+  color: $accent;
   width: 100%;
   max-width: 1200px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2.2rem;
-  padding-bottom: 0.4rem;
-
-  h6 {
-    @include monospace(clamp(0.7rem, 2vw, 0.9rem), 700);
-    color: $orange;
-    letter-spacing: 0.12em;
-    white-space: nowrap;
-  }
-
-  .line {
-    flex-grow: 1;
-    border-bottom: 1px solid rgba(255, 154, 61, 0.45);
-  }
+  margin-block: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $border;
+  p { font: 700 .75rem monospace; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .7rem; }
+  #container & h1 { font: 750 clamp(2.5rem, 6vw, 5rem)/1 system-ui, sans-serif; letter-spacing: -.055em; }
 }
 
 .project_container {
@@ -92,17 +81,13 @@ $card-clip: polygon(
   background-color: $card-bg;
   display: flex;
   flex-direction: column;
-  clip-path: $card-clip;
+  border-radius: 0.85rem;
   border: 1px solid $border;
   transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow: hidden;
 
   &:hover {
-    transform: translateY(-8px);
-
-    img {
-      transform: scale(1.04);
-    }
+    transform: translateY(-2px);
   }
 }
 
@@ -136,14 +121,15 @@ $card-clip: polygon(
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #0a0a0a;
+  background: #191d17;
+  padding: clamp(0.5rem, 1.2vw, 1rem);
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.6s ease;
+    object-fit: contain;
+    background: #0a0c0a;
+    border-radius: 0.3rem;
   }
 }
 
@@ -392,16 +378,6 @@ $card-clip: polygon(
     box-shadow: 0 14px 40px -12px rgba(125, 255, 90, 0.35), 0 0 0 1px rgba(125, 255, 90, 0.4);
   }
 
-  .container_img::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 40%;
-    background: linear-gradient(transparent, rgba(10, 10, 10, 0.85));
-    pointer-events: none;
-  }
-
-  .container_img { position: relative; }
 }
 
 .info_project ul li {
@@ -424,12 +400,8 @@ $card-clip: polygon(
 
 
 // ---- Award winner highlight ----
-@keyframes award-glow { 50% { box-shadow: 0 0 46px rgba(255, 154, 61, 0.55), 0 0 0 1px rgba(255, 154, 61, 0.7); } }
-
 .item_project--award {
   border-color: $orange;
-  box-shadow: 0 0 26px rgba(255, 154, 61, 0.3), 0 0 0 1px rgba(255, 154, 61, 0.5);
-  animation: card-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both, award-glow 3s ease-in-out 0.8s infinite;
 
   @media (min-width: 1100px) { grid-column: span 2; }
 }

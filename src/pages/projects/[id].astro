@@ -1,4 +1,5 @@
 ---
+import ProjectImage from "../../components/ProjectImage.astro";
 import Layout from "../../layouts/Layout.astro";
 import "../../assets/styles/scss/project-detail.scss";
 
@@ -9,7 +10,7 @@ export function getStaticPaths() {
       props: {
         title: "ACHIQUE",
         date: "NOVIEMBRE_2026",
-        image: "/portfolio/image/projects/Achique.webp",
+        image: "Achique",
         siteUrl: "https://achique-g8j6.onrender.com",
         repoUrl: "https://github.com/Maurezg7/achique",
         stack: ["Python", "Biblioteca estándar", "HMAC", "SHA-256", "Docker"],
@@ -31,7 +32,7 @@ export function getStaticPaths() {
       props: {
         title: "TRASLUZ",
         date: "NOVIEMBRE_2026",
-        image: "/portfolio/image/projects/Trasluz.webp",
+        image: "Trasluz",
         siteUrl: "https://trasluz-2av.pages.dev",
         repoUrl: "https://github.com/Maurezg7/trasluz",
         stack: ["Solidity", "React", "Vite", "Tailwind", "wagmi", "Avalanche eERC", "Groth16"],
@@ -52,7 +53,7 @@ export function getStaticPaths() {
       props: {
         title: "DENGUE CENTINELA",
         date: "2026",
-        image: "/portfolio/image/projects/DengueCentinela.webp",
+        image: "DengueCentinela",
         siteUrl: "https://app.dengue-centinela.workers.dev",
         repoUrl: "https://github.com/EstebanNahuelok/dengue-centinela",
         stack: ["React 19", "TanStack Start", "Tailwind", "Leaflet", "Express", "Prisma", "PostgreSQL", "Docker"],
@@ -73,7 +74,7 @@ export function getStaticPaths() {
       props: {
         title: "CAZATALENTOS",
         date: "OCTUBRE_2026",
-        image: "/portfolio/image/projects/Cazatalentos.webp",
+        image: "Cazatalentos",
         siteUrl: "https://cazatalentos.vercel.app/",
         repoUrl: "https://github.com/Maurezg7/cazatalentos",
         stack: ["Solidity", "React", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "wagmi", "Monad"],
@@ -94,7 +95,7 @@ export function getStaticPaths() {
       props: {
         title: "MEETFLOW",
         date: "OCTUBRE_2026",
-        image: "/portfolio/image/projects/MeetFlow.webp",
+        image: "MeetFlow",
         siteUrl: "https://web-ruddy-mu-22.vercel.app",
         repoUrl: "https://github.com/No-Country-simulation/S08-26-equipo-5",
         work: "EXPERIENCIA LABORAL · NO COUNTRY",
@@ -115,7 +116,7 @@ export function getStaticPaths() {
       props: {
         title: "ESTELARES",
         date: "SEPTIEMBRE_2026",
-        image: "/portfolio/image/projects/Estelares.webp",
+        image: "Estelares",
         siteUrl: "https://frontend-estellares.vercel.app/",
         stack: ["React", "Vite", "Tailwind", "Stellar", "Freighter", "Django"],
         description:
@@ -135,7 +136,7 @@ export function getStaticPaths() {
       props: {
         title: "INVOICE",
         date: "AGOSTO_2026",
-        image: "/portfolio/image/projects/Invoice.webp",
+        image: "Invoice",
         repoUrl: "https://github.com/leitolml1/invoice",
         stack: ["React", "Vite", "TypeScript", "Express", "QVAC"],
         description:
@@ -154,7 +155,7 @@ export function getStaticPaths() {
       props: {
         title: "AGROCENTINELA",
         date: "2026",
-        image: "/portfolio/image/projects/AgroCentinela.webp",
+        image: "AgroCentinela",
         siteUrl: "https://agrocentinela.netlify.app",
         repoUrl: "https://github.com/Maurezg7/AgroCentinela",
         stack: ["React", "Vite", "TypeScript", "PWA", "NestJs", "AWS Lambda", "DynamoDB", "Zod", "AWS SAM"],
@@ -174,7 +175,7 @@ export function getStaticPaths() {
       props: {
         title: "YIELDVAULT",
         date: "2026",
-        image: "/portfolio/image/projects/CasperYield.webp",
+        image: "CasperYield",
         siteUrl: "https://casper-yield-agent.vercel.app",
         repoUrl: "https://github.com/EstebanNahuelok/casper-yield-agent",
         stack: ["Rust", "Odra Framework", "Casper Network", "Smart Contracts"],
@@ -193,7 +194,7 @@ export function getStaticPaths() {
       props: {
         title: "HERMES",
         date: "MARZO_2026",
-        image: "/portfolio/image/projects/hermes_presentation.webp",
+        image: "hermes_presentation",
         siteUrl: "https://hermes-inky-two.vercel.app/",
         stack: ["Java", "SpringBoot", "Angular", "SASS - SCSS", "Typescript", "PostgreSQL"],
         description:
@@ -212,7 +213,7 @@ export function getStaticPaths() {
       props: {
         title: "PORTFOLIO WEB",
         date: "MAYO_2026",
-        image: "/portfolio/image/projects/Portfolio_Web.webp",
+        image: "Portfolio_Web",
         siteUrl: "https://maurezg7.github.io/portfolio/",
         stack: ["AstroJS", "JavaScript", "SASS - SCSS", "CSS3", "HTML5"],
         description:
@@ -231,7 +232,7 @@ export function getStaticPaths() {
       props: {
         title: "SEM SALTA",
         date: "MAYO_2026",
-        image: "/portfolio/image/projects/SEM.webp",
+        image: "SEM",
         siteUrl: "https://parki-pay.vercel.app/",
         stack: ["NestJs", "React", "Vite", "Tailwind", "MercadoPago", "PostgreSQL"],
         description:
@@ -270,8 +271,8 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
     </a>
 
     <div class="detail_hero">
-      <div class="detail_img" data-tilt>
-        <img src={image} alt={title} decoding="async" fetchpriority="high" width="1280" height="720" />
+      <div class="detail_img">
+        <ProjectImage file={image} alt={title} sizes="(max-width: 900px) 90vw, (max-width: 1333px) 44vw, 580px" priority />
       </div>
       <div class="detail_header">
         <div class="detail_meta">
@@ -351,22 +352,3 @@ const { title, date, image, siteUrl, repoUrl, stack, description, highlights, aw
     </div>
   </div>
 </Layout>
-
-<style>
-  *,
-  ::after,
-  ::before {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    background-color: #0a0a0a;
-    color: white;
-    overflow-x: hidden;
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-</style>

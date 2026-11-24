@@ -1,6 +1,6 @@
 # Mauro Gomez - Full Stack Developer
 
-> Full stack developer. Backend in Java (Spring Boot, Spring Security, Spring Data JPA) and frontend in React; currently learning JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions and Next.js on the Java/web side, and Rust (Tokio, Axum, Actix Web, SQLx, Serde, Odra). Next up: Quarkus and Micronaut. Also knows algebra and calculus, and the Unity and Godot game engines. Languages: Spanish (native), English B1. Studies at UPATECO. 1st place in the Football Challenge at the Argentina Space 2026 Hackathon and 2nd place at the PunaTech Hackathon. Open to work.
+> Full stack developer. Backend in Java (Spring Boot, Spring Security, Spring Data JPA) and frontend in React; currently learning JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions and Next.js on the Java/web side, and Rust (Tokio, Axum, Actix Web, SQLx, Serde, Odra). Next up: Quarkus and Micronaut. Also programs in C, knows algebra and calculus, and the Unity and Godot game engines. Languages: Spanish (native), English B1. Studies at UPATECO. 1st place in the Football Challenge at the Argentina Space 2026 Hackathon and 2nd place at the PunaTech Hackathon. Open to work.
 
 ## CV
 - CV (Java + React): https://maurezg7.github.io/portfolio/docs/Mauro_Gomez_CV_Java_EN.pdf (ES: Mauro_Gomez_CV_Java_ES.pdf)

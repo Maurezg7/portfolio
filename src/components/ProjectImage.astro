@@ -1,0 +1,22 @@
+---
+import dimensions from "../assets/project-sizes.json";
+
+interface Props {
+  file: string;
+  alt?: string;
+  sizes: string;
+  priority?: boolean;
+}
+
+const { file, alt = "", sizes, priority = false } = Astro.props;
+const [width, height] = dimensions[file as keyof typeof dimensions];
+const base = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/image/projects`;
+const src = `${base}/${file}.webp`;
+---
+<img
+  {src} {alt} {sizes}
+  srcset={`${base}/previews/${file}.webp ${Math.min(560, width)}w, ${src} ${width}w`}
+  {width} {height}
+  loading={priority ? "eager" : "lazy"} fetchpriority={priority ? "high" : undefined}
+  decoding="async"
+/>

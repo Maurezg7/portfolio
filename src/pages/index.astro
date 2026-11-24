@@ -1,106 +1,70 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProjectImage from "../components/ProjectImage.astro";
 import "../assets/styles/scss/welcome.scss";
+
+const featured = [
+  { id: "meetflow", name: "MeetFlow", file: "MeetFlow", tag: "Experiencia laboral", label: "home.feat.meet.tag", key: "meet", text: "App de videollamadas con sala de espera y anfitriones, hecha en equipo ágil en No Country." },
+  { id: "achique", name: "Achique", file: "Achique", tag: "Argentina Space", key: "ach", text: "Bloqueo de streams piratas en vivo: cada orden la aprueba y firma un juez de turno. 1.er puesto en el Desafío Fútbol." },
+  { id: "sem-salta", name: "SEM Salta", file: "SEM", tag: "PunaTech", key: "sem", text: "Pagos de estacionamiento medido con MercadoPago y panel de administración. Hecho para la Municipalidad de Salta." },
+  { id: "cazatalentos", name: "Cazatalentos", file: "Cazatalentos", tag: "Monad", key: "caz", text: "Registro on-chain de quién creyó primero en un artista, con un contrato inmutable en Solidity." },
+  { id: "dengue-centinela", name: "Dengue Centinela", file: "DengueCentinela", tag: "Salud pública", label: "home.feat.den.tag", key: "den", text: "Mapa de calor de riesgo de dengue en Salta, a partir de reportes por WhatsApp y clasificación con IA." },
+];
 ---
-
 <Layout title="Mauro Gomez - Full Stack">
-  <div id="container">
-    <span class="status"><i></i><b data-i18n="home.status">Disponible para nuevos proyectos</b></span>
-    <a class="award" href="/portfolio/projects/achique">🏆 <span data-i18n="home.award">1.er puesto · Hackathon Argentina Space</span></a>
-    <h1>SOY <em>MAURO GOMEZ</em></h1>
-    <h2 data-i18n="home.role">FULL STACK DEVELOPER</h2>
-    <ul class="stack" aria-label="Stack">
-      <li>Java</li><li>Spring Boot</li><li class="fe">React</li>
-      <li class="learn">Rust <small data-i18n="home.learning">aprendiendo</small></li>
-    </ul>
-    <p data-i18n="home.line">
-      Desarrollador full stack. Armo APIs en Java con Spring Boot y las conecto con interfaces en React, y estoy aprendiendo Rust con Tokio y Axum. Proyectos en producción, un 1.er y un 2.º puesto en hackathons y código limpio y mantenible.
-    </p>
-    <div class="actions">
-      <button id="aboutme" data-i18n="home.cta">Sobre mí</button>
-      <button id="projects" class="ghost" data-i18n="home.cta2">Ver proyectos</button>
+  <div class="portfolio-home">
+    <section class="intro" aria-labelledby="intro-name">
+      <div class="intro-copy">
+        <p class="eyebrow"><i></i><span data-i18n="home.status">Disponible para nuevos proyectos</span></p>
+        <h1 id="intro-name">Mauro<br />Gomez<span>.</span></h1>
+        <h2 data-i18n="home.role">Desarrollador full stack</h2>
+        <p class="summary" data-i18n="home.line">Desarrollo APIs en Java con Spring Boot e interfaces en React. También programo en C y estoy aprendiendo Rust.</p>
+        <div class="intro-links">
+          <a class="primary" href="/portfolio/projects/"><span data-i18n="home.cta2">Ver proyectos</span><b aria-hidden="true">↗</b></a>
+          <a href="/portfolio/aboutme/" data-i18n="home.cta">Sobre mí</a>
+        </div>
+      </div>
+      <figure class="sentinel">
+        <div class="sentinel-art">
+          <img src="/portfolio/image/brand/nodus-focus.webp" srcset="/portfolio/image/brand/nodus-focus-sm.webp 400w, /portfolio/image/brand/nodus-focus.webp 564w" sizes="(max-width: 700px) 92vw, (max-width: 1200px) 44vw, 530px" width="564" height="496" fetchpriority="high" decoding="async" alt="NODUS" />
+          <span class="figure-id" aria-hidden="true">FIG. 01 / MG</span>
+        </div>
+        <figcaption><strong>NODUS</strong><span data-i18n="home.nodus">El centinela que conecta backend, frontend y datos.</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="stack-strip">
+      <a class="eyebrow" href="/portfolio/skills/">Stack <span aria-hidden="true">↗</span></a>
+      <ul>
+        {["Java", "Spring Boot", "React", "C", "Rust"].map((name) => <li>
+          <img src={`/portfolio/image/languages/${name.toLowerCase().replace(" ", "")}.svg`} width="22" height="22" alt="" />
+          {name}{name === "Rust" && <small data-i18n="home.learning">aprendiendo</small>}
+        </li>)}
+      </ul>
     </div>
-  </div>
 
-  <section class="home_more">
-    <ul class="home_stats" data-reveal>
-      <li><b>Java</b><span data-i18n="home.stat.1">backend</span></li>
-      <li><b>React</b><span data-i18n="home.stat.2">frontend</span></li>
-      <li><b>🏆 1º</b><span data-i18n="home.stat.3">puesto en hackathon</span></li>
-    </ul>
-
-    <figure class="home_nodus" data-reveal>
-      <img src="/portfolio/image/brand/nodus.webp" srcset="/portfolio/image/brand/nodus-960.webp 960w, /portfolio/image/brand/nodus.webp 1672w" sizes="(max-width: 1240px) 96vw, 1200px" alt="NODUS, mecha mascot of Mauro Gomez, programming with his tech stack on screen" loading="lazy" decoding="async" width="1672" height="941" data-tilt />
-      <figcaption>
-        <b>NODUS</b>
-        <span data-i18n="home.nodus">El centinela que conecta backend, frontend y datos.</span>
-      </figcaption>
-    </figure>
-
-    <h2 class="home_h2" data-reveal data-i18n="home.feat.title">PROYECTOS DESTACADOS</h2>
-    <div class="home_feat">
-      <a class="feat_card" href="/portfolio/projects/meetflow" data-reveal data-tilt>
-        <em data-i18n="home.feat.meet.tag">💼 Experiencia laboral</em><h3>MEETFLOW</h3>
-        <p data-i18n="home.feat.meet">App de videollamadas con sala de espera y anfitriones, hecha en equipo ágil en No Country.</p>
-      </a>
-      <a class="feat_card" href="/portfolio/projects/achique" data-reveal data-tilt>
-        <em>🏆 Argentina Space</em><h3>ACHIQUE</h3>
-        <p data-i18n="home.feat.ach">Bloqueo de streams piratas en vivo: cada orden la aprueba y firma un juez de turno. 1.er puesto en el Desafío Fútbol.</p>
-      </a>
-      <a class="feat_card" href="/portfolio/projects/sem-salta" data-reveal data-tilt>
-        <em>🏆 PunaTech</em><h3>SEM SALTA</h3>
-        <p data-i18n="home.feat.sem">Pagos de estacionamiento medido con MercadoPago y panel de administración. Hecho para la Municipalidad de Salta.</p>
-      </a>
-      <a class="feat_card" href="/portfolio/projects/cazatalentos" data-reveal data-tilt>
-        <em>Monad</em><h3>CAZATALENTOS</h3>
-        <p data-i18n="home.feat.caz">Registro on-chain de quién creyó primero en un artista, con un contrato inmutable en Solidity.</p>
-      </a>
-      <a class="feat_card" href="/portfolio/projects/dengue-centinela" data-reveal data-tilt>
-        <em>Salud pública</em><h3>DENGUE CENTINELA</h3>
-        <p data-i18n="home.feat.den">Mapa de calor de riesgo de dengue en Salta, a partir de reportes por WhatsApp y clasificación con IA.</p>
-      </a>
-    </div>
-    <a class="home_all" href="/portfolio/projects" data-reveal data-i18n="home.feat.all">VER TODOS LOS PROYECTOS</a>
-
-    <div class="home_cta" data-reveal>
+    <section class="selected" aria-labelledby="featured-title">
+      <header>
+        <div><p class="eyebrow">Portfolio / 01</p><h2 id="featured-title" data-i18n="home.feat.title">Proyectos destacados</h2></div>
+        <a class="award" href="/portfolio/projects/achique/"><span data-i18n="home.award">1.er puesto · Hackathon Argentina Space</span> ↗</a>
+      </header>
+      <div class="featured-grid">
+        {featured.map((project, index) => <a class="featured-card" href={`/portfolio/projects/${project.id}/`}>
+          <div class="project-cover">
+            <ProjectImage file={project.file} sizes={index < 2 ? "(max-width: 700px) 92vw, (max-width: 1200px) 46vw, 566px" : "(max-width: 700px) 92vw, (max-width: 1200px) 30vw, 372px"} />
+          </div>
+          <div class="project-copy">
+            <div class="project-meta"><span data-i18n={project.label}>{project.tag}</span><span aria-hidden="true">/ 0{index + 1}</span></div>
+            <h3>{project.name}<span aria-hidden="true">↗</span></h3>
+            <p data-i18n={`home.feat.${project.key}`}>{project.text}</p>
+          </div>
+        </a>)}
+      </div>
+      <a class="all-projects" href="/portfolio/projects/" data-i18n="home.feat.all">Ver todos los proyectos</a>
+    </section>
+    <section class="contact-band">
       <h2 data-i18n="home.cta.title">Construyamos algo juntos</h2>
-      <a href="/portfolio/contact" data-i18n="home.cta.btn">CONTACTAME</a>
-    </div>
-  </section>
+      <a class="primary" href="/portfolio/contact/"><span data-i18n="home.cta.btn">Contactame</span> ↗</a>
+    </section>
+  </div>
 </Layout>
-
-<style>
-  *,
-  ::after,
-  ::before {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    background-color: #0a0a0a;
-    color: white;
-    overflow-x: hidden;
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-</style>
-
-<script>
-  const changePage = () => {
-    const buttonAbout = document.getElementById("aboutme");
-    buttonAbout?.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.location.href = "/portfolio/aboutme";
-    });
-    document.getElementById("projects")?.addEventListener("click", (e) => {
-      e.preventDefault();
-      window.location.href = "/portfolio/projects";
-    });
-  };
-
-  document.addEventListener("astro:page-load", changePage);
-</script>
-
