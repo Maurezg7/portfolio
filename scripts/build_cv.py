@@ -5,7 +5,6 @@ import shutil
 from pathlib import Path
 
 from reportlab.lib.colors import HexColor
-from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
@@ -61,7 +60,7 @@ CV = {
         "file": "Mauro_Gomez_CV_Java_ES.pdf",
         "lang": "es-AR",
         "role": "Desarrollador Full Stack Junior (Java, React)",
-        "location": "Salta, Argentina",
+        "location": "Salta, Argentina (UTC-3)",
         "subject": "CV de Mauro Gomez, desarrollador full stack: Java y React",
         "sections": {
             "profile": "Perfil",
@@ -72,19 +71,19 @@ CV = {
             "extra": "Información adicional",
         },
         "profile": (
-            "Desarrollador de software (título universitario, UPATecO) orientado a full stack: "
-            "backend en <b>Java</b> con Spring Boot e interfaces en <b>React</b>. Construí APIs REST "
-            "con JWT sobre PostgreSQL y frontends en React con TypeScript, y competí en hackatones, "
-            "con un primer puesto en el Desafío Fútbol del Hackathon Argentina Space 2026 y un segundo puesto "
-            "en el Hackathon PunaTech. Actualmente estoy aprendiendo <b>Rust</b>. Inglés B1. Busco mi primera posición formal y remota como "
-            "desarrollador backend o full stack."
+            "Desarrollo APIs REST con <b>Java y Spring Boot</b> e interfaces con <b>React</b>. "
+            "En Hermes implementé la autenticación con JWT y modelé los datos en PostgreSQL. "
+            "En SEM Salta desarrollé la interfaz de pago con Mercado Pago en un equipo de tres. "
+            "Busco un puesto remoto de desarrollo backend o full stack."
         ),
         "skills": [
             ("Backend", "Java, Spring Boot, Spring Security, Spring Data JPA, Hibernate, Maven, JWT, APIs REST"),
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Datos y herramientas", "PostgreSQL, SQL, modelado relacional, Git, GitHub, Docker, Nginx"),
-            ("Prácticas", "REST, MVC, SOLID, POO (programación orientada a objetos), DTO, Clean Code, metodologías ágiles"),
-            ("Aprendiendo", "JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions, Next.js, Rust (Tokio, Axum, Actix Web, SQLx, Serde, Odra Framework; un contrato desplegado en Casper Testnet)"),
+            ("Programación de sistemas", "C"),
+            ("Prácticas", "Programación orientada a objetos (POO), MVC, SOLID, DTO, metodologías ágiles"),
+            ("En aprendizaje", "JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions y Next.js"),
+            ("Rust (en aprendizaje)", "Tokio, Axum, Actix Web, SQLx, Serde y Odra"),
         ],
         "experience": [
             {
@@ -92,9 +91,8 @@ CV = {
                 "meta": "No Country (simulación laboral) | Octubre 2026",
                 "stack": "Next.js, Tailwind CSS, Express, Prisma, PostgreSQL, GetStream, Socket.IO",
                 "bullets": [
-                    "Desarrollé en equipo, con metodologías ágiles, una app para crear y unirse a videollamadas: reunión inmediata o programada, con código de acceso.",
-                    "Sala de espera en la que el anfitrión aprueba cada ingreso (con cuenta o como invitado) y recibe el aviso en tiempo real por Socket.IO; llamadas sobre GetStream con varios anfitriones, pantalla compartida, chat y reacciones.",
-                    "Frontend desplegado en Vercel y API en Render, con Prisma sobre PostgreSQL.",
+                    "Desarrollamos en equipo una app para iniciar o programar videollamadas y compartir un código de acceso.",
+                    "La sala de espera notifica al anfitrión por Socket.IO para que apruebe cada ingreso. GetStream permite compartir pantalla y conversar por chat.",
                 ],
                 "links": [
                     ("web-ruddy-mu-22.vercel.app", "https://web-ruddy-mu-22.vercel.app"),
@@ -106,7 +104,7 @@ CV = {
                 "meta": "Softtek (prácticas / simulación laboral) | Julio 2025 - Agosto 2025",
                 "stack": "Java, MVC",
                 "bullets": [
-                    "Desarrollo en equipo de un sistema de Gestión de Biblioteca en Java (patrón MVC).",
+                    "Desarrollamos en equipo un sistema de biblioteca en Java, separando el modelo, la vista y el controlador.",
                 ],
                 "links": [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
             },
@@ -117,37 +115,33 @@ CV = {
                 "meta": "Proyecto personal | 2026",
                 "stack": "Java 21, Spring Boot 3.4, Spring Security, JWT, Spring Data JPA, PostgreSQL, Angular 21, Docker, Nginx",
                 "bullets": [
-                    "Desarrollé una aplicación full stack de mensajería y gestión de comunidades, inspirada en Discord, con backend en Spring Boot.",
-                    "Implementé la autenticación con JWT y rutas protegidas (Spring Security), con verificación por email mediante códigos de 6 dígitos que expiran a los 5 minutos.",
-                    "Diseñé el modelo relacional en PostgreSQL (amistades, estados, servidores con canales dinámicos y notificaciones) y expuse una API REST que el cliente consulta por polling.",
-                    "Configuré Docker y Nginx como proxy inverso y desplegué en Render.",
+                    "Protegí las rutas de la API con Spring Security y JWT. La verificación por correo usa códigos de seis dígitos que vencen a los cinco minutos.",
+                    "Modelé amistades, canales y notificaciones en PostgreSQL y expuse los mensajes mediante una API REST que consulta el cliente Angular.",
                 ],
                 "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
-            },
-            {
-                "title": "Achique - Bloqueo judicial de streaming pirata en vivo",
-                "meta": "Hackathon Argentina Space, primer puesto | 2026",
-                "stack": "Python 3, biblioteca estándar, HMAC, SHA-256, Docker",
-                "bullets": [
-                    "Plataforma de órdenes de bloqueo en vivo: cada stream pirata detectado llega como expediente con evidencia verificable a un juez de turno, que aprueba y firma.",
-                    "Envío de la orden a cada proveedor según el tipo de bloqueo que acepta, con seguimiento, reintentos y vencimiento automático de los bloqueos por IP al terminar el partido.",
-                    "Auditoría encadenada por hashes y registro público de transparencia; en el partido final, 8 streams bloqueados de 8 y ningún sitio legítimo afectado.",
-                ],
-                "links": [
-                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
-                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
-                ],
             },
             {
                 "title": "SEM Salta - Sistema de estacionamiento medido",
                 "meta": "Hackathon PunaTech, segundo puesto | 2026",
                 "stack": "React, Vite, Tailwind CSS, NestJS, PostgreSQL, MercadoPago",
                 "bullets": [
-                    "Desarrollé el frontend en React (Vite, Tailwind CSS) del sistema de estacionamiento medido para la Municipalidad de Salta.",
-                    "Construí la interfaz de pago sobre MercadoPago y el consumo de la API REST del backend.",
-                    "Trabajo en equipo de 3 con entrega bajo las restricciones de tiempo del evento.",
+                    "Desarrollé el frontend en React para que los usuarios pudieran pagar su tiempo de estacionamiento con Mercado Pago.",
+                    "Conecté la interfaz de pago con la API REST del sistema durante el hackatón.",
                 ],
                 "links": [("parki-pay.vercel.app", "https://parki-pay.vercel.app/")],
+            },
+            {
+                "title": "Achique - Bloqueo judicial de streaming pirata en vivo",
+                "meta": "Hackathon Argentina Space, primer puesto | 2026",
+                "stack": "Python 3, biblioteca estándar, HMAC, SHA-256, Docker",
+                "bullets": [
+                    "Cada detección genera un expediente con evidencia verificable. Un juez revisa y firma la orden; el bloqueo por IP vence al terminar el partido.",
+                    "Un registro público encadena los eventos por hash para que se pueda verificar el historial de cada orden.",
+                ],
+                "links": [
+                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
+                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
+                ],
             },
             {
                 "title": "AgroCentinela - PWA de alertas agroclimáticas offline-first",
@@ -184,7 +178,7 @@ CV = {
                     "Como Smart Contracts Lead, desarrollé un smart contract en Rust desplegado en Casper Testnet, con registro on-chain de las acciones del agente para trazabilidad y auditoría.",
                     "Funciones de rebalanceo y depósito; resolví una falla out-of-gas en el despliegue al ajustar el gas de 200 a 500 CSPR.",
                 ],
-                "links": [],
+                "links": [("github.com/EstebanNahuelok/casper-yield-agent", "https://github.com/EstebanNahuelok/casper-yield-agent")],
             },
         ],
         "link_label": "Enlaces",
@@ -197,7 +191,6 @@ CV = {
             ("Idiomas", "Español (nativo), Inglés (B1)"),
             ("Otros conocimientos", "Álgebra, Análisis Matemático, Unity, Godot"),
             ("Comunidad", "Participante activo de SaltaDev y de hackatones (Argentina Space, PunaTech, Kiro + AWS, Casper)."),
-            ("Disponibilidad", "Trabajo remoto."),
         ],
     },
     "en": {
@@ -215,19 +208,19 @@ CV = {
             "extra": "Additional information",
         },
         "profile": (
-            "Software developer (university degree, UPATecO) focused on full stack work: "
-            "<b>Java</b> backends with Spring Boot and <b>React</b> interfaces. I built REST APIs with "
-            "JWT on PostgreSQL and React frontends in TypeScript, and competed in hackathons: 1st place "
-            "in the Football Challenge at the Argentina Space 2026 Hackathon and 2nd place at the "
-            "PunaTech Hackathon. Currently learning <b>Rust</b>. "
-            "English B1. Seeking my first full-time, remote role as a backend or full stack developer."
+            "I build REST APIs with <b>Java and Spring Boot</b> and user interfaces with <b>React</b>. "
+            "For Hermes, I implemented JWT authentication and designed the PostgreSQL data model. "
+            "For SEM Salta, I built the Mercado Pago checkout interface on a team of three. "
+            "I am looking for a remote backend or full stack developer role."
         ),
         "skills": [
             ("Backend", "Java, Spring Boot, Spring Security, Spring Data JPA, Hibernate, Maven, JWT, REST APIs"),
             ("Frontend", "React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Vite"),
             ("Data & tools", "PostgreSQL, SQL, relational modeling, Git, GitHub, Docker, Nginx"),
-            ("Practices", "REST, MVC, SOLID, OOP (object-oriented programming), DTO, Clean Code, agile methodologies"),
-            ("Currently learning", "JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions, Next.js, Rust (Tokio, Axum, Actix Web, SQLx, Serde, Odra Framework; one contract deployed on Casper Testnet)"),
+            ("Systems programming", "C"),
+            ("Practices", "Object-oriented programming (OOP), MVC, SOLID, DTO, agile development"),
+            ("Currently learning", "JUnit, Mockito, Kafka, Spring Cloud, Kubernetes, AWS, GitHub Actions and Next.js"),
+            ("Rust (currently learning)", "Tokio, Axum, Actix Web, SQLx, Serde and Odra"),
         ],
         "experience": [
             {
@@ -235,9 +228,8 @@ CV = {
                 "meta": "No Country (work simulation) | October 2026",
                 "stack": "Next.js, Tailwind CSS, Express, Prisma, PostgreSQL, GetStream, Socket.IO",
                 "bullets": [
-                    "Built with an agile team an app to start and join video calls: instant or scheduled meetings, with a join code.",
-                    "Waiting room where the host approves each person (with an account or as a guest) and is notified in real time through Socket.IO; calls on GetStream with several hosts, screen sharing, chat and reactions.",
-                    "Frontend deployed on Vercel and API on Render, with Prisma on PostgreSQL.",
+                    "Worked on a team to build an app for starting or scheduling video calls and inviting participants with a join code.",
+                    "The waiting room notifies the host through Socket.IO for admission approval. GetStream handles screen sharing and chat.",
                 ],
                 "links": [
                     ("web-ruddy-mu-22.vercel.app", "https://web-ruddy-mu-22.vercel.app"),
@@ -249,7 +241,7 @@ CV = {
                 "meta": "Softtek (internship / work simulation) | July 2025 - August 2025",
                 "stack": "Java, MVC",
                 "bullets": [
-                    "Team development of a Library Management system in Java (MVC pattern).",
+                    "Worked on a team to build a Java library management system with separate model, view and controller layers.",
                 ],
                 "links": [("github.com/gianalercia/GestionBibliotecaMVC", "https://github.com/gianalercia/GestionBibliotecaMVC")],
             },
@@ -260,37 +252,33 @@ CV = {
                 "meta": "Personal project | 2026",
                 "stack": "Java 21, Spring Boot 3.4, Spring Security, JWT, Spring Data JPA, PostgreSQL, Angular 21, Docker, Nginx",
                 "bullets": [
-                    "Built a full stack, Discord-inspired messaging and community application with a Spring Boot backend.",
-                    "Implemented JWT authentication and protected routes (Spring Security), with email verification via 6-digit codes that expire after 5 minutes.",
-                    "Designed the PostgreSQL relational model (friendships, statuses, servers with dynamic channels, notifications) and exposed a REST API the client polls to refresh messages.",
-                    "Configured Docker and Nginx as a reverse proxy and deployed on Render.",
+                    "Secured API routes with Spring Security and JWT. Email verification uses six-digit codes that expire after five minutes.",
+                    "Modeled friendships, channels and notifications in PostgreSQL and exposed messages through a REST API for the Angular client.",
                 ],
                 "links": [("hermes-inky-two.vercel.app", "https://hermes-inky-two.vercel.app/")],
-            },
-            {
-                "title": "Achique - Live judicial blocking of pirate streaming",
-                "meta": "Argentina Space Hackathon, 1st place | 2026",
-                "stack": "Python 3, standard library, HMAC, SHA-256, Docker",
-                "bullets": [
-                    "Platform for live blocking orders: every detected pirate stream reaches a duty judge as a case file with verifiable evidence, to approve and sign.",
-                    "Sends the order to each provider in the kind of block it accepts, with tracking, retries and automatic expiry of IP blocks when the match ends.",
-                    "Hash-chained audit log and public transparency log; in the final match, 8 of 8 pirate streams blocked and no legitimate site affected.",
-                ],
-                "links": [
-                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
-                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
-                ],
             },
             {
                 "title": "SEM Salta - Metered parking system",
                 "meta": "PunaTech Hackathon, 2nd place | 2026",
                 "stack": "React, Vite, Tailwind CSS, NestJS, PostgreSQL, MercadoPago",
                 "bullets": [
-                    "Built the React frontend (Vite, Tailwind CSS) of the metered-parking system for the Municipality of Salta.",
-                    "Built the MercadoPago payment UI and the integration with the backend REST API.",
-                    "Worked in a team of 3, delivering under the event's time constraints.",
+                    "Built the React frontend so drivers could pay for metered parking through Mercado Pago.",
+                    "Connected the payment interface to the backend REST API during the hackathon.",
                 ],
                 "links": [("parki-pay.vercel.app", "https://parki-pay.vercel.app/")],
+            },
+            {
+                "title": "Achique - Live judicial blocking of pirate streaming",
+                "meta": "Argentina Space Hackathon, 1st place | 2026",
+                "stack": "Python 3, standard library, HMAC, SHA-256, Docker",
+                "bullets": [
+                    "Each detection creates a case file with verifiable evidence. A judge reviews and signs the order; the IP block expires when the match ends.",
+                    "A public, hash-chained log makes each order’s history independently verifiable.",
+                ],
+                "links": [
+                    ("achique-g8j6.onrender.com", "https://achique-g8j6.onrender.com"),
+                    ("github.com/Maurezg7/achique", "https://github.com/Maurezg7/achique"),
+                ],
             },
             {
                 "title": "AgroCentinela - Offline-first agro-climate alerts PWA",
@@ -327,12 +315,12 @@ CV = {
                     "As Smart Contracts Lead, built a Rust smart contract deployed on Casper Testnet, with on-chain logging of the agent's actions for traceability and auditing.",
                     "Implemented rebalancing and deposit functions; fixed an out-of-gas deployment failure by raising the deploy gas from 200 to 500 CSPR.",
                 ],
-                "links": [],
+                "links": [("github.com/EstebanNahuelok/casper-yield-agent", "https://github.com/EstebanNahuelok/casper-yield-agent")],
             },
         ],
         "link_label": "Links",
         "education": [
-            ("Technical Degree in Software Development", "UPATecO - Provincial University of Administration, Technology and Trades", "2023 - 2025"),
+            ("Software Development (Tecnicatura program)", "UPATecO - Provincial University of Administration, Technology and Trades", "2023 - 2025"),
             ("Club Java Master, intensive training", "Udemy", "2025"),
             ("Web Development", "CoderHouse", "2021"),
         ],
@@ -340,7 +328,6 @@ CV = {
             ("Languages", "Spanish (native), English (B1)"),
             ("Other knowledge", "Algebra, Calculus, Unity, Godot"),
             ("Community", "Active member of SaltaDev; hackathons: Argentina Space, PunaTech, Kiro + AWS, Casper."),
-            ("Availability", "Remote work."),
         ],
     },
 }
@@ -355,16 +342,16 @@ def build(lang, font, bold):
     out = DOCS / cv["file"]
 
     def style(name, **kw):
-        base = dict(fontName=font, fontSize=9.6, leading=13.2, textColor=INK)
+        base = dict(fontName=font, fontSize=10.2, leading=14.2, textColor=INK)
         base.update(kw)
         return ParagraphStyle(name, **base)
 
-    s_name = style("name", fontName=bold, fontSize=23, leading=27, alignment=TA_CENTER, spaceAfter=1)
-    s_role = style("role", fontName=bold, fontSize=10.6, leading=14, alignment=TA_CENTER, textColor=ACCENT)
-    s_contact = style("contact", fontSize=8.8, leading=12.2, alignment=TA_CENTER, textColor=MUTED)
-    s_section = style("section", fontName=bold, fontSize=9.6, leading=12, textColor=ACCENT, spaceBefore=9, spaceAfter=2)
+    s_name = style("name", fontName=bold, fontSize=26, leading=29, spaceAfter=2)
+    s_role = style("role", fontName=bold, fontSize=12, leading=15, textColor=INK)
+    s_contact = style("contact", fontSize=9, leading=12.5, textColor=MUTED)
+    s_section = style("section", fontName=bold, fontSize=10.3, leading=13.5, textColor=ACCENT, spaceBefore=10, spaceAfter=2)
     s_body = style("body")
-    s_title = style("title", fontSize=9.8, leading=12.8)
+    s_title = style("title", fontSize=10.4, leading=14)
     s_stack = style("stack", fontSize=8.5, leading=11.4, textColor=MUTED, spaceAfter=1.5)
     s_bullet = style("bullet", leftIndent=9, bulletIndent=1, spaceAfter=0.6, bulletFontName=font)
     s_small = style("small", fontSize=8.7, leading=11.8, textColor=MUTED)
@@ -380,7 +367,7 @@ def build(lang, font, bold):
         return Paragraph(f'<b>{title}</b> <font size="8.6" color="#4a5056">| {meta}</font>', s_title)
 
     story = [
-        Paragraph("MAURO GOMEZ", s_name),
+        Paragraph("Mauro Gomez", s_name),
         Paragraph(cv["role"], s_role),
         Spacer(1, 2),
         Paragraph(f'{cv["location"]} | {CONTACT["phone"]} | {link(CONTACT["email"], "mailto:" + CONTACT["email"])}', s_contact),
@@ -422,7 +409,7 @@ def build(lang, font, bold):
         creator="Mauro Gomez",
         author="Mauro Gomez",
         subject=cv["subject"],
-        keywords="Java, Spring Boot, React, TypeScript, PostgreSQL, Rust",
+        keywords="Java, Spring Boot, React, TypeScript, PostgreSQL, C, Rust",
         lang=cv["lang"],
     )
     doc.build(story)
