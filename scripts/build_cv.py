@@ -21,10 +21,10 @@ from reportlab.platypus import (
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "public" / "docs"
 
-INK = HexColor("#16181a")
-MUTED = HexColor("#4a5056")
-ACCENT = HexColor("#1b7a3a")
-RULE = HexColor("#c9ced3")
+INK = HexColor("#111111")
+MUTED = HexColor("#444444")
+ACCENT = HexColor("#111111")
+RULE = HexColor("#888888")
 
 FONT_CANDIDATES = [
     ("/usr/share/fonts/noto/NotoSans-Regular.ttf", "/usr/share/fonts/noto/NotoSans-Bold.ttf"),
@@ -334,7 +334,7 @@ CV = {
 
 
 def link(label, url):
-    return f'<link href="{url}" color="#1b7a3a">{label}</link>'
+    return f'<link href="{url}" color="#111111">{label}</link>'
 
 
 def build(lang, font, bold):
@@ -364,7 +364,7 @@ def build(lang, font, bold):
 
     def heading(title, meta):
         # Una sola línea de texto: las fechas en una columna aparte se leen fuera de orden.
-        return Paragraph(f'<b>{title}</b> <font size="8.6" color="#4a5056">| {meta}</font>', s_title)
+        return Paragraph(f'<b>{title}</b> <font size="8.6" color="#444444">| {meta}</font>', s_title)
 
     story = [
         Paragraph("Mauro Gomez", s_name),
